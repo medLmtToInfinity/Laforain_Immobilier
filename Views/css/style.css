@@ -1,1 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+
+
+*{
+  list-style: none;
+  text-decoration: none;
+}
+
+
+
+
+
+/************ footer style ************ */
+
+.footer-links{
+  background-color: #f3f3f3;
+  color:gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer-links .logo{
+  cursor: pointer;
+}
+.footer-center{
+  font-size: 16px;
+}
+.links{
+  display: flex;
+  font-size: 15px;
+  gap: 25px;
+  padding: 0;
+}
+.links li a{
+  color: gray;
+}
+.social-media{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 0;
+
+}
+.social-media li a{
+  color:black;
+  font-size: 18px;
+}
