@@ -7,6 +7,7 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -147,26 +148,6 @@ a {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*slider*/
 
 .catalog-slider{
@@ -240,6 +221,99 @@ a {
 
 
 
+/*****************      season Stuffs               ********************/
+
+.Projects-txt{
+  margin: 0 20px;
+  position: relative;
+  margin: 1rem;
+}
+.Projects-txt i{
+  font-size: 1.4rem;
+  color: rgb(162, 162, 162);
+  position: absolute;
+  cursor: pointer;
+}
+.Projects-txt .next{
+  right: 80px;
+  top: 41px;
+}
+.Projects-txt .prev{
+  left: 1100px;
+  top: -8px;
+}
+.Projects-txt h2{
+  color: gray;
+  opacity: 0.6;
+  margin: 1rem ;
+  text-decoration:3px underline #6610f2;
+
+}
+.seasons{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.season-container{
+  max-width: 357px;
+  max-height: 100%;
+  /* background-color: #00ffff; */
+  border-radius: 1rem;
+  margin: 0;
+  margin: 10px;
+}
+.season-top{
+  position: relative;
+}
+.season-top{
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  width: 357px;
+  height: 250px;
+  background: url("../images/Screenshot 2023-03-13 211435.png");
+  background-size: cover;
+  object-fit: cover;
+}
+.season-top span{
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.9rem;
+  background-color:#6610f2;
+  padding: 5px 10px;
+  border-radius: 1rem;
+  display: inline-block;
+}
+.season-bottom{
+   padding: 1rem;
+   border: 1px solid rgba(60, 59, 59, 0.6);
+   border-bottom-left-radius: 1rem;
+   border-bottom-right-radius: 1rem;
+   border-top: none;
+}
+.season-bottom h3{
+  color: black;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+.season-bottom .start{
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  display: inline-block;
+}
+.season-bottom .season-price{
+  font-size: 1.2rem;
+  color: black;
+  font-weight: bold;
+}
+
+
+
+
+
+
 
 
 /******************  Companies collaborations style   *************/
@@ -254,7 +328,7 @@ a {
   color: gray;
   opacity: 0.6;
   margin: 4rem;
-  text
+  text-decoration:4px underline rgb(235, 203, 41);
 }
 .collab-container .companies{
   display: flex;
