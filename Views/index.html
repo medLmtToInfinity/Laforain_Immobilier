@@ -54,13 +54,16 @@
         immobilier</label
       >
       <div class="search-handler">
-        <input
+        <div class="text-search">
+          <input
           type="text"
           name="search"
           id="search"
           placeholder="Ville, région ou bâtiment"
           required
           />
+          <i class="fas fa-search search-icon"></i>
+        </div>
           <div class="select-handler">
             <select name="property-type" id="property-type" class="property-type">
               <option>Type de propriété</option>
@@ -71,6 +74,9 @@
               <option value="5">PROGRAMMES NEUFS</option>
               <option value="6">LOCAL COMMERCIAL</option>
             </select>
+            <label for="property-type">
+              <img src="https://cdn1.zoomproperty.com/assets/images/dropArrow.png" alt="arrow-down" class="arrow-down">
+            </label>
             <!-- <i class="fas fa-arrow-down"></i> -->
           </div>
           <div class="select-handler">
@@ -78,14 +84,17 @@
               <option>Operation</option>
               <option value="1">Vente</option>
               <option value="2">Location</option>
-              <option value="2">LOCATIONS SAISONNIÈRES</option>
+              <option value="3">LOCATIONS SAISONNIÈRES</option>
             </select>
+            <label for="choice">
+              <img src="https://cdn1.zoomproperty.com/assets/images/dropArrow.png" alt="arrow-down" class="arrow-down">
+            </label>
             <!-- <i class="fas fa-arrow-down"></i> -->
           </div>
           <button type="submit">
             <i class="fas fa-search"></i>
           </button>
-      </div>
+        </div>
     </form>
   </header>
 </div>

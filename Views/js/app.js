@@ -1,15 +1,15 @@
-// const selects = document.querySelectorAll(".search-handler .select-handler");
+const arrowDown = document.querySelectorAll(".arrow-down");
+const selects = document.querySelectorAll(".search-handler .select-handler");
+console.log(arrowDown);
 
-// selects.forEach((select) => {
-//   select.addEventListener("change", () => {
-//     const arrow = select.querySelector("i");
-//     // console.log(arrow.querySelector("i"));
-//     if (arrow.classList.contains("fa-arrow-down")) {
-//       arrow.classList.remove("fa-arrow-down");
-//       arrow.classList.add("fa-arrow-up");
-//     } else {
-//       arrow.classList.remove("fa-arrow-up");
-//       arrow.classList.add("fa-arrow-down");
-//     }
-//   });
-// });
+arrowDown.forEach((arrow) => {
+  //   arrow.onclick = () => {
+  //     console.log(arrow);
+  //   };
+  arrow.addEventListener("click", () => {
+      arrow.parentElement.parentElement.querySelector("select").click();
+    console.log(arrow.parentElement.parentElement.querySelector("select"));
+  });
+  //   arrow.addEventListener("click", () => {
+  //   });
+});
