@@ -6,7 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     list-style: none;
-  text-decoration: none;
+    text-decoration: none;
 }
 
 body {
@@ -143,12 +143,73 @@ a {
 }
 
 /*slider*/
+
+.catalog-slider{
+    color: black;
+}
+
 .slider-out{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    background-color: aliceblue;
+    /* gap: 1rem; */
+    /* flex-wrap: wrap; */
+    background-color: rgb(30, 90, 143);
+}
+
+.slider-in{
+    width: 20rem;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.img-item{
+    width: 20rem;
+}
+
+.img-item img{
+    width: 100%;
+}
+
+.slider-in-text{
+    padding: 0 10px 20px 10px;
+}
+
+.slider-btns{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.slider-btn {
+    padding: 5px 8px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.slider-in-text h2{
+    margin: .5rem 0;
+    font-size: 1.6rem;
+}
+
+.slider-in-text ul{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: .9rem;
+    margin: .7rem 0;
+}
+
+.slider-in-text span{
+    font-weight: 300;
+    margin-left: 5px;
+}
+
+.slider-in-text p{
+    font-weight: 700;
 }
 
 /************ footer style ************ */
