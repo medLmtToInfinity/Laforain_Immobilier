@@ -35,10 +35,9 @@
     <div class="overlay"></div>
     <nav class="navigation">
       <div class="logo-handler">
-        <h1 class="logo">
-          <span class="logo-top">LAFORAIN</span>
-          <span class="logo-bottom">International Real Estate</span>
-        </h1>
+        <a href="index.html">
+          <img width="150" src="images/laforain_logo.png" alt="logo">
+        </a>
       </div>
       <ul class="nav-bar">
         <li><a href="#">VENTE</a></li>
@@ -60,10 +59,28 @@
           name="search"
           id="search"
           placeholder="Ville, région ou bâtiment"
-        />
-        <button type="submit">
-          <i class="fas fa-search"></i>
-        </button>
+          />
+          <div>
+            <select name="property-type" id="property-type" class="property-type">
+              <option>Type de propriété</option>
+              <option value="1">RIAD & MAISONS D'HÔTES</option>
+              <option value="2">VILLAS & PALAIS</option>
+              <option value="3">APPARTEMENTS & DUPLEX</option>
+              <option value="4">TERRAINS & FERMES</option>
+              <option value="5">PROGRAMMES NEUFS</option>
+              <option value="6">LOCAL COMMERCIAL</option>
+            </select>
+          </div>
+          <div>
+            <select name="choice" id="choice">
+              <option value="1">Vente</option>
+              <option value="2">Location</option>
+              <option value="2">LOCATIONS SAISONNIÈRES</option>
+            </select>
+          </div>
+          <button type="submit">
+            <i class="fas fa-search"></i>
+          </button>
       </div>
     </form>
   </header>
