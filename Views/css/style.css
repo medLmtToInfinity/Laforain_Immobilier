@@ -178,7 +178,7 @@ a {
     justify-content: center;
     align-items: center;
     /* gap: 1rem; */
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     /* background-color: rgb(30, 90, 143); */
     margin-bottom: 10rem;
 }
@@ -191,12 +191,35 @@ a {
     background-color: #fff;
 }
 
-.img-item{
-    width: 20rem;
+.img-container{
+    height: 20rem;
+    width: 100%;
+    /* background-color: blue; */
+    margin-bottom: .5rem;
+    background-size: cover;
+    position: relative;
+    
+    /* transform: translateX(100%); */
 }
 
-.img-item img{
-    width: 100%;
+.slider-in-image{
+  width: 100%;
+  height: 20rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  transition: transform 1s;
+}
+
+.slider-in-image img{
+  height: 100%;
+}
+
+.img-container .image[data-index]{
+  /* height: 100%; */
+  transform: translateX(100%);
 }
 
 .slider-in-text{
@@ -208,12 +231,14 @@ a {
     align-items: center;
     gap: 10px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .slider-btn {
     padding: 5px 8px;
     border-radius: 5px;
     background-color: white;
+    font-size: 1rem;
 }
 
 .slider-in-text h2{
@@ -238,9 +263,71 @@ a {
     font-weight: 700;
 }
 
+.fa-whatsapp{
+  color: rgb(20, 207, 20);
+  font-weight: 900;
+}
 
+/* style the navigation buttons to navigate on the slider */
 
+.slider-btn-nav{
+  background-color: #e6e1e1;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgb(61, 59, 59);
+  position: absolute;
+  top: 10rem;
+  transform: scale(50%);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.slider-btn-right{
+  right: 2px;
+}
+
+.slider-btn-left{
+  left: 2px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dots__dot {
+  border: none;
+  background-color: #b9b9b9;
+  opacity: 0.7;
+  height: .8rem;
+  width: .8rem;
+  border-radius: 50%;
+  margin-right: .7rem;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  /* Only necessary when overlying images */
+  /* box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.7); */
+}
+
+.dots__dot:last-child {
+  margin: 0;
+}
+
+.dots__dot--active {
+  /* background-color: #fff; */
+  background-color: #e4e1e1;
+  opacity: 1;
+}
 
 /******************  Companies collaborations style   *************/
 
@@ -254,19 +341,18 @@ a {
   color: gray;
   opacity: 0.6;
   margin: 4rem;
-  text
 }
+
 .collab-container .companies{
   display: flex;
   justify-content: space-around;
-  
 }
+
 .collab-container i{
   font-size: 1.5rem;
   color: gray;
   position: absolute;
   cursor: pointer;
-  
 }
 .prev{
    left: 10px;
