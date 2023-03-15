@@ -273,14 +273,15 @@ a {
   color: black;
 }
 
-.slider-out {
+.slider-out{
   display: flex;
   justify-content: center;
   align-items: center;
   /* gap: 1rem; */
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   /* background-color: rgb(30, 90, 143); */
   margin-bottom: 10rem;
+
 }
 
 .slider-in {
@@ -291,16 +292,59 @@ a {
   background-color: #fff;
 }
 
+.img-container{
+  height: 20rem;
+  width: 100%;
+  /* background-color: blue; */
+  margin-bottom: .5rem;
+  background-size: cover;
+  position: relative;
+  
+  /* transform: translateX(100%); */
+}
+
+.slider-in-image{
+  width: 100%;
+  height: 20rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  transition: transform 1s;
+}
+
+.slider-in-image img{
+  height: 100%;
+}
+
 .img-item {
   width: 20rem;
 }
 
 .img-item img {
   width: 100%;
+
 }
 
 .slider-in-text {
   padding: 0 10px 20px 10px;
+}
+
+.slider-btns{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.slider-btn {
+    padding: 5px 8px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .slider-btns {
@@ -308,12 +352,6 @@ a {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
-}
-
-.slider-btn {
-  padding: 5px 8px;
-  border-radius: 5px;
-  background-color: white;
 }
 
 .slider-in-text h2 {
@@ -339,12 +377,124 @@ a {
 }
 
 
+
+
+
+.fa-whatsapp{
+  color: rgb(20, 207, 20);
+  font-weight: 900;
+}
+
+/* style the navigation buttons to navigate on the slider */
+
+.slider-btn-nav{
+  background-color: #e6e1e1;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgb(61, 59, 59);
+  position: absolute;
+  top: 10rem;
+  transform: scale(50%);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.slider-btn-right{
+  right: 2px;
+}
+
+.slider-btn-left{
+  left: 2px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dots__dot {
+  border: none;
+  background-color: #b9b9b9;
+  opacity: 0.7;
+  height: .8rem;
+  width: .8rem;
+  border-radius: 50%;
+  margin-right: .7rem;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  /* Only necessary when overlying images */
+  /* box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.7); */
+}
+
+.dots__dot:last-child {
+  margin: 0;
+}
+
+.dots__dot--active {
+  /* background-color: #fff; */
+  background-color: #e4e1e1;
+  opacity: 1;
+}
+
+
+
+
+
+
+/**************************       Links      ********************/
+.links{
+  margin: 1rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.links-container h3{
+   color: black;
+   margin-bottom: 0.8rem;
+}
+.links-container ul li a{
+  color:#6610f2;
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*****************      season Stuffs               ********************/
 
 .Projects-txt{
   margin: 0 20px;
   position: relative;
-  margin: 0 1rem;
+  margin: 1rem;
+  margin-top: 4rem;
 }
 .Projects-txt i{
   font-size: 1.4rem;
@@ -380,7 +530,11 @@ a {
   margin: 10px;
 }
 .season-top{
+  /* width="357px" height="250px */
+  width: 357px;
+  height: 250px;
   position: relative;
+  overflow: hidden;
 }
 .season-top{
   border-top-left-radius: 1rem;
@@ -388,9 +542,39 @@ a {
   width: 357px;
   height: 250px;
   object-fit: cover;
+  position: relative;
+}
+.season-top .season-img-container{
+  display: flex;
+  justify-content: center;
 }
 .season-top img{
   border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.season-top i{
+  position: absolute;
+  font-size: 1rem;
+  display: inline-block;
+  padding: 0.5rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+.season-top i:hover{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.season-top .prev-img{
+  /* transform: translate(-100%,330%); */
+  top:50%;
+  right:0;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+.season-top .next-img{
+  /* transform: translate(-1375%,330%); */
+  top:50%;
+  left:0;
+  border-bottom-right-radius: 1rem;
   border-top-right-radius: 1rem;
 }
 .season-top span{
@@ -433,7 +617,6 @@ a {
   font-weight: bold;
 }
 
-
 /******************  Companies collaborations style   *************/
 
 .collab-container {
@@ -447,6 +630,12 @@ a {
   margin: 4rem;
   text-decoration:4px underline rgb(235, 203, 41);
 }
+
+.collab-container .companies{
+  display: flex;
+  justify-content: space-around;
+}
+
 .collab-container .companies {
   display: flex;
   justify-content: space-around;
