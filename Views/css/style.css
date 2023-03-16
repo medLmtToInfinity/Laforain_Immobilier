@@ -361,12 +361,19 @@ section{
 
 .catalog-slider {
   color: black;
+  position: relative;
 }
 
 .catalog-slider h2 {
-  margin: 2rem 3rem;
+  margin: 2rem 4rem;
   text-decoration: underline solid 5px #ff3232;
   color: #3b3b3b;
+}
+
+.catalog-slider .explore {
+  position: absolute;
+  top: -2%;
+  right: 3%;
 }
 
 .slider-out{
@@ -864,23 +871,49 @@ section{
 }
 
 
-/*boubker media queries*/ 
+
+
+/* hna dyal lmedia queries */
+
+/*--------boubker media queries------------*/ 
+
 @media (max-width: 930px) {
+  section {
+    font-size: 14px;
+  }
   .catalog-slider h2 {
-    margin: 1rem 2rem;
     text-decoration: underline solid 3px #ff3232;
     color: #3b3b3b;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .btn{
-    display: block;
-    background-color: #fc4848;
-    color: #ffffff;
-    border: none;
     border-radius: 5px;
     padding: .6rem 1.2rem;
     margin: 1rem 2rem;
-    font-size: .7rem;
-    cursor: pointer;
+    font-size: .8rem;
+  }
+  .slider-header {
+    /* width: 90%;
+    margin: 1rem 0; */
+    justify-content: space-around;
+  }
+
+}
+
+@media (max-width: 670px) {
+  /* .slider-header {
+    flex-direction: column;
+  } */
+  .catalog-slider h2 {
+    text-align: center;
+  }
+  .catalog-slider .explore{
+    border-radius: 5px;
+    padding: .9rem 1.5rem;
+    margin: .2rem 1.2rem 2rem;
+    font-size: .9rem;
+    top: 101%;
+    right: 50%;
+    transform: translateX(52%);
   }
 }
