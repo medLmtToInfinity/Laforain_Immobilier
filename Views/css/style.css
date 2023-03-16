@@ -14,10 +14,11 @@
 body {
   font-family: "Roboto", sans-serif;
   /* line-height: 1.7; */
-  background-color: #eee;
-  width: 100%;
+  /* background-color: #eee; */
+  width: 100vw;
   height: 100vh;
   color: #fff;
+  overflow-x: hidden;
 }
 
 /* Utilies */
@@ -453,8 +454,9 @@ a {
 
 
 /**************************       Links      ********************/
+
 .links{
-  margin: 1rem;
+  margin: 2rem;
   margin-bottom: 3rem;
   display: flex;
   align-items: center;
@@ -484,11 +486,11 @@ a {
 
 
 
-
-
-
-
 /*****************      season Stuffs               ********************/
+.Projects{
+  /* background-color: red; */
+  padding: 10px
+}
 
 .Projects-txt{
   margin: 0 20px;
@@ -503,32 +505,46 @@ a {
   cursor: pointer;
 }
 .Projects-txt .next{
-  right: 80px;
+  right: 6%;
   top: 41px;
 }
 .Projects-txt .prev{
-  left: 1100px;
+  left: 90%;
   top: -8px;
 }
 .Projects-txt h2{
+  text-align: center;
   color: gray;
   opacity: 0.6;
-  margin: 1rem ;
+  margin: 2rem 1rem ;
   text-decoration:3px underline #6610f2;
 }
 .seasons{
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  max-width: 1133px;
+  width: 180%;
+  margin: 0 auto;
+  /* background-color: #b9b9b9; */
+  overflow: hidden;
+  
+
+  
 }
 .season-container{
   max-width: 357px;
   max-height: 100%;
-  /* background-color: #00ffff; */
   border-radius: 1rem;
-  margin: 0;
   margin: 10px;
+  box-shadow: 0.2rem 0.2rem 10px rgba(68, 67, 67, 0.3);
+  /* transform: translateX(-120%); */
 }
+/* 
+.season-container.transform{
+  transform: translateX(700px);
+  /* transform: translateX(-120%); */
+/* }   */
+
 .season-top{
   /* width="357px" height="250px */
   width: 357px;
@@ -550,7 +566,9 @@ a {
 }
 .season-top img{
   border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-top-right-radius: 1rem; 
+  transition: transform 1s;
+  
 }
 .season-top i{
   position: absolute;
@@ -594,7 +612,6 @@ a {
    border-bottom-right-radius: 1rem;
    border-top: none;
 }
-
 .season-bottom:hover{
     background-color:#f8f9fa;
     cursor:pointer;
@@ -617,7 +634,53 @@ a {
   font-weight: bold;
 }
 
+ /****************** Email for news *****************/
+
+ .newsletter{ 
+  margin: 5rem;
+
+ }
+.newsletter-txt{
+  width: 600px;
+  margin:30px auto;
+}
+.newsletter-txt h2{
+ text-align: center;
+ color: gray;
+ opacity: 0.6;
+ margin: 2rem;
+ text-decoration:4px underline #ff3232;
+}
+.newsletter-txt p{
+   margin: 10px;
+   color:rgba(0, 0, 0, 0.47);
+}
+.newsletter-txt .news-email{
+ outline: none;
+ width: 400px;
+ height: 50px;
+ padding: 10px 20px;
+ border-radius: 30px;
+ border: 1px #777 solid;
+ font-size: 16px;
+ margin-left: 10px;
+ caret-color: #ff3232;
+}
+.newsletter-txt button{
+  cursor: pointer;
+  width: 140px;
+  height: 50px;
+  background-color:#ff3232;
+  border: none;
+  color: white;
+  font-size: 17px;
+  border-radius: 10px;
+  border-radius: 30px;
+}
+
+
 /******************  Companies collaborations style   *************/
+
 
 .collab-container {
   margin: 4rem 2rem;
@@ -628,7 +691,7 @@ a {
   color: gray;
   opacity: 0.6;
   margin: 4rem;
-  text-decoration:4px underline rgb(235, 203, 41);
+  text-decoration:4px underline #ff3232;
 }
 
 .collab-container .companies{
@@ -639,6 +702,10 @@ a {
 .collab-container .companies {
   display: flex;
   justify-content: space-around;
+  
+}
+.collab-container .companies a{
+  cursor: pointer;
 }
 .collab-container i {
   font-size: 1.5rem;
@@ -663,7 +730,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 100px;
+  height: 140px;
 }
 .footer-links .logo {
   cursor: pointer;
