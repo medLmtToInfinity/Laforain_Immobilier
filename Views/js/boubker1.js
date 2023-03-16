@@ -94,3 +94,17 @@ const sliderInContainers = document.querySelectorAll('.img-container');
 sliderInContainers.forEach(cont =>{
   slider(cont);
 });
+
+
+//read more btnn:
+const btnReadMore = document.querySelector('.read-more');
+btnReadMore.addEventListener('click', ()=>{
+  const moreText = document.querySelector('.more');
+  if(btnReadMore.textContent === 'lire plus'){
+    moreText.classList.add('active');
+    btnReadMore.textContent = 'lire moins';
+  }else{
+    moreText.classList.remove('active');
+    btnReadMore.textContent = 'lire plus';
+  }
+})
