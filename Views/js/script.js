@@ -5,7 +5,7 @@ const season_container = document.querySelectorAll('.season-top');
     const btnLeft = cont.querySelector('.season-btn-left');
     const btnRight = cont.querySelector('.season-btn-right');
     const dotContainer = cont.querySelector('.dots');
-    console.log(images)
+    // console.log(images)
     let curImage = 0;
     const maxImages = images.length;
   
@@ -46,11 +46,11 @@ const season_container = document.querySelectorAll('.season-top');
       
       goToImage(curImage);
       activateDot(curImage);
-      console.log(curImage);
+      // console.log(curImage);
     };
   
     const prevImage = function () {
-      console.log(curImage)
+      // console.log(curImage)
       if (curImage === 0) {
         curImage = maxImages - 1;
       } else {
@@ -59,7 +59,7 @@ const season_container = document.querySelectorAll('.season-top');
       // console.log('previous');
       goToImage(curImage);
       activateDot(curImage);
-      console.log(curImage);
+      // console.log(curImage);
     };
   
     const init = function () {
@@ -85,7 +85,7 @@ const season_container = document.querySelectorAll('.season-top');
         curImage = image;
         goToImage(image);
         activateDot(image);
-        console.log(curImage);
+        // console.log(curImage);
       }
     });
     
@@ -93,3 +93,29 @@ const season_container = document.querySelectorAll('.season-top');
 season_container.forEach(cont =>{
   spider(cont);
 });
+
+
+const seasonContainer = document.querySelector('.season-container');
+// console.log(seasonContainer);
+
+let counter = 1;
+document.querySelector('.prev').addEventListener('click',()=>{
+  counter--;
+  update_img();
+})
+document.querySelector('.next').addEventListener('click',()=>{
+    counter++;
+    update_img();
+})
+const update_img = function(){
+  if(counter > 5){
+    counter = 1;
+  }
+  if(counter < 1){
+    counter = 5;
+  }
+
+  seasonContainer.style.transform = `translateX(-${(counter - 1) * 377}px)`;
+  
+}
+update_img();

@@ -6,6 +6,18 @@
   box-sizing: border-box;
 }
 
+
+body {
+  font-family: "Roboto", sans-serif;
+  /* line-height: 1.7; */
+  /* background-color: #eee; */
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+
 /* Utilities */
 a {
   text-decoration: none;
@@ -33,6 +45,7 @@ body {
 
 /* Header */
 .header {
+  margin-bottom: 4rem;
   position: relative;
   width: 100%;
   background: url("../images/MaSnow.jpg") no-repeat center center/cover;
@@ -286,32 +299,105 @@ body {
   cursor: pointer;
 }
 
+/* introduction */
+
+section{
+  margin-bottom: 4rem;
+}
+
+.introduction{
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  color: #464444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s;
+}
+
+.introduction h2{
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: all 3s ease-in;
+}
+
+.introduction p{
+  line-height: 1.5rem;
+}
+
+.more {
+  transition: all 1s ease-out;
+  display: none;
+}
+
+.more.active {
+  /* opacity: 1;
+  position: relative; */
+  display: inline;
+}
+
+.btn{
+  display: block;
+  background-color: #fc4848;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: .8rem 2rem;
+  margin: 1rem 3rem;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+
 /*slider*/
+
+.slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .catalog-slider {
   color: black;
+  position: relative;
 }
 
-.slider-out {
+.catalog-slider h2 {
+  margin: 2rem 4rem;
+  text-decoration: underline solid 5px #ff3232;
+  color: #3b3b3b;
+}
+
+.catalog-slider .explore {
+  position: absolute;
+  top: -2%;
+  right: 3%;
+}
+
+.slider-out{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* gap: 1rem; */
+  gap: 3rem;
   flex-wrap: wrap;
   /* background-color: rgb(30, 90, 143); */
   margin-bottom: 10rem;
 }
 
 .slider-in {
-  width: 20rem;
-  margin: 10px;
+  width: 17rem;
+  /* margin: 10px 1.5rem; */
   border-radius: 10px;
   overflow: hidden;
   background-color: #fff;
+  box-shadow: 0.2rem 0.2rem 10px rgba(68, 67, 67, 0.5)
 }
 
-.img-container {
-  height: 20rem;
+.img-container{
+  height: 14rem;
   width: 100%;
   /* background-color: blue; */
   margin-bottom: 0.5rem;
@@ -323,7 +409,7 @@ body {
 
 .slider-in-image {
   width: 100%;
-  height: 20rem;
+  height: 14rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -334,14 +420,6 @@ body {
 
 .slider-in-image img {
   height: 100%;
-}
-
-.img-item {
-  width: 20rem;
-}
-
-.img-item img {
-  width: 100%;
 }
 
 .slider-in-text {
@@ -358,42 +436,38 @@ body {
 
 .slider-btn {
   padding: 5px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.616);
   border-radius: 5px;
   background-color: white;
-  font-size: 1rem;
+  font-size: .9rem;
   cursor: pointer;
 }
 
-.slider-btns {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-}
 
-.slider-in-text h2 {
+.slider-in-text h3 {
   margin: 0.5rem 0;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .slider-in-text ul {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 0.9rem;
-  margin: 0.7rem 0;
+  font-size: 0.7rem;
+  margin: 5px 0.7rem;
 }
 
 .slider-in-text span {
-  font-weight: 300;
+  font-weight: 250;
   margin-left: 5px;
+  font-size: .8rem;
 }
 
 .slider-in-text p {
-  font-weight: 700;
+  font-weight: 450;
 }
 
-.fa-whatsapp {
+.fa-whatsapp{
   color: rgb(20, 207, 20);
   font-weight: 900;
 }
@@ -403,19 +477,19 @@ body {
 .slider-btn-nav {
   background-color: #e6e1e1;
   border: none;
-  width: 3rem;
-  height: 3rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: .8rem;
   font-weight: 900;
   color: rgb(61, 59, 59);
   position: absolute;
-  top: 10rem;
-  transform: scale(50%);
+  top: 50%;
+  transform: translateY(-50%);
   text-align: center;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   cursor: pointer;
 }
 
@@ -439,10 +513,10 @@ body {
   border: none;
   background-color: #b9b9b9;
   opacity: 0.7;
-  height: 0.8rem;
-  width: 0.8rem;
+  height: .6rem;
+  width: .6rem;
   border-radius: 50%;
-  margin-right: 0.7rem;
+  margin-right: .5rem;
   cursor: pointer;
   transition: all 0.5s;
 
@@ -461,6 +535,11 @@ body {
 }
 
 /**************************       Links      ********************/
+
+
+.links{
+  margin: 2rem;
+}
 .links {
   margin: 1rem;
   margin-bottom: 3rem;
@@ -478,7 +557,12 @@ body {
   margin-bottom: 0.5rem;
 }
 
+
 /*****************      season Stuffs               ********************/
+.Projects{
+  /* background-color: red; */
+  padding: 10px
+}
 
 .Projects-txt {
   margin: 0 20px;
@@ -492,6 +576,22 @@ body {
   position: absolute;
   cursor: pointer;
 }
+
+.Projects-txt .next{
+  right: 6%;
+  top: 41px;
+}
+.Projects-txt .prev{
+  left: 90%;
+  top: -8px;
+}
+.Projects-txt h2{
+  text-align: center;
+  color: gray;
+  opacity: 0.6;
+  margin: 2rem 1rem ;
+  text-decoration:3px underline #6610f2;
+}
 .Projects-txt .next {
   right: 80px;
   top: 41px;
@@ -501,25 +601,46 @@ body {
   top: -8px;
 }
 .Projects-txt h2 {
-  color: gray;
-  opacity: 0.6;
+  color: #222;
+  opacity: 1;
   margin: 1rem;
-  text-decoration: 3px underline #6610f2;
+  text-decoration: 4px underline #ff3232;
+
 }
 .seasons {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  max-width: 1133px;
+  width: 180%;
+  margin: 0 auto;
+  /* background-color: #b9b9b9; */
+  overflow: hidden;
+  
+
+  
 }
 .season-container {
   max-width: 357px;
   max-height: 100%;
+
   /* background-color: #ff3232; */
+
   border-radius: 1rem;
-  margin: 0;
   margin: 10px;
+  box-shadow: 0.2rem 0.2rem 10px rgba(68, 67, 67, 0.3);
+  /* transform: translateX(-120%); */
 }
+
+/* 
+.season-container.transform{
+  transform: translateX(700px);
+  /* transform: translateX(-120%); */
+/* }   */
+
+
+
 .season-top {
+
   /* width="357px" height="250px */
   width: 357px;
   height: 250px;
@@ -540,7 +661,9 @@ body {
 }
 .season-top img {
   border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-top-right-radius: 1rem; 
+  transition: transform 1s;
+  
 }
 .season-top i {
   position: absolute;
@@ -551,7 +674,8 @@ body {
   cursor: pointer;
 }
 .season-top i:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-color: #ff3232;
 }
 .season-top .prev-img {
   /* transform: translate(-100%,330%); */
@@ -585,6 +709,10 @@ body {
   border-top: none;
 }
 
+.season-bottom:hover{
+    background-color:#f8f9fa;
+    cursor:pointer;
+  }
 .season-bottom:hover {
   background-color: #f8f9fa;
   cursor: pointer;
@@ -607,7 +735,53 @@ body {
   font-weight: bold;
 }
 
+ /****************** Email for news *****************/
+
+ .newsletter{ 
+  margin: 5rem;
+
+ }
+.newsletter-txt{
+  width: 600px;
+  margin:30px auto;
+}
+.newsletter-txt h2{
+ text-align: center;
+ color: #333;
+ opacity: 1;
+ margin: 2rem;
+ text-decoration:4px underline #ff3232;
+}
+.newsletter-txt p{
+   margin: 10px;
+   color:rgba(0, 0, 0, 0.47);
+}
+.newsletter-txt .news-email{
+ outline: none;
+ width: 400px;
+ height: 50px;
+ padding: 10px 20px;
+ border-radius: 30px;
+ border: 1px #777 solid;
+ font-size: 16px;
+ margin-left: 10px;
+ caret-color: #ff3232;
+}
+.newsletter-txt button{
+  cursor: pointer;
+  width: 140px;
+  height: 50px;
+  background-color:#ff3232;
+  border: none;
+  color: white;
+  font-size: 17px;
+  border-radius: 10px;
+  border-radius: 30px;
+}
+
+
 /******************  Companies collaborations style   *************/
+
 
 .collab-container {
   margin: 4rem 2rem;
@@ -618,7 +792,11 @@ body {
   color: gray;
   opacity: 0.6;
   margin: 4rem;
+
+  text-decoration:4px underline #ff3232;
+
   text-decoration: 4px underline rgb(235, 203, 41);
+
 }
 
 .collab-container .companies {
@@ -629,6 +807,10 @@ body {
 .collab-container .companies {
   display: flex;
   justify-content: space-around;
+  
+}
+.collab-container .companies a{
+  cursor: pointer;
 }
 .collab-container i {
   font-size: 1.5rem;
@@ -653,7 +835,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 100px;
+  height: 140px;
 }
 .footer-links .logo {
   cursor: pointer;
@@ -687,4 +869,52 @@ body {
 }
 .social-media li a:hover {
   color: #bd4f39;
+}
+
+
+
+
+/* hna dyal lmedia queries */
+
+/*--------boubker media queries------------*/ 
+
+@media (max-width: 930px) {
+  section {
+    font-size: 14px;
+  }
+  .catalog-slider h2 {
+    text-decoration: underline solid 3px #ff3232;
+    color: #3b3b3b;
+    font-size: 1.2rem;
+  }
+  .btn{
+    border-radius: 5px;
+    padding: .6rem 1.2rem;
+    margin: 1rem 2rem;
+    font-size: .8rem;
+  }
+  .slider-header {
+    /* width: 90%;
+    margin: 1rem 0; */
+    justify-content: space-around;
+  }
+
+}
+
+@media (max-width: 670px) {
+  /* .slider-header {
+    flex-direction: column;
+  } */
+  .catalog-slider h2 {
+    text-align: center;
+  }
+  .catalog-slider .explore{
+    border-radius: 5px;
+    padding: .9rem 1.5rem;
+    margin: .2rem 1.2rem 2rem;
+    font-size: .9rem;
+    top: 101%;
+    right: 50%;
+    transform: translateX(52%);
+  }
 }
