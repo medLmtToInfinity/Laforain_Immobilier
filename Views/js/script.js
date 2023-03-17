@@ -1,7 +1,7 @@
 const season_container = document.querySelectorAll('.season-top');
 
   const spider = function (cont) {
-    const images = cont.querySelectorAll('.season-img');
+    const images = cont.querySelectorAll('.season-img-container');
     const btnLeft = cont.querySelector('.season-btn-left');
     const btnRight = cont.querySelector('.season-btn-right');
     const dotContainer = cont.querySelector('.dots');
@@ -32,7 +32,7 @@ const season_container = document.querySelectorAll('.season-top');
   
     const goToImage = function (image) {
       images.forEach(
-        (img, i) => (img.style.transform = `translateX(${357 * (1 - image)}px)`)
+        (img, i) => (img.style.transform = `translateX(${100 * (i - image)}%)`)
       );
     };
   
@@ -95,7 +95,8 @@ season_container.forEach(cont =>{
 });
 
 
-const seasonContainer = document.querySelector('.season-container');
+
+const seasonContainer = document.querySelectorAll('.season-container');
 // console.log(seasonContainer);
 
 let counter = 1;
@@ -108,14 +109,50 @@ document.querySelector('.next').addEventListener('click',()=>{
     update_img();
 })
 const update_img = function(){
-  if(counter > 5){
+  if(counter > 3){
     counter = 1;
   }
   if(counter < 1){
-    counter = 5;
-  }
+    counter = 1;
+    // console.log(img);
+    // setTimeout(() => {
+    //   seasonContainer.forEach((img) => {
+    //   img.style.transform = `translateX(-10px)`;
+        
+    //   }, 4);
+    //   img.style.transform = `translateX(10px)`;
 
-  seasonContainer.style.transform = `translateX(-${(counter - 1) * 377}px)`;
+  
+    // })
+  }
+  seasonContainer.forEach((img) => {
+  //   // console.log(img);
+    if(window.innerWidth <= 668){
+      document.querySelector('.seasons-container').style.display =`flex`;
+  //     document.querySelector('.seasons-container').style.alignItems = `center`;
+      document.querySelector('.season-center').style.width=`100%`;
+      document.querySelector('.season-fix').style.width=`100%`;
+  //     document.querySelector('.season-img-container').style.width =`90%`;
+  //     document.querySelector('.season-container').style.margin =`0 30px`;
+      seasonContainer.forEach((img) =>{
+  //       // console.log(img);
+  //        document.querySelector('.season-fix').style.margin=`0 auto`
+  //       //  img.style.margin=`0 6%`;
+  //       // img.style.marginRight=`60px`;
+         img.style.width =`720px`;
+      })
+      
+  //     img.style.transform = `translateX(-${(counter - 1) * 749}px)`;
+  //   }
+  //   else{
+    img.style.transform = `translateX(-${(counter - 1) * document.body.offsetWidth}px)`;
+    }
+    else{
+      img.style.transform = `translateX(-${(counter - 1) * 377}px)`;
+    }
+
+  })
+  
   
 }
 update_img();
