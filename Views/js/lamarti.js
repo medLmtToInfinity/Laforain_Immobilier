@@ -7,8 +7,9 @@ const searchBtn = document.querySelector(".search-btn");
 // console.log(bergerMenu.checked);
 
 const setSearch = () => {
-  if (window.innerWidth <= 919) {
-    searchBtn.innerHTML = "Search <i class='fas fa-search'></i>";
+  if (window.innerWidth <= 1028) {
+    searchBtn.innerHTML =
+      "<span>Rechercher</span><i class='fas fa-search'></i>";
   } else {
     searchBtn.innerHTML = "<i class='fas fa-search'></i>";
   }
