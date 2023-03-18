@@ -531,14 +531,12 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 1s;
 }
 
 .introduction h2 {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
-  transition: all 3s ease-in;
 }
 
 .introduction p {
