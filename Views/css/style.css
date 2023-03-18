@@ -535,14 +535,12 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 1s;
 }
 
 .introduction h2 {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
-  transition: all 3s ease-in;
 }
 
 .introduction p {
@@ -1078,6 +1076,11 @@ section {
     padding: 0.6rem 1.2rem;
     margin: 1rem 2rem;
     font-size: 0.8rem;
+  }
+  .slider-header {
+    /* width: 90%;
+    margin: 1rem 0; */
+    justify-content: space-around;
   }
   .slider-header {
     /* width: 90%;
