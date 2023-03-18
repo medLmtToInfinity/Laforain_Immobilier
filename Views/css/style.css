@@ -96,6 +96,10 @@ body {
   font-size: 0.9rem;
 }
 
+.menu > li.current {
+  background-color: #ff3232;
+}
+
 .menu > li > ul {
   position: absolute;
   padding: 0.5rem 1rem;
@@ -340,9 +344,9 @@ body {
   cursor: pointer;
 }
 
-/* Media query */
+/***************  LAMARTI MEDIA QUERIES   ******************* */
 
-@media screen and (max-width: 919px) {
+@media screen and (max-width: 1028px) {
   body {
     position: relative;
   }
@@ -762,7 +766,7 @@ section {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.links-container{
+.links-container {
   margin: 0.6rem;
 }
 .links-container h3 {
@@ -778,7 +782,6 @@ section {
 .Projects {
   margin: 3rem auto;
   margin-top: 6rem;
-
 }
 
 .Projects-txt {
@@ -786,23 +789,22 @@ section {
   width: 100%;
 }
 
-.Projects-txt i{
+.Projects-txt i {
   font-size: 1.4rem;
   color: rgb(162, 162, 162);
   cursor: pointer;
 }
 
-
-.Projects-txt .next{
+.Projects-txt .next {
   position: absolute;
   top: 30%;
   right: 8%;
 }
-.Projects-txt .prev{
+.Projects-txt .prev {
   position: absolute;
   top: 30%;
   left: 86%;
-} 
+}
 
 .Projects-txt h2 {
   color: #222;
@@ -811,12 +813,12 @@ section {
   text-decoration: 4px underline #ff3232;
 }
 
-.season-center{
+.season-center {
   display: flex;
   justify-content: center;
 }
 
-.seasons-container{
+.seasons-container {
   display: flex;
   justify-content: space-between;
   max-width: 1133px;
@@ -844,13 +846,13 @@ section {
   overflow: hidden;
 }
 
-.season-img-container{
+.season-img-container {
   width: 357px;
   height: 250px;
   position: relative;
 }
 
-.season-img-container{
+.season-img-container {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   transition: transform 1s;
@@ -859,10 +861,9 @@ section {
   top: 0;
 }
 
-.season-img-container img{
+.season-img-container img {
   width: 100%;
   height: 100%;
-
 }
 .season-top i {
   position: absolute;
@@ -875,9 +876,8 @@ section {
 }
 .season-top i:hover {
   background-color: #ff3232;
-  
 }
-.season-top .prev-img{
+.season-top .prev-img {
   top: 50%;
   right: 0;
   border-top-left-radius: 50%;
@@ -936,40 +936,39 @@ section {
 
 /****************** Email for news *****************/
 
-.newsletter-txt{
+.newsletter-txt {
   width: 500px;
-  margin:4rem auto;
+  margin: 4rem auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.newsletter-txt h2{
- text-align: center;
- color: #333;
- opacity: 1;
- margin: 1rem;
- text-decoration:4px underline #ff3232;
+.newsletter-txt h2 {
+  text-align: center;
+  color: #333;
+  opacity: 1;
+  margin: 1rem;
+  text-decoration: 4px underline #ff3232;
 }
-.newsletter-txt p{
-   margin: 10px 0;
-   color:rgba(0, 0, 0, 0.47);
+.newsletter-txt p {
+  margin: 10px 0;
+  color: rgba(0, 0, 0, 0.47);
 }
-.email-txt{
+.email-txt {
   display: flex;
-  gap:0.4rem;
-
+  gap: 0.4rem;
 }
-.news-email{
- outline: none;
- width: 400px;
- height: 50px;
- padding: 10px 20px;
- border-radius: 30px;
- border: 1px #777 solid;
- font-size: 16px;
- /* margin-left: 10px; */
- caret-color: #ff3232;
+.news-email {
+  outline: none;
+  width: 400px;
+  height: 50px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px #777 solid;
+  font-size: 16px;
+  /* margin-left: 10px; */
+  caret-color: #ff3232;
 }
 
 .newsletter-txt button {
@@ -996,7 +995,7 @@ section {
   color: gray;
   opacity: 0.6;
   margin: 4rem;
-  text-decoration:4px underline #ff3232;
+  text-decoration: 4px underline #ff3232;
 }
 
 .companies {
@@ -1008,7 +1007,6 @@ section {
   cursor: pointer;
 }
 
-
 /************  footer style ************************ */
 
 .footer-links {
@@ -1016,13 +1014,13 @@ section {
   color: gray;
   height: 150px;
 }
-.footer-container{
+.footer-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 2rem;
 }
-.copyright2{
+.copyright2 {
   display: none;
 }
 .logo {
@@ -1032,7 +1030,7 @@ section {
   font-size: 16px;
   line-height: 30px;
 }
-.footer-center p{
+.footer-center p {
   margin-left: 1rem;
 }
 .links {
@@ -1064,7 +1062,6 @@ section {
 }
 
 /* hna dyal lmedia queries */
-
 /*--------boubker media queries------------*/
 
 @media (max-width: 930px) {
@@ -1082,30 +1079,47 @@ section {
     margin: 1rem 2rem;
     font-size: 0.8rem;
   }
-
+  .slider-header {
+    /* width: 90%;
+    margin: 1rem 0; */
+    justify-content: space-around;
+  }
 }
 
-
-
-
+@media (max-width: 670px) {
+  /* .slider-header {
+    flex-direction: column;
+  } */
+  .catalog-slider h2 {
+    text-align: center;
+  }
+  .catalog-slider .explore {
+    border-radius: 5px;
+    padding: 0.9rem 1.5rem;
+    margin: 0.2rem 1.2rem 2rem;
+    font-size: 0.9rem;
+    top: 101%;
+    right: 50%;
+    transform: translateX(52%);
+  }
+}
 
 /***************  ABDESSAMAD MEDIA QUERIES   ******************* */
 
-@media(max-width:588px){
-
+@media (max-width: 588px) {
   /*8********* season queries ***********/
 
-  .Projects-txt h2{
+  .Projects-txt h2 {
     font-size: 20px;
   }
-  .Projects-txt .next{
+  .Projects-txt .next {
     top: 15%;
     right: 8%;
   }
-  .Projects-txt .prev{
+  .Projects-txt .prev {
     top: 15%;
   }
-   /* ********footer queries **********/
+  /* ********footer queries **********/
 
   .collab-container h2 {
     font-size: 20px;
@@ -1115,44 +1129,42 @@ section {
     width: 4.5rem;
     height: 3rem;
   }
-
 }
 
-@media(max-width: 668px){
-  .links-container{
-     width: 200px;
+@media (max-width: 668px) {
+  .links-container {
+    width: 200px;
   }
 
-  .Projects{
+  .Projects {
     height: 472px;
   }
-  .season-center{
-   width: 100%;
+  .season-center {
+    width: 100%;
     height: 418px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
-  .seasons-container{
-   display: block;
+  .seasons-container {
+    display: block;
     width: 100%;
     margin: 0 auto;
     height: 100%;
     overflow: hidden;
-   }
-   .season-fix{
-     width: 100%;
-     height: auto;
-     display: flex; 
-      justify-content: center;
-     margin: 10px auto;
-
-   }
+  }
+  .season-fix {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+  }
   .season-container {
     top: 0;
     width: 92%;
     height: 100%;
-    margin:0 30px;
-    box-shadow:none;
+    margin: 0 30px;
+    box-shadow: none;
   }
 
   .season-top {
@@ -1160,69 +1172,80 @@ section {
     height: 250px;
     object-fit: cover;
     overflow: hidden;
-    margin:0;
+    margin: 0;
   }
-  
-  .season-img-container{
+
+  .season-img-container {
     width: 100%;
     height: 250px;
   }
-  
-  .season-img-container img{
-   width: 100%;
+
+  .season-img-container img {
+    width: 100%;
     height: 100%;
     background-size: cover;
   }
   .season-bottom {
-    width:  100%;
+    width: 100%;
     margin: 0;
   }
-
 }
 
-@media(max-width:998px){
-  .newsletter-txt h2{
+@media (max-width: 998px) {
+  .newsletter-txt h2 {
     font-size: 20px;
-    margin-bottom:2rem;
-   }
-   .newsletter-txt p{font-size: 0.9rem;}
+    margin-bottom: 2rem;
+  }
+  .newsletter-txt p {
+    font-size: 0.9rem;
+  }
 
-   .email-txt{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      gap: 1rem;
-   }
+  .email-txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-   .email-txt button{margin-bottom: 1rem;}
- 
-   .newsletter-txt button{
-     cursor: pointer;
-     width: 90px;
-     height: 50px;
-     color: white;
-     font-size: 14px;
-   }
+  .email-txt button {
+    margin-bottom: 1rem;
+  }
 
- .links{
+  .newsletter-txt button {
+    cursor: pointer;
+    width: 90px;
+    height: 50px;
+    color: white;
+    font-size: 14px;
+  }
+
+  .links {
     gap: 10px;
     margin: 0;
   }
-  .links a{ font-size: 12px; }
-  .social-media{ margin:10px;}
-  .footer-container{
+  .links a {
+    font-size: 12px;
+  }
+  .social-media {
+    margin: 10px;
+  }
+  .footer-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
-  .logo {display: none; } 
-  .footer-right span{display: none; } 
-  .copyright1{ display: none; }
-  .copyright2{display:flex}
+  .logo {
+    display: none;
+  }
+  .footer-right span {
+    display: none;
+  }
+  .copyright1 {
+    display: none;
+  }
+  .copyright2 {
+    display: flex;
+  }
 }
-
-
-
-

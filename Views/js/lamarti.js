@@ -6,6 +6,14 @@ const arrowsDown = document.querySelectorAll(".caret");
 const searchBtn = document.querySelector(".search-btn");
 // console.log(bergerMenu.checked);
 
+const setSearch = () => {
+  if (window.innerWidth <= 919) {
+    searchBtn.innerHTML = "Search <i class='fas fa-search'></i>";
+  } else {
+    searchBtn.innerHTML = "<i class='fas fa-search'></i>";
+  }
+};
+
 const changeLabel = (li) => {
   // console.log(li.tagName);
   if (li.tagName == "UL") return;
@@ -57,10 +65,5 @@ bergerMenu.addEventListener("change", () => {
   }
 });
 
-window.addEventListener("resize", () => {
-  if (window.innerWidth <= 919) {
-    searchBtn.innerHTML = "Search <i class='fas fa-search'></i>";
-  } else {
-    searchBtn.innerHTML = "<i class='fas fa-search'></i>";
-  }
-});
+window.addEventListener("resize", setSearch);
+setSearch();
