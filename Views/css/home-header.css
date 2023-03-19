@@ -1,0 +1,321 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  color: #fff;
+  background-color: #ff3232;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  /* height: 5px; */
+  border-radius: 25px;
+  /* background: #ff3232; */
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2rem;
+  background: #ff3232;
+}
+
+/* Utilities */
+a {
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+}
+
+li {
+  list-style: none;
+}
+
+li a {
+  padding: 0.3rem 1.4rem;
+}
+
+/* Body */
+body {
+  width: 100vw;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.7;
+  background-color: #eee;
+  height: 100vh;
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ****************************************************************************************** */
+/* **************************************Home Page******************************************* */
+
+/* Container */
+.container {
+  width: 100%;
+}
+
+/* Header */
+.header {
+  position: relative;
+  width: 100%;
+  background: url("../images/MaSnow.jpg") no-repeat center center/cover;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.berger-handler {
+  display: none;
+}
+
+.ber-menu {
+  display: none;
+}
+
+/* Navigation */
+.navigation {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 90%;
+  z-index: 1;
+  font-weight: 500;
+  margin-bottom: 5rem;
+}
+
+/* .logo {
+  position: absolute;
+  left: 2rem;
+} */
+
+.navbar {
+  position: relative;
+}
+
+/* Menu */
+.menu > li {
+  position: relative;
+  display: inline-block;
+  /* padding: 0.3rem 1.4rem; */
+  cursor: pointer;
+  border-top-left-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.menu > li.current {
+  background-color: #ff3232;
+}
+
+.menu > li > ul {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  display: none;
+  top: 100%;
+  left: 0;
+  border-bottom-right-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+  border-bottom-left-radius: 0.6rem;
+}
+
+.menu > li > ul li {
+  padding: 0.5rem 1rem;
+}
+
+.menu > li > ul {
+  top: 100%;
+  left: -1px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  max-height: 8rem;
+  overflow: auto;
+}
+
+.places::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 25px;
+  background: #ff3232;
+}
+
+.places::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.places::-webkit-scrollbar-thumb {
+  background: #ff3232;
+}
+
+.menu > li:hover {
+  background-color: #ff3232;
+  /* display: block; */
+}
+
+.menu li:hover .places {
+  display: block;
+}
+
+.places li a {
+  transition: color 0.1s ease;
+}
+
+.places li a:hover {
+  color: #ff3232;
+}
+
+.menu li:nth-child(1) {
+  position: relative;
+}
+
+.caret {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+}
+
+@media screen and (max-width: 1028px) {
+  body {
+    position: relative;
+  }
+
+  .navbar {
+    opacity: 0;
+    display: none;
+    animation: anime1 0.3s linear;
+  }
+
+  @keyframes anime1 {
+    0% {
+      transform: scale(0);
+      display: none;
+      opacity: 0;
+    }
+
+    50% {
+      display: block;
+      opacity: 0.5;
+      transform: scale(0.5);
+    }
+
+    100% {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .berger-handler {
+    position: absolute;
+    display: block;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+  }
+
+  .berger-handler .check {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    z-index: 3;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    opacity: 0;
+  }
+
+  .berger-menu {
+    position: relative;
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 2rem;
+    background-color: #fff;
+    z-index: 2;
+  }
+
+  .berger-menu::before {
+    content: "";
+    position: absolute;
+    top: 200%;
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 2rem;
+    background-color: #fff;
+    z-index: 2;
+  }
+
+  .berger-menu::after {
+    content: "";
+    position: absolute;
+    top: -200%;
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 2rem;
+    background-color: #fff;
+    z-index: 2;
+  }
+
+  .header.show .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .header.show .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+  }
+
+  .menu > li {
+    margin-bottom: 1rem;
+    border-radius: 4rem;
+    position: relative;
+  }
+
+  .menu > li a {
+    padding: 1rem 2rem;
+  }
+
+  .menu > li > ul {
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+}
