@@ -73,7 +73,7 @@ const postLinkHandler = document.querySelectorAll(".product-link");
 // console.log(postHandler, postLinkHandler);
 
 const imgHandlers = document.querySelectorAll(".img-handler");
-let counter = 0;
+let lamartiCounter = 0;
 
 const setHoverEffect = (post, condition = false) => {
   // console.log(post);
@@ -84,12 +84,12 @@ const setHoverEffect = (post, condition = false) => {
 const imgChange = (imgHandler) => {
   imgHandler.forEach((img, index) => {
     img.classList = ["img"];
-    if (index === counter) {
+    if (index === lamartiCounter) {
       img.classList.remove("invisible");
     } else {
       img.classList.add("invisible");
     }
-    img.style.transform = `translateX(${(index - counter) * 100}%)`;
+    img.style.transform = `translateX(${(index - lamartiCounter) * 100}%)`;
   });
 };
 
@@ -100,13 +100,13 @@ imgHandlers.forEach((imgHandler) => {
   imgHandler = imgHandler.querySelectorAll(".img");
   const size = imgHandler.length;
   prodArrowRight.addEventListener("click", () => {
-    if (counter < size - 1) counter++;
-    else counter = 0;
+    if (lamartiCounter < size - 1) lamartiCounter++;
+    else lamartiCounter = 0;
     imgChange(imgHandler);
   });
   prodArrowLeft.addEventListener("click", () => {
-    if (counter > 0) counter--;
-    else counter = size - 1;
+    if (lamartiCounter > 0) lamartiCounter--;
+    else lamartiCounter = size - 1;
     imgChange(imgHandler);
   });
   imgChange(imgHandler);
