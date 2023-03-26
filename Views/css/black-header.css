@@ -1,0 +1,9 @@
+.header {
+    position: relative;
+    width: 100%;
+    background: #333;
+    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+    height: 4.1rem;
+    z-index: 100;
+  }
