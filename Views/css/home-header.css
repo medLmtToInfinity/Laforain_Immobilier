@@ -34,11 +34,11 @@ a {
   display: inline-block;
 }
 
-li {
+.container li {
   list-style: none;
 }
 
-li a {
+.container li a {
   padding: 0.3rem 1.4rem;
 }
 

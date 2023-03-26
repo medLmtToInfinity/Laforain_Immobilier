@@ -1,3 +1,7 @@
+li {
+  list-style: none;
+}
+
 .form {
   position: relative;
   display: flex;

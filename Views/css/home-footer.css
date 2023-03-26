@@ -31,6 +31,11 @@
   padding: 0;
   margin-bottom: 13px;
 }
+
+/* footer li {
+  list-style: none;
+} */
+
 .links li a {
   color: gray;
 }
