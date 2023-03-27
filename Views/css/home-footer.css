@@ -3,7 +3,7 @@
 .footer-links {
   background-color: #f3f3f3;
   color: gray;
-  height: 150px;
+  /* height: 100%; */
 }
 .footer-container {
   display: flex;
