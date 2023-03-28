@@ -6,7 +6,7 @@ const bergerMenu = document.querySelector(".check");
 const header = document.querySelector(".header");
 const arrowsDown = document.querySelectorAll(".caret");
 const searchBtn = document.querySelector(".search-btn");
-
+console.log(label);
 const setSearch = () => {
   if (!searchBtn) return;
   if (window.innerWidth <= 1028) {
@@ -24,7 +24,12 @@ const changeLabel = (li) => {
 };
 
 const dropDown = (list) => {
+  if(list.classList.contains("sort-handler")) {
+    document.querySelector(".sort-bar").classList.toggle("show")
+    return;
+  }
   list.classList.toggle("show");
+  console.log(list);
 };
 
 lists.forEach((list) => {

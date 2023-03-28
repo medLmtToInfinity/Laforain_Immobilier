@@ -32,16 +32,15 @@
   margin-bottom: 13px;
 }
 
-/* footer li {
-  list-style: none;
-} */
-
 .links li a {
   color: gray;
 }
-.footer-right span {
-  margin-bottom: 14px;
+.footer-right{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .social-media {
   display: flex;
   align-items: center;

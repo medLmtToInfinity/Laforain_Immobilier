@@ -1,0 +1,55 @@
+.layer-container{
+  padding: 20px;
+  color:black;
+  /* font-size: 18px; */
+}
+.layer-container h1{
+  text-align: center;
+  margin: 2rem 0;
+}
+.layer-container h2{
+  margin: 2rem 0;
+}
+
+.layer-container button{
+  margin: 1rem 0;
+  width: 150px;
+  height: 40px;
+  background-color: #ff3232;;
+  border: none;
+  border-radius: 10px;
+  outline: 0;
+
+
+}
+.layer-container button a{
+  color:#fff;
+}
+
+
+
+
+
+.rent-percetage{
+  margin: 1rem 3rem;
+  font-weight: 600;
+  color:#ff3232;
+}
+
+
+
+.read-more{
+  margin-left: 1rem;
+  list-style: none;
+}
+.read-more li a{
+  color:black;
+  cursor: pointer;
+  text-decoration: 1px underline rgb(0, 0, 0);
+  text-underline-position: under;
+}
+.read-more li a:hover{
+  text-decoration: 1px underline red;
+  color: red;
+
+}
