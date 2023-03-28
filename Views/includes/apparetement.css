@@ -8,11 +8,16 @@ li {
 /* Body */
 
 /* Container */
+body {
+  background-color: #fff;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;
   margin-bottom: 3rem;
   position: relative;
+  color: #000;
 }
 
 /* Header */

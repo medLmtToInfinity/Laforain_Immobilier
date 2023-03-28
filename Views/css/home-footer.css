@@ -5,6 +5,11 @@
   color: gray;
   /* height: 100%; */
 }
+
+.footer-links li {
+  list-style: none;
+}
+
 .footer-container {
   display: flex;
   align-items: center;
