@@ -622,6 +622,7 @@ section {
 }
 
 /*****************      season Stuffs               ********************/
+
 .Projects {
   margin: 1rem;
   margin-top: 2rem;
@@ -629,13 +630,13 @@ section {
   overflow: hidden;
 }
 .Projects h2{
-  margin-left: 2rem;
+  margin-left: 4rem;
   color: black;
 }
 .Projects .lefter{
   position: absolute;
   top: 15px;
-  right: 4rem;
+  right: 6rem;
   cursor: pointer;
   color:#fc4848;
   font-size: 20px;
@@ -644,67 +645,104 @@ section {
 .Projects .righter{
 position: absolute;
 top: 15px;
-right: 2rem;
+right: 4rem;
 cursor: pointer;
 color: #fc4848;
 font-size: 20px;
 }
 .projects-container{
-
+width: 90%;
+height: 24rem;
 overflow: hidden;
-margin: 1rem 0;
-gap: 2rem;
+margin: 1rem auto;
+gap: 3%;
 display: flex;
 
-
 }
+
 .project{
 background-color: #fff;
-min-width: 340px;
-height: 360px;
+min-width: 27%; 
+width: 24%; 
+ height: 23rem;
 border-radius: 15px;
-margin-left: 2.4rem;
+margin:0 2%;
 position: relative;
 overflow: hidden;
 transition: 1s;
 border-top-left-radius: 15px;
 border-top-right-radius: 15px;
+box-shadow: 4px 3px  10px rgba(0, 0, 0, 0.4);
 }
-.i-container{
-border-top-left-radius: 15px;
-border-top-right-radius: 15px;
+.project:hover{
+  cursor: pointer;
 }
-.Projects .imgs-container{
-width: 100%;
-display: flex;
-border-top-left-radius: 15px;
-border-top-right-radius: 15px;
-transition: 1s;
+.imgs-container{
+  height: 13rem;
+  width: 100%;
+  /* background-size: cover; */
+  /* display: flex; */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  transition: 1s;
+  overflow: hidden;
+  position: relative;
+  /* background-position: center; */
+}
 
+.i-container{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform 1s; 
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* transition: transform 1s ease; */
+}
+.i-container img{
+   width: 100%;
+   height: 100%;
 }
 
 .project button{
  position: absolute;
- background: none;
+ width: 25px;
+ background: rgba(0, 0, 0, .3);
+ height: 25px;
+ border-radius: 50%;
  border: none;
  color: #fff;
  font-size: 1rem;
  cursor: pointer;
+ transition: all .3s ease;
  
+}
+
+.project button:hover {
+  background: rgba(0, 0, 0, .7);
+  transform: scale(1.05);
+  color: #ff3232;
+  
 }
 .img-changer-right{
 top: 30%;
 right: 10px;
 }
 .img-changer-left{
-top:30%;
+top: 30%;
 left: 10px;
 }
 .i-text{
-padding: 1rem;
-color: black;
+  padding: 2rem 1rem;
+  color: black;
 }
 
+
+      
+ 
 /****************** Email for news *****************/
 
 .newsletter-txt {
@@ -800,16 +838,12 @@ color: black;
     font-size: .8rem;
   }
   .slider-header {
-    /* width: 90%;
-    margin: 1rem 0; */
     justify-content: space-around;
   }
 }
 
 @media (max-width: 670px) {
-  /* .slider-header {
-    flex-direction: column;
-  } */
+
   .catalog-slider h2 {
     text-align: center;
   }
@@ -843,7 +877,8 @@ color: black;
   .Projects-txt .prev {
     top: 15%;
   }
-  /* ********footer queries **********/
+
+  /********footer queries *********/09
 
   .collab-container h2 {
     font-size: 20px;
@@ -855,18 +890,22 @@ color: black;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .links-container {
     width: 200px;
   }
-  .projects-container{
-    width: 400px;
+  
+ .projects-container{
     margin: 0 auto;
+    padding: 10px;
   }
   .project{
-    margin-left: 30px;
-  }
+   margin-left: 4%; 
+    min-width: 90%;
+    width: 100%;
+  } 
 }
+
 
 @media (max-width: 998px) {
   .newsletter-txt h2 {

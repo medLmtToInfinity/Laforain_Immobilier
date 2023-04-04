@@ -1,37 +1,101 @@
 
+//   // Slider
+const project = document.querySelectorAll(".project");
+// const arrowsRight = document.querySelectorAll(".img-changer-right");
+// const arrowsLeft = document.querySelectorAll(".img-changer-left");
+let index=0;
 
-let counter = 0;
-const img_container = document.querySelectorAll('.imgs-container'); 
-document.querySelectorAll('.img-changer-right').forEach((btn)=>{
-   btn.addEventListener('click',()=>{
-    counter++;
-    update_img();
-})
-})
-document.querySelectorAll('.img-changer-left').forEach((btn)=>{
-    btn.addEventListener('click',()=>{
-      counter--;
-      update_img();
-})
-})
-
-const update_img = function(){
-     if(counter > 2)
-        counter = 0;
-     if(counter < 0)
-        counter = 2;
-     img_container.forEach((img)=>{
-       img.style.transform = `translateX(-${counter * 340}px)`;
-     })
+const moveImg = (ind = 0)=>{
+  project[ind].querySelectorAll(".i-container").forEach((img, i)=>{
+    img.style.transform = `translateX(${100 * (i - index)}%)`
+  })
 }
- 
-update_img();
+
+project.forEach((pro, ind)=>{
+  pro.querySelectorAll(".i-container").forEach((img, i)=>{
+    img.style.transform = `translateX(${100 * (i - index)}%)`
+  })
+  pro.querySelector(".img-changer-right").addEventListener("click", ()=>{
+    console.log(index)
+    if(index < 2) index++;
+    else index = 0;
+    console.log(index)
+    moveImg(ind);
+  })
+  pro.querySelector(".img-changer-left").addEventListener("click", ()=>{
+    console.log(index)
+    if(index > 0) index--;
+    else index = 2;
+    console.log(index)
+    moveImg(ind);
+  })
+})
+console.log (project)
 
 
 
+// const _slider = function (ph) {
+//   console.log(ph);
+//   const i_container = ph.querySelectorAll(".i-container");
+//   const lefter_ = ph.querySelector(".img-changer-left");
+//   const righter = ph.querySelector(".img-changer-right");
+//   console.log(i_container);
+//   console.log(lefter_);
+//   let curImage = 0;
+//   const maxImages = i_container.length;
+
+//   // Functions
+
+//   const goToImage = function (image) {
+//     i_container.forEach(
+//       (img, i) => (img.style.transform = `translateX(${100 * (i - image)}%)`)
+//     );
+//   };
+
+//   // Next slide
+//   const nextImg = function () {
+//     if (curImage === maxImages - 1) {
+//       curImage = 0;
+//     } else {
+//       curImage++;
+//     }
+
+//     goToImage(curImage);
+//     console.log(curImage);
+//   };
+
+//   const prevImage = function () {
+//     console.log(curImage);
+//     if (curImage === 0) {
+//       curImage = maxImages - 1;
+//     } else {
+//       curImage--;
+//     }
+//     // console.log('previous');
+//     goToImage(curImage);
+//     console.log(curImage);
+//   };
+
+//   const init = function () {
+//     goToImage(0);
+//   };
+
+//   init();
+
+//   // Event handlers
+//   righter.addEventListener("click", nextImg);
+//   lefter_.addEventListener("click", prevImage);
+
+// };
+// project.forEach((pr) => {
+//   _slider(pr);
+// });
 
 
 
+  
+  
+  const imgs = document.querySelector('.imgs-container')
 
 
 let counto = 0;
@@ -47,7 +111,7 @@ document.querySelector('.lefter').addEventListener('click',()=>{
 })
 
 const update_projects = function(){   
-  if(window.innerWidth < 600){
+  if(window.innerWidth < 900){
     if(counto > 4)
         counto =0;
   }
@@ -58,7 +122,11 @@ const update_projects = function(){
         counto = 0;
   }
     projects.forEach((project)=>{
-      project.style.transform = `translateX(-${counto * 120}%)`;
+      if(window.innerWidth < 900)
+         project.style.transform = `translateX(-${counto * 110}%)`;
+      else
+      project.style.transform = `translateX(-${counto * 125}%)`;
+
     })
 }
 window.addEventListener('resize',(e)=>{
