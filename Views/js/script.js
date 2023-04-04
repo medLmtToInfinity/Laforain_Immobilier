@@ -3,15 +3,15 @@
 const project = document.querySelectorAll(".project");
 // const arrowsRight = document.querySelectorAll(".img-changer-right");
 // const arrowsLeft = document.querySelectorAll(".img-changer-left");
-let index=0;
 
-const moveImg = (ind = 0)=>{
+const moveImg = (ind = 0, index=0)=>{
   project[ind].querySelectorAll(".i-container").forEach((img, i)=>{
     img.style.transform = `translateX(${100 * (i - index)}%)`
   })
 }
 
 project.forEach((pro, ind)=>{
+  let index=0;
   pro.querySelectorAll(".i-container").forEach((img, i)=>{
     img.style.transform = `translateX(${100 * (i - index)}%)`
   })
@@ -20,14 +20,14 @@ project.forEach((pro, ind)=>{
     if(index < 2) index++;
     else index = 0;
     console.log(index)
-    moveImg(ind);
+    moveImg(ind, index);
   })
   pro.querySelector(".img-changer-left").addEventListener("click", ()=>{
     console.log(index)
     if(index > 0) index--;
     else index = 2;
     console.log(index)
-    moveImg(ind);
+    moveImg(ind, index);
   })
 })
 console.log (project)

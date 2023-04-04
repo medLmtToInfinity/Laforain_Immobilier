@@ -3,10 +3,13 @@
 .footer-links {
   background-color: #f3f3f3;
   color: gray;
+  /* height: 100%; */
 }
-.footer-links li{
+
+.footer-links li {
   list-style: none;
 }
+
 .footer-container {
   display: flex;
   align-items: center;
