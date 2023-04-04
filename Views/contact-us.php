@@ -32,11 +32,11 @@
     />
 
     <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/32c5dcb0c1.css" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="../css/home-header.css" />
-    <link rel="stylesheet" href="../css/home-footer.css" />
-    <link rel="stylesheet" href="../css/black-header.css" />
-    <link rel="stylesheet" href="contact-us.css" />
-    <script src="../js/lamarti.js" defer></script>
+    <link rel="stylesheet" href="css/home-header.css" />
+    <link rel="stylesheet" href="css/home-footer.css" />
+    <link rel="stylesheet" href="css/black-header.css" />
+    <link rel="stylesheet" href="css/contact-us.css" />
+    <script src="js/lamarti.js" defer></script>
     <link
       rel="stylesheet"
       href="https://kit.fontawesome.com/d09f9a669c.css"
@@ -53,15 +53,15 @@
         </div>
         <div class="navigation">
           <div class="header-logo">
-            <a href="../index.html">
-              <img width="150" src="../images/LOGO WHITE.png" alt="logo" />
+            <a href="index.php">
+              <img width="150" src="images/LOGO WHITE.png" alt="logo" />
             </a>
           </div>
           <nav class="navbar">
             <ul class="menu">
-              <li><a href="../index.html">Accueil</a></li>
+              <li><a href="index.php">Accueil</a></li>
               <li>
-                <a href="../products.html">VENTE</a>
+                <a href="products.php">VENTE</a>
                 <i class="fas fa-caret-down caret"></i>
                 <ul class="places">
                   <li><a href="#">Marakkech</a></li>
@@ -70,7 +70,7 @@
               </li>
               <li>
                 <i class="fas fa-caret-down caret"></i>
-                <a href="../products.html">LOCATION</a>
+                <a href="products.php">LOCATION</a>
                 <ul class="places">
                   <li><a href="#">Marakkech</a></li>
                   <li><a href="#">Agadir</a></li>
@@ -84,10 +84,10 @@
                   <li><a href="#">Agadir</a></li>
                 </ul>
               </li>
-              <li><a href="../products.html">LOCATION SAISONIERE</a></li>
+              <li><a href="products.php">LOCATION SAISONIERE</a></li>
               <li><a href="#">CREDIT</a></li>
               <li class="current">
-                <a href="contact-us.html">NOUS CONTACTER</a>
+                <a href="contact-us.php">NOUS CONTACTER</a>
               </li>
               <!-- <li><a href="#">A PROPOS</a></li>
             <li><a href="#">SIGN IN</a></li>
@@ -175,10 +175,10 @@
 
     <footer class="footer-links">
       <div class="footer-container">
-        <a href="#container"
-          ><img
+        <a href="#container">
+          <img
             class="logo"
-            src="../images/laforain_logo.png"
+            src="./images/laforain_logo.png"
             width="150px"
             alt="logo-img"
         /></a>

@@ -87,9 +87,13 @@ form {
 }
 
 .contact-form textarea {
-    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
     resize: vertical;
     padding: 5px;
+    max-height: 7rem;
+    min-height: 7rem;
+    outline: 0;
 }
 
 .contact-form button {
