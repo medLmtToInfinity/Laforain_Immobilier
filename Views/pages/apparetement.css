@@ -10,7 +10,44 @@ li {
 /* Container */
 body {
   background-color: #fff;
+  position: relative;
 }
+
+/*-----------------images layer----------------------*/
+.images-layer {
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 101;
+}
+
+.images-layer .images {
+  width: 60%;
+  height: 65%;
+  position: relative;
+  overflow: hidden;
+}
+
+.images-layer .images img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  top:0;
+  left: 0;
+  transition: transform .8s;
+}
+
+.images-layer i {
+  cursor: pointer;
+}
+
+/*-----------------------------------------*/
 
 .container {
   width: 90%;
