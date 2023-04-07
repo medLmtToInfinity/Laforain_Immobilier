@@ -137,7 +137,7 @@
                   id="message"
                   cols="30"
                   rows="5"
-                  placeholder="Ecrire votre message ..."
+                  placeholder="Ecrire votre message .."
                   required
                 ></textarea>
               </div>
