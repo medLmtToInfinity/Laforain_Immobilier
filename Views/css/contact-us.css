@@ -1,7 +1,39 @@
 body {
     color: #000;
-    background: linear-gradient(135deg, #f78a8a, #ff3232);
 }
+
+.header {
+    margin-bottom: 0;
+}
+
+.container-form {
+    background-image: url("../images/Jmaalefna-background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding: 1.5rem;
+    color: #fff;
+    height: 100%;
+}
+
+.container-form .logo {
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    width: 20rem;
+}
+
+.container-form::before {
+    content: "";
+    background-color:rgba(61, 45, 45, 0.568);
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+} 
 
 li {
     list-style: none;
@@ -9,15 +41,17 @@ li {
 
 .infos-form {
     display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    gap: 3rem;
-    margin: 2rem 4rem 2rem;
+    justify-content: space-around;
+    align-items: last center;
+    /* gap: 6rem; */
+    height: 100%;
 }
 
 .infos {
     margin-top: 4rem;
     margin-right: 3rem;
+    position: relative;
+    font-size: 14px;
 }
 
 .infos i {
@@ -25,9 +59,10 @@ li {
 }
 
 .contact-form {
-    width: 50%;
+    width: 35%;
     padding: 1rem;
-    background-color: #fff;
+    /* background-color: #fff; */
+    border: 2px solid white;
     border-radius: .5rem;
 }
 
@@ -59,7 +94,13 @@ form {
     width: 100%;
     height: 2rem;
     padding: 5px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #b1afafd0;
+    color: #fff;
 }
+
+
 
 .input-box {
     margin: 1rem 0;
@@ -93,7 +134,15 @@ form {
     padding: 5px;
     max-height: 7rem;
     min-height: 7rem;
-    outline: 0;
+    /* outline: 0; */
+    border: 1px solid #b1afafd0;
+    background-color: transparent;
+    color: #fff;
+}
+
+.contact-form textarea:focus, .contact-form input:focus {
+    outline: none;
+    border-bottom-color: #fff;
 }
 
 .contact-form button {
@@ -106,6 +155,7 @@ form {
     border-radius: 5px;
     color: #fff;
     font-size: .9rem;
+    position: relative;
     /* font-weight: 600; */
 }
 
@@ -131,17 +181,23 @@ form {
     }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 800px) {
     .infos {
         display: none;
     }
 
     .infos-bottom {
         display: block;
+        position: relative;
+        margin-top: 3rem;
     }
 
     .contact-form {
-        width: 90%;
+        width: 70%;
+    }
+
+    .infos-form .logo {
+        display: none;
     }
 }
 
