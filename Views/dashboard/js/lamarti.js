@@ -7,16 +7,35 @@ const icons = [
   { element: "Clients", icon: "user" },
   { element: "Se déconnecter", icon: "right-from-bracket" },
 ];
+
 const resizeWin = () => {
+  // console.log(window.innerWidth);
   if (window.innerWidth < 1035) {
     document
       .querySelectorAll(".aside-bar > a")
       .forEach(
-        (e, i) => (e.innerHTML = `<i class="fas fa-${icons[i].icon}"></i>`)
+        (e, i) =>
+          (e.innerHTML = `<i class="fas fa-${icons[i].icon}"></i><div class="icon-title">${icons[i].element}</div>`)
       );
-    document.querySelector(".aside-bar .posts .top-element").innerHTML = `<div>
-    <i class="fas fa-gem"></i>
-  </div>`;
+    document.querySelector(".aside-bar .posts").innerHTML = `
+    <div class="posts-top top-element icon-hover">
+      <div>
+      <i class="fas fa-gem"></i>
+      <div class="icon-title">Posts</div>
+      </div>
+      <i class="fas fa-chevron-down arrow" style="display: none;"></i>
+    </div>
+    <div class="post-data">
+      <a href="#add-post" class="icon-hover">
+      <i class="fas fa-plus"></i>
+      <div class="icon-title">Ajouter un post</div>
+      </a>
+      <a href="#view-all-post" class="icon-hover">
+      <i class="fas fa-eye"></i>
+      <div class="icon-title">Voir Tout Les Posts</div>
+      </a>
+    </div>`;
+    document.querySelector(".see-all").textContent = "";
   } else {
     document
       .querySelectorAll(".aside-bar > a")
@@ -26,18 +45,18 @@ const resizeWin = () => {
       );
     document.querySelector(".aside-bar .posts").innerHTML = `
     <div class="posts-top top-element">
-              <div>
-                <i class="fas fa-gem"></i>
-                <a class="sidebar-add" href="#">Posts </a>
-              </div>
-              <i class="fas fa-plus"></i>
-              <i class="fas fa-chevron-down arrow"></i>
-            </div>
-            <div class="post-data">
-              <a href="#add-post">Ajouter Un post</a>
-              <a href="#view-all-post">Voir tous les post</a>
-            </div>
-  </div>`;
+      <div>
+      <i class="fas fa-gem"></i>
+      <a class="sidebar-add" href="#">Posts </a>
+      </div>
+      <i class="fas fa-chevron-down arrow"></i>
+    </div>
+    <div class="post-data">
+      <a href="#add-post">Ajouter Un post</a>
+      <a href="#view-all-post">Voir tous les posts</a>
+    </div>
+`;
+    document.querySelector(".see-all").innerHTML = "Voir Tout";
   }
 };
 
