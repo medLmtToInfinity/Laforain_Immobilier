@@ -1,37 +1,4 @@
 
-table {
-  color: black;
-  margin: 1.5rem;
-  height: 100%;
-  width: 100%;
-}
-
-th,
-td {
-  padding: 5px 1rem;
-  text-align: center;
-}
-
-th {
-  width: 150px;
-}
-
-table tr:nth-child(odd) {
-  background-color: #444444ef;
-}
-
-table tr:nth-child(even) {
-  background-color: #706e70;
-}
-
-table td input {
-  width: 80%;
-  padding: 5px;
-}
-
-table td input:focus {
-  outline: none;
-}
 
 /* form button {
   display: block;
@@ -49,7 +16,7 @@ body {
 }
 
 .add-post-form {
-  background-color: #FFFFFF;
+  background-color: #707070a6;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 100%;

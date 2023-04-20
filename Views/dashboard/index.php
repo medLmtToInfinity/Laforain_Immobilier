@@ -1,6 +1,5 @@
-<?php
-  include "dashboard-header-aside.php";
-?>
+<?php include "dashboard-header-aside.php"; ?>
+
         <section class="section" style="color: #333">
           <h2 class="dashboard-title">Dashboard</h2>
           <div class="dashboard-content">

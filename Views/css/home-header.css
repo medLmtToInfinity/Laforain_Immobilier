@@ -43,9 +43,9 @@ a {
   list-style: none;
 }
 
-.container li a {
+ .header li a{
   padding: 0.3rem 1.4rem;
-}
+} 
 
 /* Body */
 body {

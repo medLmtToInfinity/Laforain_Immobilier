@@ -26,7 +26,7 @@ const resizeWin = () => {
       <i class="fas fa-chevron-down arrow" style="display: none;"></i>
     </div>
     <div class="post-data">
-      <a href="#add-post" class="icon-hover">
+      <a href="add-post.php" class="icon-hover">
       <i class="fas fa-plus"></i>
       <div class="icon-title">Ajouter un post</div>
       </a>
@@ -52,7 +52,7 @@ const resizeWin = () => {
       <i class="fas fa-chevron-down arrow"></i>
     </div>
     <div class="post-data">
-      <a href="#add-post">Ajouter Un post</a>
+      <a href="add-post.php">Ajouter Un post</a>
       <a href="#view-all-post">Voir tous les posts</a>
     </div>
 `;

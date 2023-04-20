@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,8 +12,9 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/dashboard.css" />
-    <link rel="stylesheet" href="add-post.css" />
-    <script src="js/lamarti.js" defer></script>
+    <link rel="stylesheet" href="css/add-post.css" />
+    <script src="./js/chartjs.min.js" defer></script>
+    <script src="./js/lamarti.js" type="module" defer></script>
     <title>Dashboard</title>
   </head>
   <body>
@@ -31,7 +32,7 @@
             placeholder="Rechercher ou taper une commande..."
           />
         </form>
-        <div class="log-out">
+        <div class="create-post">
           <button type="submit"><i class="fas fa-plus"></i> Create</button>
         </div>
         <div class="admin">
@@ -40,31 +41,38 @@
             alt="admin-pic"
           />
           <div class="admin-info">
-            <a href="#profile">profile</a>
-            <a href="#account-settings">paramètres du compte</a>
-            <a href="#logout">Se déconnecter</a>
+            <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+            <a href="#account-settings"
+              ><i class="fas fa-gear"></i> param�tres du compte</a
+            >
+            <a href="#logout"
+              ><i class="fas fa-right-from-bracket"></i>Se d�connecter</a
+            >
           </div>
         </div>
       </header>
       <article class="article">
         <aside class="aside-bar">
-          <a href="#home"> <i class="fas fa-home"></i> Accueil</a>
+          <a href="#home" class="icon-hover">
+            <i class="fas fa-home"></i> Accueil</a
+          >
           <div class="posts">
             <div class="posts-top top-element">
               <div>
                 <i class="fas fa-gem"></i>
                 <a class="sidebar-add" href="#">Posts </a>
               </div>
-              <a href="add-post.php"><i class="fas fa-plus"></i></a>
+              <!-- <i class="fas fa-plus"></i> -->
               <i class="fas fa-chevron-down arrow"></i>
             </div>
             <div class="post-data">
-              <a href="add-post.php">Ajouter Un post</a>
-              <a href="#view-all-post">Voir tous les post</a>
+              <a href="add-post.php">ajouter un post</a>
+              <a href="#view-all-post.php">Voir tous les posts</a>
             </div>
           </div>
-          <a href="#users"><i class="fas fa-user"></i> Clients</a>
+          <a href="samad -files/users.html"><i class="fas fa-user"></i> Clients</a>
           <a href="#logout"
             ><i class="fas fa-right-from-bracket"></i> Se déconnecter</a
           >
         </aside>
+        

@@ -80,39 +80,6 @@
 
         <input type="submit" name="submit" value="Ajouter l'annonce">
     </form>
-    <!-- <form action="" method="post">
-    <table>
-        <tr>
-            <th>Type</th>
-            <td><input type="text"></td>
-        </tr>
-        <tr>
-            <th>price</th>
-            <td><input type="text"></td>
-        </tr>
-        <tr>
-            <th>small description</th>
-            <td><input type="text"></td>
-        </tr>
-        <tr>
-            <th>bedrooms</th>
-            <td><input type="text"></td>
-        </tr>
-        <tr>
-            <th>bathrooms</th>
-            <td><input type="text"></td>
-        </tr>
-        <tr>
-            <th>area</th>
-            <td><input type="text"></td>
-        </tr>
-        <tr>
-            <th>photos</th>
-            <td><input type="text"></td>
-        </tr>
-    </table>
-    <button type="submit">Add post</button>
-    </form> -->
 
 <?php
     include "dashboard-footer.php";

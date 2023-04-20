@@ -4,6 +4,7 @@
 const btns = document.querySelectorAll('.info-btn');
 const contents = document.querySelectorAll('.content');
 
+
 const activeState = (index)=>{
    contents.forEach((content,i)=>{
       if(i == index)

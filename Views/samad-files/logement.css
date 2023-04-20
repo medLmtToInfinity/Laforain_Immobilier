@@ -47,9 +47,9 @@
   height: 60px;
  
 }
-.info-tabs button:hover{
+/* .info-tabs button:hover{
   background-color: #f3f3f3;
-}
+} */
 .info-tabs{
   display: grid;
   grid-template-columns: repeat(6, 1fr); 

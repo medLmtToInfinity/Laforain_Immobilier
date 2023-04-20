@@ -1,0 +1,67 @@
+
+
+
+.intro{
+  margin: 4rem;
+}
+
+.intro h3{
+  color: #ff3232;
+}
+.intro h1{
+  color: black;
+  font-size: 2rem;
+}
+.intro p{
+  color: rgba(61, 60, 60, 0.6);
+}
+
+.fqa{
+  display: flex;
+  width: 96%;
+  margin:3rem 4rem;
+  color: black;
+}
+.fqa .left-side{
+  width: 40%;
+  margin-right: 0.5rem;
+}
+
+.fqa .left-side h5{
+  color: #ff3232;
+}
+.fqa .left-side p{
+  color: rgba(61, 60, 60, 0.6);
+  font-size: 0.9rem;
+}
+.fqa .right-side{
+  width: 50%;
+}
+.question{
+  margin: 0.4rem;
+}
+.box-question{
+  position: relative;
+}
+.box-question i{
+  position: absolute;
+  right: 1rem;
+  top: 0.3rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.drop-up{
+  display: none;
+}
+.answer{
+  max-height: 0; 
+  transition: ease 1s;
+  overflow: hidden;
+}
+.answer p{
+  padding:0 1rem;
+}
+
+/* .question-form:target .box-question{
+  max-height: 300px;
+} */
