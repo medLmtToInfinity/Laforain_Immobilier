@@ -57,10 +57,10 @@
 
       <section class="catalog-slider">
         <h2>Featured Properties in MARRAKECH</h2>
-        <!-- <div class="slider-header">
+        <div class="slider-header">
     <h2>Featured Properties in MARRAKECH</h2>
     <button class="btn explore">Explore more features >></button>
-  </div> -->
+  </div>
         <button class="btn explore">Explore more features >></button>
         <div class="slider-out">
           <div class="slider-in">
@@ -108,8 +108,6 @@
               </div>
             </div>
           </div>
-          <div class="slider-in">
-            <div class="img-container card-2">
               <div class="slider-in-image">
                 <img src="images/Villa-Piscine.png" alt="" />
               </div>
@@ -129,16 +127,16 @@
             </div>
             <a href="includes/appartement.html"></a>
             <div class="slider-in-text">
-              <span>Apartement</span>
-              <h3>2,546,763 MAD</h3>
+              <span>Appartement</span>
+              <h3>24536543 MAD</h3>
               <p>
                 STUNING BALCONY VEIW / SPACIOUS 2 BEDS / KITCHEN EQUIPPED /
                 GREAT
               </p>
               <ul>
                 <li>2 Bedrooms</li>
-                <li>3 Bathrooms</li>
-                <li>2000 m</li>
+                <li>2 Bathrooms</li>
+                <li>400 m</li>
               </ul>
               <div class="slider-btns">
                 <button class="slider-btn">

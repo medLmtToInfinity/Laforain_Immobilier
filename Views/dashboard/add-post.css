@@ -1,0 +1,93 @@
+
+table {
+  color: black;
+  margin: 1.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 5px 1rem;
+  text-align: center;
+}
+
+th {
+  width: 150px;
+}
+
+table tr:nth-child(odd) {
+  background-color: #444444ef;
+}
+
+table tr:nth-child(even) {
+  background-color: #706e70;
+}
+
+table td input {
+  width: 80%;
+  padding: 5px;
+}
+
+table td input:focus {
+  outline: none;
+}
+
+/* form button {
+  display: block;
+  width: 50%;
+  padding: 5px;
+  background-color: #ff3232;
+  border: none;
+  color: #fff;
+  margin: 1rem auto;
+} */
+
+
+body {
+  color: #000;
+}
+
+.add-post-form {
+  background-color: #FFFFFF;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-right: 2rem;
+
+}
+
+.add-post-form h1 {
+  text-align: center;
+  color: #333333;
+  margin-bottom: 30px;
+}
+
+.add-post-form input, .add-post-form textarea {
+  border: none;
+  background-color: #F2F2F2;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add-post-form input[type="submit"] {
+  display: block;
+  background-color: #ff3232;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin: 0 auto;
+  max-width: 50%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-post-form label {
+  display: block;
+  color: #333333;
+  margin-bottom: 5px;
+}
