@@ -1,0 +1,36 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.table{
+  padding: 1rem;
+  color:black;
+  margin: 0 auto;
+  width: 100%;
+}
+.table-container{
+  background-color: #fffb;
+  border-radius: 10px;
+
+  width: 100%;
+}
+.clients h1{
+  font-size:  2rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+.table-container th{
+  padding: 1rem;
+  position: sticky;
+}
+.table-container th,
+.table-container td{
+  padding-left: 1.6rem;
+}
+.table-container tr:hover{
+  background-color:whitesmoke;
+  cursor: pointer;
+
+}

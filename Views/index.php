@@ -262,7 +262,7 @@
         <div class="links-container">
           <h3>informations</h3>
           <ul>
-            <li><a href="samad-files/guide.html">Types De Logements</a></li>
+            <li><a href="samad-files/logement.html">Types De Logements</a></li>
             <li>
               <a href="samad-files/guide.html">Guide Immobilier Marrakech</a>
             </li>

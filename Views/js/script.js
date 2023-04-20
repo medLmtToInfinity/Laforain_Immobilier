@@ -94,8 +94,8 @@ console.log (project)
 
 
   
-  
-  const imgs = document.querySelector('.imgs-container')
+const imgs = document.querySelector('.imgs-container')
+
 
 
 let counto = 0;

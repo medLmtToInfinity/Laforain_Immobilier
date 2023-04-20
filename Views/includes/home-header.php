@@ -86,7 +86,7 @@
                 </ul>
               </li>
               <li><a href="#">LOCATION SAISONIERE</a></li>
-              <li><a href="#">CREDIT</a></li>
+              <li><a href="../samad-files/credit.php">CREDIT</a></li>
               <li><a href="contact-us.php">NOUS CONTACTER</a></li>
               <!-- <li><a href="#">A PROPOS</a></li>
             <li><a href="#">SIGN IN</a></li>

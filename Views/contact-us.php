@@ -85,13 +85,13 @@
                 </ul>
               </li>
               <li><a href="products.php">LOCATION SAISONIERE</a></li>
-              <li><a href="#">CREDIT</a></li>
+              <li><a href="Views/samad-files/credit.html" target="_blank">CREDIT</a></li>
               <li class="current">
                 <a href="contact-us.php">NOUS CONTACTER</a>
               </li>
-              <!-- <li><a href="#">A PROPOS</a></li>
-            <li><a href="#">SIGN IN</a></li>
-            <li><a href="#">SIGN UP</a></li> -->
+            <li><a href="#">A PROPOS</a></li>
+            <li><a href="samad-files/sign-in.html" target="_blank">SIGN IN</a></li>
+            <li><a href="samad-files/sign-up.html" target="_blank">SIGN UP</a></li>
             </ul>
           </nav>
         </div>
