@@ -19,7 +19,7 @@
 .copyright2 {
   display: none;
 }
-.logo {
+.footer-container .logo {
   cursor: pointer;
 }
 .footer-center {
@@ -78,7 +78,7 @@
     align-items: center;
     flex-direction: column;
   }
-  .logo {
+  .footer-container .logo {
     display: none;
   }
   .footer-right span {

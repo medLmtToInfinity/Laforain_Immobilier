@@ -1,11 +1,11 @@
 
-const faq = document.querySelector('.question-form');
+
 
 const answers = document.querySelectorAll('.answer');
 const down_btns = document.querySelectorAll('.drop-down');
 const up_btns = document.querySelectorAll('.drop-up');
 
-// console.log(faq,btns,answers);
+
 
 
 down_btns.forEach((btn,index) =>{
@@ -15,9 +15,9 @@ down_btns.forEach((btn,index) =>{
             btn.style.display = 'none';
             answer.style.maxHeight = '300px';
             up_btns.forEach((ubtn,nbr)=>{
-              
+              if(i == nbr){
                   ubtn.style.display = 'block';
-              
+              }
             })
         }
       })
