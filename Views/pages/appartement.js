@@ -58,5 +58,7 @@ document.addEventListener('click', e =>{
 
 seeAll.addEventListener('click', ()=>{
     layer.style.display = "flex";
-    document.body.style = "overflow-y: hidden; height: 100vh";
+    layer.style.height = "100vh";
+
+    // document.body.style = "overflow-y: hidden; height: 100vh";
 });

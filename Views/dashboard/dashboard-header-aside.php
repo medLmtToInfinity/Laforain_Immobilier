@@ -43,7 +43,7 @@
           <div class="admin-info">
             <a href="#profile"><i class="fas fa-user"></i> Profile</a>
             <a href="#account-settings"
-              ><i class="fas fa-gear"></i> param�tres du compte</a
+              ><i class="fas fa-gear"></i> paramtres du compte</a
             >
             <a href="#logout"
               ><i class="fas fa-right-from-bracket"></i>Se d�connecter</a
