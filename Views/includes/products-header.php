@@ -1,3 +1,4 @@
+<?php include "dashboard/database.php";?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,36 +61,62 @@
           <nav class="navbar">
             <ul class="menu">
               <li><a href="index.php">Accueil</a></li>
-              <li class="current">
-                <a href="products.php">VENTE</a>
+              <li 
+              <?php 
+                if($rentOrSell == "sell") {
+                  echo 'class="current"';
+                }
+              
+              ?>
+              >
+                <a href="products.php?type=sell">VENTE</a>
                 <i class="fas fa-caret-down caret"></i>
                 <ul class="places">
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
+
+                  <?php 
+                    $city_sell_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell = 'sell'";
+                    $city_result = $conn->query($city_sell_query);
+                    while($city_row = $city_result->fetch_assoc()) {
+                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city"] . "\">". $city_row["city"] ."</a></li>";
+                    }
+                  ?>
+                  <!-- <li><a href="#">Marakkech</a></li>
+                  <li><a href="#">Agadir</a></li> -->
                 </ul>
               </li>
-              <li>
+              <li
+              <?php 
+                if($rentOrSell == "rent") {
+                  echo 'class="current"';
+                }
+              
+              ?>
+              >
                 <i class="fas fa-caret-down caret"></i>
-                <a href="#">LOCATION</a>
+                <a href="products.php?type=rent">LOCATION</a>
                 <ul class="places">
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
+                <?php 
+                    $city_sell_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell = 'rent'";
+                    $city_result = $conn->query($city_sell_query);
+                    while($city_row = $city_result->fetch_assoc()) {
+                      echo "<li><a href=\"products.php?type=rent" . "&city=" . $city_row["city"] . "\">".$city_row["city"]."</a></li>";
+                    }
+                  ?>
                 </ul>
               </li>
-              <li><a href="#">LOCATION SAISONIERE</a></li>
-              <li><a href="#">CREDIT</a></li>
+              <li
+              <?php 
+                if($rentOrSell == "rentSais") {
+                  echo 'class="current"';
+                }
+              ?>
+              >
+              <a href="products.php?type=rentSais">LOCATION SAISONIERE</a></li>
+              <li><a href="../samad-files/credit.php">CREDIT</a></li>
               <li><a href="contact-us.php">NOUS CONTACTER</a></li>
-              <!-- <li><a href="#">A PROPOS</a></li>
+              <li><a href="#">A PROPOS</a></li>
             <li><a href="#">SIGN IN</a></li>
-            <li><a href="#">SIGN UP</a></li> -->
+            <!-- <li><a href="#">SIGN UP</a></li> -->
             </ul>
           </nav>
         </div>

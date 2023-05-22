@@ -23,10 +23,14 @@ if (!$conn->query($sql) === true) {
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Creation des tableaux
-$tables = ["CREATE TABLE IF NOT EXISTS posts (
+$tables = [
+    "CREATE TABLE IF NOT EXISTS categories (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        typeOfProp VARCHAR(255),
-        Price DECIMAL(10, 2),
+        cat_name VARCHAR(255)
+    );", "CREATE TABLE IF NOT EXISTS posts (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        cat_id INT,
+        price DECIMAL(10, 2),
         title VARCHAR(255),
         locat VARCHAR(255),
         bathrooms INT,
@@ -36,7 +40,8 @@ $tables = ["CREATE TABLE IF NOT EXISTS posts (
         dscrption TEXT,
         stat VARCHAR(255),
         Nlikes INT DEFAULT 0,
-        rentOrSell VARCHAR(10)
+        rentOrSell VARCHAR(10),
+        FOREIGN KEY (cat_id) REFERENCES categories(id)
     );", "CREATE TABLE IF NOT EXISTS post_imgs (
         id INT AUTO_INCREMENT PRIMARY KEY,
         post_id INT,
@@ -52,7 +57,7 @@ $tables = ["CREATE TABLE IF NOT EXISTS posts (
         liked_post INT DEFAULT 0,
         profile_pic VARCHAR(255),
         FOREIGN KEY (liked_post) REFERENCES posts(id)
-    );" ];
+    );"];
 
 foreach ($tables as $table){
     if ($conn->query($table) !== true) {
@@ -76,24 +81,37 @@ try {
 
 //see if tables are already fill of values so we do not repeat inserting same data:
 $rows = $dbConnection->prepare("SELECT id FROM posts");
+
 $rows->execute();
 if($rows->rowCount() == 0){
+    $cat_query = "INSERT INTO categories (cat_name) VALUES (?)";
+    $cat_data = [
+        ["RIAD & MAISONS D'HÔTES"],['VILLAS & PALAIS'],['APPARTEMENTS & DUPLEX'],['TERRAINS & FERMES'],['PROGRAMMES NEUFS'],['LOCAL COMMERCIAL']
+    ];
+    $result = $dbConnection->prepare($cat_query);
+    
+    foreach($cat_data as $row){
+        $result->execute($row);
+    }
 
 
 $postsData = [
-    ['House', '250000', 'Beautiful Home', '123 Main St', '3', '4', '2000', 'New York', 'Spacious house with a backyard', 'available', 'Sell'],
-    ['Apartment', '1500', 'Cozy Apartment', '456 Elm St', '1', '2', '800', 'Los Angeles', 'Well-maintained apartment in a great location', 'not available', 'Rent'],
-    ['riad', '200000', 'Luxury Condo', '789 Pine St', '2', '3', '1200', 'Chicago', 'Modern condo with great amenities', 'available', 'Sell'],
-    ['House', '350000', 'Spacious Family Home', '555 Oak St', '4', '5', '3000', 'Dallas', 'Perfect home for a growing family', 'available', 'Sell'],
-    ['Apartment', '1200', 'Cozy Studio', '321 Maple St', '1', '1', '500', 'San Francisco', 'Charming studio in the heart of the city', 'not available', 'Rent'],
-    ['House', '500000', 'Stunning Waterfront Property', '888 Beach Rd', '3', '4', '2500', 'Miami', 'Magnificent house with ocean views', 'not available', 'Sell'],
-    ['Apartment', '1800', 'Modern Loft', '222 Walnut St', '2', '1', '900', 'Seattle', 'Contemporary loft in a trendy neighborhood', 'available', 'Rent'],
-    ['riad', '280000', 'Charming Townhouse', '444 Cherry St', '2', '3', '1500', 'Boston', 'Quaint townhouse with historical charm', 'not available', 'Sell'],
-    ['House', '450000', 'Elegant Colonial Home', '777 Cedar St', '3', '4', '2800', 'Philadelphia', 'Classic colonial-style home with a large yard', 'available', 'Sell'],
-    ['Apartment', '1500', 'Convenient City Living', '999 Elm St', '1', '2', '700', 'New Orleans', 'Comfortable apartment in a vibrant neighborhood', 'not available', 'Rent']
+    [1, '250000', 'Beautiful Home', '123 Main St', '3', '4', '2000', 'New York', 'Spacious house with a backyard', 'available', 'Sell'],
+    [2, '300000', 'Beautiful riad', '212 Main St', '3', '4', '2000', 'New York', 'Spacious riad with a backyard', 'not available', 'Sell'],
+    [4, '240000', 'Beautiful Villa', 'Sidi Baba', '3', '4', '2000', 'Meknes', 'Spacious house with a backyard', 'available', 'RentSais'],
+    [2, '20000', 'Beautiful riad', '212 Main St', '3', '4', '2000', 'New York', 'Spacious riad with a backyard', 'not available', 'Sell'],
+    [3, '1500', 'Cozy Apartment', '456 Elm St', '1', '2', '800', 'Los Angeles', 'Well-maintained apartment in a great location', 'not available', 'Rent'],
+    [2, '200000', 'Luxury Condo', '789 Pine St', '2', '3', '1200', 'Chicago', 'Modern condo with great amenities', 'available', 'Sell'],
+    [1, '350000', 'Spacious Family Home', '555 Oak St', '4', '5', '3000', 'Dallas', 'Perfect home for a growing family', 'available', 'Sell'],
+    [3, '1200', 'Cozy Studio', '321 Maple St', '1', '1', '500', 'San Francisco', 'Charming studio in the heart of the city', 'not available', 'Rent'],
+    [1, '500000', 'Stunning Waterfront Property', '888 Beach Rd', '3', '4', '2500', 'Miami', 'Magnificent house with ocean views', 'not available', 'Sell'],
+    [3, '1800', 'Modern Loft', '222 Walnut St', '2', '1', '900', 'Seattle', 'Contemporary loft in a trendy neighborhood', 'available', 'Rent'],
+    [2, '280000', 'Charming Townhouse', '444 Cherry St', '2', '3', '1500', 'Boston', 'Quaint townhouse with historical charm', 'not available', 'Sell'],
+    [1, '450000', 'Elegant Colonial Home', '777 Cedar St', '3', '4', '2800', 'Philadelphia', 'Classic colonial-style home with a large yard', 'available', 'Sell'],
+    [3, '1500', 'Convenient City Living', '999 Elm St', '1', '2', '700', 'New Orleans', 'Comfortable apartment in a vibrant neighborhood', 'not available', 'Rent']
     ];
 
-$insertionPostsQuery = "INSERT INTO posts (typeOfProp, Price, title, locat, bathrooms, bedrooms, area, city, dscrption, stat, rentOrSell) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+$insertionPostsQuery = "INSERT INTO posts (cat_id, Price, title, locat, bathrooms, bedrooms, area, city, dscrption, stat, rentOrSell) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 $stmt = $dbConnection->prepare($insertionPostsQuery);
 
 foreach($postsData as $row){
@@ -152,6 +170,8 @@ $stmt = $dbConnection->prepare($insertionImgsQuery);
 foreach($imgsData as $row){
     $stmt->execute($row);
 }
+
+
 
 //display images:
 

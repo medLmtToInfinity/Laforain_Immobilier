@@ -1,3 +1,4 @@
+<?php include "dashboard/database.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,6 +37,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/home-footer.css" />
     <script src="js/lamarti.js" defer></script>
+    <script src="js/homeSearch.js" defer></script>
     <link
       rel="stylesheet"
       href="https://kit.fontawesome.com/d09f9a669c.css"
@@ -45,6 +47,11 @@
   </head>
   <body>
     <div class="container">
+      <div class="error-msg">
+        <i class="fas fa-circle-exclamation"></i>
+        <p>Impossible de rechercher sans saisir l'operation</p>
+        <div class="time-bar"></div>
+      </div>
       <header class="header">
         <div class="berger-handler">
           <input type="checkbox" name="check" class="check" />
@@ -62,40 +69,46 @@
             <ul class="menu">
               <li class="current"><a href="index.php">Accueil</a></li>
               <li>
-                <a href="products.php">VENTE</a>
+                <a href="products.php?type=sell">VENTE</a>
                 <i class="fas fa-caret-down caret"></i>
                 <ul class="places">
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
+
+                  <?php 
+                  $var = "sell";
+                    $city_sell_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell = 'sell'";
+                    $city_result = $conn->query($city_sell_query);
+                    while($city_row = $city_result->fetch_assoc()) {
+                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city"] . "\">". $city_row["city"] ."</a></li>";
+                    }
+                  ?>
+                  <!-- <li><a href="#">Marakkech</a></li>
+                  <li><a href="#">Agadir</a></li> -->
                 </ul>
               </li>
               <li>
                 <i class="fas fa-caret-down caret"></i>
-                <a href="#">LOCATION</a>
+                <a href="products.php?type=rent">LOCATION</a>
                 <ul class="places">
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
+                <?php 
+                    $city_sell_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell = 'rent'";
+                    $city_result = $conn->query($city_sell_query);
+                    while($city_row = $city_result->fetch_assoc()) {
+                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city"] . "\">".$city_row["city"]."</a></li>";
+                    }
+                  ?>
                 </ul>
               </li>
-              <li><a href="#">LOCATION SAISONIERE</a></li>
+              <li><a href="products.php?type=rentSais">LOCATION SAISONIERE</a></li>
               <li><a href="../samad-files/credit.php">CREDIT</a></li>
               <li><a href="contact-us.php">NOUS CONTACTER</a></li>
-              <!-- <li><a href="#">A PROPOS</a></li>
+              <li><a href="#">A PROPOS</a></li>
             <li><a href="#">SIGN IN</a></li>
-            <li><a href="#">SIGN UP</a></li> -->
+            <!-- <li><a href="#">SIGN UP</a></li> -->
             </ul>
           </nav>
         </div>
         <div class="search-bar">
-          <form action="#" method="" class="form">
+          <form action="#" method="" class="form" id="form">
             <label for="search"
               >Trouvez des propriétés à louer ou à vendre aux MAROC sur LAFORAIN
               immobilier</label
@@ -117,12 +130,16 @@
                   <label class="label-arrow">Type de propriété</label>
                   <ul class="property-type select">
                     <li class="current">Type de propriété</li>
-                    <li>RIAD & MAISONS D'HÔTES</li>
-                    <li>VILLAS & PALAIS</li>
-                    <li>APPARTEMENTS & DUPLEX</li>
-                    <li>TERRAINS & FERMES</li>
-                    <li>PROGRAMMES NEUFS</li>
-                    <li>LOCAL COMMERCIAL</li>
+                    <?php 
+                      $cat_query = "SELECT * FROM categories";
+                      $cat_result = $conn->query($cat_query);
+                      while ($cat_row = $cat_result->fetch_assoc()){
+                        ?>
+                      <li data-property-type-id="<?php echo $cat_row["id"];?>"><?php echo $cat_row["cat_name"];?></li>
+                    <?php
+                      }
+                    ?>
+                    
                   </ul>
                 </div>
                 <div class="select-handler">
@@ -130,9 +147,9 @@
                   <label class="label-arrow">Opération</label>
                   <ul class="choices select">
                     <li class="current">Opération</li>
-                    <li>Vente</li>
-                    <li>Location</li>
-                    <li>Location Saisonnières</li>
+                    <li data-op-type="sell">Vente</li>
+                    <li data-op-type="rent">Location</li>
+                    <li data-op-type="rentSais">Location Saisonnières</li>
                   </ul>
                 </div>
               </div>
