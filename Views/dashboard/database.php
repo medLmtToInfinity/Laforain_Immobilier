@@ -26,7 +26,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 $tables = ["CREATE TABLE IF NOT EXISTS posts (
         id INT AUTO_INCREMENT PRIMARY KEY,
         typeOfProp VARCHAR(255),
-        Price DECIMAL(10, 2),
+        price DECIMAL(10, 2),
         title VARCHAR(255),
         locat VARCHAR(255),
         bathrooms INT,
@@ -36,12 +36,13 @@ $tables = ["CREATE TABLE IF NOT EXISTS posts (
         dscrption TEXT,
         stat VARCHAR(255),
         Nlikes INT DEFAULT 0,
-        rentOrSell VARCHAR(10)
+        rentOrSell VARCHAR(10),
+        map TEXT
     );", "CREATE TABLE IF NOT EXISTS post_imgs (
         id INT AUTO_INCREMENT PRIMARY KEY,
         post_id INT,
         img_name VARCHAR(255),
-        FOREIGN KEY (post_id) REFERENCES posts(id)
+        FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
     );", "CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(255),
@@ -81,19 +82,19 @@ if($rows->rowCount() == 0){
 
 
 $postsData = [
-    ['House', '250000', 'Beautiful Home', '123 Main St', '3', '4', '2000', 'New York', 'Spacious house with a backyard', 'available', 'Sell'],
-    ['Apartment', '1500', 'Cozy Apartment', '456 Elm St', '1', '2', '800', 'Los Angeles', 'Well-maintained apartment in a great location', 'not available', 'Rent'],
-    ['riad', '200000', 'Luxury Condo', '789 Pine St', '2', '3', '1200', 'Chicago', 'Modern condo with great amenities', 'available', 'Sell'],
-    ['House', '350000', 'Spacious Family Home', '555 Oak St', '4', '5', '3000', 'Dallas', 'Perfect home for a growing family', 'available', 'Sell'],
-    ['Apartment', '1200', 'Cozy Studio', '321 Maple St', '1', '1', '500', 'San Francisco', 'Charming studio in the heart of the city', 'not available', 'Rent'],
-    ['House', '500000', 'Stunning Waterfront Property', '888 Beach Rd', '3', '4', '2500', 'Miami', 'Magnificent house with ocean views', 'not available', 'Sell'],
-    ['Apartment', '1800', 'Modern Loft', '222 Walnut St', '2', '1', '900', 'Seattle', 'Contemporary loft in a trendy neighborhood', 'available', 'Rent'],
-    ['riad', '280000', 'Charming Townhouse', '444 Cherry St', '2', '3', '1500', 'Boston', 'Quaint townhouse with historical charm', 'not available', 'Sell'],
-    ['House', '450000', 'Elegant Colonial Home', '777 Cedar St', '3', '4', '2800', 'Philadelphia', 'Classic colonial-style home with a large yard', 'available', 'Sell'],
-    ['Apartment', '1500', 'Convenient City Living', '999 Elm St', '1', '2', '700', 'New Orleans', 'Comfortable apartment in a vibrant neighborhood', 'not available', 'Rent']
+    ['House', '250000', 'Beautiful Home', '123 Main St', '3', '4', '2000', 'New York', 'Spacious house with a backyard', 'available', 'Sell', '1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['Apartment', '1500', 'Cozy Apartment', '456 Elm St', '1', '2', '800', 'Los Angeles', 'Well-maintained apartment in a great location', 'not available', 'Rent','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['riad', '200000', 'Luxury Condo', '789 Pine St', '2', '3', '1200', 'Chicago', 'Modern condo with great amenities', 'available', 'Sell','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['House', '350000', 'Spacious Family Home', '555 Oak St', '4', '5', '3000', 'Dallas', 'Perfect home for a growing family', 'available', 'Sell','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['Apartment', '1200', 'Cozy Studio', '321 Maple St', '1', '1', '500', 'San Francisco', 'Charming studio in the heart of the city', 'not available', 'Rent','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['House', '500000', 'Stunning Waterfront Property', '888 Beach Rd', '3', '4', '2500', 'Miami', 'Magnificent house with ocean views', 'not available', 'Sell','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['Apartment', '1800', 'Modern Loft', '222 Walnut St', '2', '1', '900', 'Seattle', 'Contemporary loft in a trendy neighborhood', 'available', 'Rent','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['riad', '280000', 'Charming Townhouse', '444 Cherry St', '2', '3', '1500', 'Boston', 'Quaint townhouse with historical charm', 'not available', 'Sell','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['House', '450000', 'Elegant Colonial Home', '777 Cedar St', '3', '4', '2800', 'Philadelphia', 'Classic colonial-style home with a large yard', 'available', 'Sell','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma'],
+    ['Apartment', '1500', 'Convenient City Living', '999 Elm St', '1', '2', '700', 'New Orleans', 'Comfortable apartment in a vibrant neighborhood', 'not available', 'Rent','1m18!1m12!1m3!1d56205063.8778523!2d-76.76300657791785!3d30.704767068255716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130e4541e4ef745d%3A0xfa0c421f50c33e11!2s123%20Main%20Street%20Boutique%20Hotel!5e0!3m2!1sfr!2sma!4v1684760358920!5m2!1sfr!2sma']
     ];
 
-$insertionPostsQuery = "INSERT INTO posts (typeOfProp, Price, title, locat, bathrooms, bedrooms, area, city, dscrption, stat, rentOrSell) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+$insertionPostsQuery = "INSERT INTO posts (typeOfProp, Price, title, locat, bathrooms, bedrooms, area, city, dscrption, stat, rentOrSell, map) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 $stmt = $dbConnection->prepare($insertionPostsQuery);
 
 foreach($postsData as $row){

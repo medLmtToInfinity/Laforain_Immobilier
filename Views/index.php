@@ -1,4 +1,7 @@
-<?php include "includes/home-header.php" ;?>
+<?php
+  include "includes/home-header.php";
+  include "dashboard/database.php";
+?>
 
       <section class="intro">
         <div class="introduction">
@@ -59,7 +62,78 @@
         <h2>Featured Properties in MARRAKECH</h2>
         <button class="btn explore">Explore more features >></button>
         <div class="slider-out">
-          <div class="slider-in">
+
+        <?php
+        //get posts from DB:
+        
+        $query = "SELECT * FROM posts ORDER BY Nlikes DESC LIMIT 4";
+        $result = $dbConnection->query($query);
+        
+        if ($result !== false)
+          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $postId = $row['id'];
+            $query = "SELECT img_name FROM post_imgs WHERE post_id = ?";
+            $stmt = $dbConnection->prepare($query);
+            $stmt->execute([$postId]);
+
+            $images = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        ?>
+
+            <div class="slider-in">
+              <div class="img-container card-1">
+            
+              <?php 
+              if ($images !== false && count($images) > 0)
+                  foreach ($images as $image) {
+                    echo "<div class='slider-in-image'>
+                            <img src='images/". $image . "' alt='' />
+                          </div>";
+                  }
+              ?>
+
+              <button class="slider-btn-nav slider-btn-right">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+              <button class="slider-btn-nav slider-btn-left">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <div class="dots"></div>
+            </div>
+            <a href=<?php echo "pages/appartement.php?postId=".$postId ?> ></a>
+
+            <div class="slider-in-text">
+              <?php echo "
+              <span>". $row['typeOfProp'] . "</span>
+              <h3>". $row['price'] . " MAD</h3>
+              <p>
+              ". $row['dscrption'] . "
+              </p>
+              <ul>
+                <li>". $row['bedrooms'] . " Bedrooms</li>
+                <li>". $row['bathrooms'] . " Bathrooms</li>
+                <li>". $row['area'] . " m</li>
+              </ul>";
+              ?>
+
+              <div class="slider-btns">
+                <button class="slider-btn">
+                  <i class="fa-solid fa-phone"></i> call
+                </button>
+                <button class="slider-btn">
+                  <i class="fa-solid fa-envelope"></i>email
+                </button>
+                <button class="slider-btn">
+                  <i class="fa-brands fa-whatsapp"></i>whatsapp
+                </button>
+              </div>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
+        
+          <!-- <div class="slider-in">
             <div class="img-container card-1">
               <div class="slider-in-image">
                 <img src="images/villa-a-louer-19.jpg" alt="" />
@@ -239,7 +313,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
 
       <!--                   links for populaire                -->

@@ -8,7 +8,7 @@
     if(isset($_POST['submit'])){
         // $countImg = count($_FILES['photos']['name']);
         // loop through the uploaded files
-        $type      = $_POST['type'];
+        $type      = $_POST['select'];
         $title      = $_POST['title'];
         $price      = $_POST['price'];
         $locat      = $_POST['location'];
@@ -43,13 +43,31 @@
 ?>
 
 
+    <div id="success-message" class="hidden">
+        <p>Success! the post has been added successfully.</p>
+    </div>
 
     <form action="" method="POST" class="add-post-form" enctype="multipart/form-data">
         <h1>Ajouter une annonce</h1>
         <div class="add-post-flex">
         <div class="add-post-left">
             <label for="type">Type :</label>
-            <input type="text" id="type" name="type" >
+            <?php
+                $query = "SELECT * FROM categories";
+                $result = $dbConnection->query($query);
+                
+                if ($result !== false)
+                  $data = $result->fetch(PDO::FETCH_ASSOC);
+            ?>
+             <select class="select-cat" name="select">
+            <?php
+                foreach($data as $cat)
+                    echo
+                    '<option value="'. $cat['id'].'>' . $cat['cat_name'] .  '</option>'
+            ?>
+                </select>'
+
+            <!-- <input type="text" id="type" name="type" > -->
             
             <label for="price">Prix :</label>
             <input type="number" id="price" name="price" >
@@ -87,7 +105,7 @@
             <input type="file" id="photos" name="photos[]" accept="image/*" multiple required>
         </div>
         </div>
-        <input type="submit" name="submit" value="Ajouter l'annonce">
+        <input type="submit" name="submit" value="Ajouter l'annonce" class="btn-submit">
     </form>
 
 <?php

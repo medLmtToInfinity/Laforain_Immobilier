@@ -1,4 +1,8 @@
+
 <!DOCTYPE html>
+<?php
+    include "../dashboard/database.php"; 
+?>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -44,15 +48,39 @@
     />
     <title>Agence Immobilière Marrakech pour des biens de luxe</title>
   </head>
+  
   <body>
-    <div class="images-layer">
-      <i class="fa-solid fa-chevron-left"></i>
-      <div class="images">
-        <img src="../images/villa-a-louer-8.jpg" alt="">
+    <?php
+        if(isset($_GET['postId']))
+          $postId = $_GET['postId'];
+        else
+          $postId = 1;
+        $query = "SELECT * FROM posts WHERE id = $postId";
+        $stmt = $dbConnection->query($query);
+        if ($stmt !== false){
+          $result = $stmt->fetch(PDO::FETCH_ASSOC);
+          $query = "SELECT img_name FROM post_imgs WHERE post_id = ?";
+          $stmt = $dbConnection->prepare($query);
+          $stmt->execute([$postId]);
+
+          $images = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        ?>
+          <div class="images-layer">
+            <i class="fa-solid fa-chevron-left"></i>
+            <div class="images">
+            
+              <?php 
+              if ($images !== false && count($images) > 0)
+                  foreach ($images as $image) {
+                    echo "<img src='../images/". $image . "' alt='' />";
+                  }
+        ?>
+        <!-- <img src="../images/villa-a-louer-8.jpg" alt="">
         <img src="../images/villa-a-louer-19.jpg" alt="">
         <img src="../images/villa-piscine.png" alt="">
-        <img src="../images/villa-with-veiw.png" alt="">
-      </div>
+        <img src="../images/villa-with-veiw.png" alt=""> -->
+          </div>
       <i class="fa-solid fa-chevron-right"></i>
     </div>
     <header class="header">
@@ -103,21 +131,24 @@
     </header>
 
     <div class="container">
-      <h3>Images</h3>
+    <?php
+      echo
+      '<h2>'. $result['title'] . '</h2>
       <div class="appart-images">
         <div class="image img--1">
-          <img src="../images/villa-a-louer-19.jpg" alt="" />
+          <img src="../images/'. $images[0] .'" alt="" />
         </div>
         <div class="image img--2">
-          <img src="../images/villa-a-louer-8.jpg" alt="" />
+          <img src="../images/'. $images[1] .'" alt="" />
         </div>
         <div class="image img--3">
-          <img src="../images/villa-piscine.png" alt="" />
+          <img src="../images/'. $images[2] .'" alt="" />
         </div>
+
         <button class="btn-see-all">See all</button>
       </div>
       <div class="contact-card">
-        <h3>2,546,763 MAD</h3>
+        <h3>'. $result['price'] . ' MAD</h3>
         <div class="btns">
           <button class="btn"><i class="fa-solid fa-phone"></i> call</button>
           <button class="btn">
@@ -130,18 +161,11 @@
       </div>
       <div class="appart-text">
         <div class="description">
-          <h2>
-            STUNNING BALCONY VIEW / SPACIOUS 2 BEDS / KITCHEN EQUIPPED / GREAT
-            OFFER
-          </h2>
-          <p>
-            Apartments for Sale in Sobha Hartland Greens Building 1, Mohammed
-            Bin Rashid City (MBR), Dubai
-          </p>
+          <h4> '. $result['dscrption'] . '</h4>
           <ul>
-            <li>2 Bedrooms</li>
-            <li>3 Bathrooms</li>
-            <li>property size: 1300</li>
+            <li> '. $result['bedrooms'] . ' Bedrooms </li>
+            <li> '. $result['bathrooms'] . ' Bathrooms </li>
+            <li> property size: '. $result['area'] . ' m </li>
             <li>...</li>
           </ul>
         </div>
@@ -149,7 +173,7 @@
       <div class="map">
         <h3>Location</h3>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26973.811026274147!2d-9.272319255981863!3d32.319204041192265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdac2122681cafe1%3A0xb6f326cb4497918b!2sSidi%20Bouzid!5e0!3m2!1sfr!2sma!4v1679848353461!5m2!1sfr!2sma"
+          src="https://www.google.com/maps/embed?pb='. $result['map'] . '"
           width="100%"
           height="350"
           style="border: 0"
@@ -157,10 +181,12 @@
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
-      </div>
+      </div>';
+                }
+      ?>
 
       <div class="btns-media">
-        <button class=""><i class="fa-solid fa-phone"></i> call</button>
+        <button class=""><a href="tel:0648780353"><i class="fa-solid fa-phone"></i> call</a></button>
         <button class=""><i class="fa-solid fa-envelope"></i> email</button>
         <button class=""><i class="fa-brands fa-whatsapp"></i> whatsapp</button>
       </div>
