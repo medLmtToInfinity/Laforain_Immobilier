@@ -1,5 +1,5 @@
 <?php include "dashboard-header-aside.php"; ?>
-
+<?php include "database.php"; ?>
         <section class="section" style="color: #333">
           <h2 class="dashboard-title">Dashboard</h2>
           <div class="dashboard-content">
@@ -80,87 +80,39 @@
             <div class="popular-product">
               <h3 class="popular-product-heading">Immobilier Populaire</h3>
               <ul class="popular-products">
+                <?php 
+                  $query = "SELECT post_id, COUNT(post_id) AS nbr FROM liked_post GROUP BY post_id ORDER BY nbr DESC LIMIT 5";
+                  $res = $conn->query($query);
+                  while($row = $res->fetch_assoc()){
+                    // echo $row["nbr"];
+                    $post_id = $row["post_id"];
+                    $post_query = "SELECT * FROM posts WHERE id = $post_id";
+                    $post_res = $conn->query($post_query);
+                    // print_r($post_res->fetch_assoc());
+                    $post_row = $post_res->fetch_assoc();
+                    $post_title = $post_row["title"];
+                    $post_stat = $post_row["stat"];
+                    $img_query = "SELECT * FROM post_imgs WHERE post_id = $post_id LIMIT 1";
+                    $img_result = $conn->query($img_query);
+                    $img_row = $img_result->fetch_assoc();
+                    $img_name = $img_row["img_name"];
+                    $img_url = "uploads/$img_name";
+                
+                ?>
                 <li>
                   <img
-                    src="https://laforain-immobilier.com/3311-large_default/marrakech-splendide-maison-d-hotes.jpg"
-                    alt="prod"
+                    src="<?php echo $img_url ?>"
+                    alt="<?php echo $img_name ?>"
                     width="100"
+                    height="67"
                   />
                   <div>
-                    <h4 class="product-heading">SPLENDIDE MAISON D'H�TES</h4>
-                    <span class="disponibility available">disponible</span>
+                    <h4 class="product-heading"><?php echo $post_title ?></h4>
+                    <span class="disponibility <?php echo $post_stat ?>"><?php echo $post_stat ?></span>
                   </div>
                 </li>
-                <li>
-                  <img
-                    src="https://laforain-immobilier.com/3311-large_default/marrakech-splendide-maison-d-hotes.jpg"
-                    alt="prod"
-                    width="100"
-                  />
-                  <div>
-                    <h4 class="product-heading">SPLENDIDE MAISON D'H�TES</h4>
-                    <span class="disponibility unavailable"
-                      >non disponible</span
-                    >
-                  </div>
-                </li>
-                <li>
-                  <img
-                    src="https://laforain-immobilier.com/3311-large_default/marrakech-splendide-maison-d-hotes.jpg"
-                    alt="prod"
-                    width="100"
-                  />
-                  <div>
-                    <h4 class="product-heading">SPLENDIDE MAISON D'H�TES</h4>
-                    <span class="disponibility available">disponible</span>
-                  </div>
-                </li>
-                <li>
-                  <img
-                    src="https://laforain-immobilier.com/3311-large_default/marrakech-splendide-maison-d-hotes.jpg"
-                    alt="prod"
-                    width="100"
-                  />
-                  <div>
-                    <h4 class="product-heading">SPLENDIDE MAISON D'H�TES</h4>
-                    <span class="disponibility unavailable"
-                      >non disponible</span
-                    >
-                  </div>
-                </li>
-                <li>
-                  <img
-                    src="https://laforain-immobilier.com/3311-large_default/marrakech-splendide-maison-d-hotes.jpg"
-                    alt="prod"
-                    width="100"
-                  />
-                  <div>
-                    <h4 class="product-heading">SPLENDIDE MAISON D'H�TES</h4>
-                    <span class="disponibility available">disponible</span>
-                  </div>
-                </li>
-                <li>
-                  <img
-                    src="https://laforain-immobilier.com/3311-large_default/marrakech-splendide-maison-d-hotes.jpg"
-                    alt="prod"
-                    width="100"
-                  />
-                  <div>
-                    <h4 class="product-heading">SPLENDIDE MAISON D'H�TES</h4>
-                    <span class="disponibility available">disponible</span>
-                  </div>
-                </li>
-                <li>
-                  <img
-                    src="https://laforain-immobilier.com/3311-large_default/marrakech-splendide-maison-d-hotes.jpg"
-                    alt="prod"
-                    width="100"
-                  />
-                  <div>
-                    <h4 class="product-heading">SPLENDIDE MAISON D'H�TES</h4>
-                    <span class="disponibility available">disponible</span>
-                  </div>
-                </li>
+                <?php } ?>
+                <!--  -->
               </ul>
             </div>
           </div>

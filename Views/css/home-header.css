@@ -171,6 +171,7 @@ body {
 }
 
 /* Menu */
+
 .menu > li {
   position: relative;
   display: inline-block;
@@ -252,6 +253,72 @@ body {
 .menu li:nth-child(1) {
   position: relative;
 }
+
+/* ******************************************************* */
+.admin {
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.admin img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.admin .admin-info {
+  position: absolute;
+  visibility: hidden;
+  top: 130%;
+  right: 0;
+  padding: 1.5rem 2rem;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 0.9rem;
+}
+
+.admin .admin-info.visible {
+  transition: visibility 0.2s ease;
+  visibility: visible;
+}
+
+.admin .admin-info:before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 15px;
+  width: 20px;
+  height: 10px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' fill='none' viewBox='0 0 20 10'%3E%3Cpath d='M6.927 1.687L0 10h20l-6.927-8.313a4 4 0 0 0-6.146 0z' fill='%23fff'/%3E%3C/svg%3E")
+    no-repeat 50% 50%/100% auto;
+}
+
+.admin .admin-info a {
+  display: inline-block;
+  padding: 0.9rem 1.5rem;
+  color: #333;
+  font-weight: bold;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  width: 100%;
+}
+
+.admin .admin-info a:last-child {
+  border-top: 1px solid #333;
+}
+
+.admin .admin-info a:hover {
+  opacity: 1;
+}
+/* ******************************************************** */
 
 .caret {
   position: absolute;
