@@ -476,7 +476,7 @@ body {
   border: 2px solid #ff3232;
 }
 
-@media screen and (max-width: 1035px) {
+@media screen and (max-width: 1035px) { 
   .article {
     grid-template-columns: 0.25fr 4fr;
     grid-gap: 0;
@@ -537,10 +537,6 @@ body {
   .statistic:first-child {
     margin-right: 0;
     margin-bottom: 1rem;
-  }
-
-  .statistic:first-child {
-    margin-right: 0.9rem;
   }
 
   .statistic .rate,

@@ -78,6 +78,19 @@
 
             $images = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
+            //get the informations about the post from the `fiche_technique` table
+            $query = "SELECT * FROM fiche_technique WHERE id = ?";
+            $stmt = $dbConnection->prepare($query);
+            $stmt->execute([$row['info_id']]);
+            $infos = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            //get the type of the property
+            $query = "SELECT cat_name FROM categories WHERE id = ? LIMIT 1";
+            $stmt = $dbConnection->prepare($query);
+            $stmt->execute([$row['cat_id']]);
+            
+            $type = $stmt->fetch(PDO::FETCH_COLUMN);
+
         ?>
 
             <div class="slider-in">
@@ -104,15 +117,15 @@
 
             <div class="slider-in-text">
               <?php echo "
-              <span>". $row['typeOfProp'] . "</span>
+              <span>". $type . "</span>
               <h3>". $row['price'] . " MAD</h3>
               <p>
               ". $row['dscrption'] . "
               </p>
               <ul>
-                <li>". $row['bedrooms'] . " Bedrooms</li>
-                <li>". $row['bathrooms'] . " Bathrooms</li>
-                <li>". $row['area'] . " m</li>
+                <li>". $infos['bedrooms'] . " Bedrooms</li>
+                <li>". $infos['bathrooms'] . " Bathrooms</li>
+                <li>". $infos['area'] . " m</li>
               </ul>";
               ?>
 

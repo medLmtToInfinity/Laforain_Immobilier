@@ -32,20 +32,23 @@ body {
   display: none;
 }
 
-.select li {
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
+/* .select li{
+} */
 
-.select li:hover {
+.select li:hover a {
   color: #fff;
   background-color: #ff3232;
 }
 
-/* .select {
-  display: none;
-} */
+.select li a{
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  color: #333;
+}
 
 .sort-bar.show {
   display: block;
@@ -61,6 +64,7 @@ body {
   display: grid;
   grid-template-columns: 4fr 2fr;
   grid-gap: 1rem;
+  padding: 1.2rem;
 }
 
 .section {
@@ -68,6 +72,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 1.5rem;
 }
 
 .section > div {
@@ -95,6 +100,7 @@ body {
   color: #333;
   border: 1px rgba(0, 0, 0, 0.3) solid;
   border-left: 0;
+  height: 15rem;
 }
 
 .post.hover {
@@ -111,7 +117,7 @@ body {
   justify-content: center;
   color: #fff;
   overflow: hidden;
-  width: 30%;
+  width: 40%;
   scroll-behavior: smooth;
 }
 
@@ -234,6 +240,8 @@ body {
   padding: 1.4rem;
   font-size: 1.1rem;
   max-width: 90%;
+  align-items: center;
+  justify-content: center;
 }
 
 .head-info {
@@ -247,7 +255,9 @@ body {
 }
 
 .content-handler .product-property {
-  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 .content-handler .product-price {
@@ -353,6 +363,11 @@ body {
   font-weight: bold;
 }
 
+.search label {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
 @media screen and (max-width: 1028px) {
   .posts-handler {
     display: flex;
@@ -381,11 +396,11 @@ body {
   .content-handler {
     width: 100%;
     text-align: center;
-    /* margin-top: 0; */
   }
 
   .content-handler .product-property {
-    font-size: 0.9rem;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
   .content-handler .product-price {
@@ -395,6 +410,14 @@ body {
 
   .product-position {
     font-size: 0.9rem;
+  }
+
+  .img-handler {
+    width: 100%;
+  }
+
+  .search label {
+    text-align: center;
   }
 }
 

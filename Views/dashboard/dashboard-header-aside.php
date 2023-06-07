@@ -12,7 +12,8 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/dashboard.css" />
-    <link rel="stylesheet" href="css/add-post.css" />
+    <link rel="stylesheet" href="css/add_post.css" />
+    <link rel="stylesheet" href="css/view_posts.css" />
     <script src="./js/chartjs.min.js" defer></script>
     <script src="./js/lamarti.js" type="module" defer></script>
     <title>Dashboard</title>
@@ -46,16 +47,15 @@
               ><i class="fas fa-gear"></i> paramtres du compte</a
             >
             <a href="#logout"
-              ><i class="fas fa-right-from-bracket"></i>Se d�connecter</a
+              ><i class="fas fa-right-from-bracket"></i>Se déconnecter</a
             >
           </div>
         </div>
       </header>
       <article class="article">
         <aside class="aside-bar">
-          <a href="#home" class="icon-hover">
-            <i class="fas fa-home"></i> Accueil</a
-          >
+          <a href="index.php" class="icon-hover">
+            <i class="fas fa-home"></i> Accueil</a>
           <div class="posts">
             <div class="posts-top top-element">
               <div>
@@ -66,11 +66,11 @@
               <i class="fas fa-chevron-down arrow"></i>
             </div>
             <div class="post-data">
-              <a href="add-post.php">ajouter un post</a>
-              <a href="#view-all-post.php">Voir tous les posts</a>
+              <a href="add_post.php">ajouter un post</a>
+              <a href="view_post.php">Voir tous les posts</a>
             </div>
           </div>
-          <a href="samad -files/users.html"><i class="fas fa-user"></i> Clients</a>
+          <a href="samad-files/users.html"><i class="fas fa-user"></i> Clients</a>
           <a href="#logout"
             ><i class="fas fa-right-from-bracket"></i> Se déconnecter</a
           >

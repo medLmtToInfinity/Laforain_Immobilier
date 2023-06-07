@@ -1,3 +1,7 @@
+<?php 
+
+  $rentOrSell = $_GET["type"]; 
+?>
 <?php include "includes/products-header.php" ;?>
 
       <div class="sort-handler select-handler" style="color: #000">
@@ -23,489 +27,160 @@
         </label>
         <ul class="sort-bar select">
           <!-- <li>trier les résultats par</li> -->
-          <li>le plus récent</li>
-          <li>Ville</li>
-          <li>Prix (bas)</li>
-          <li>Prix (élevé)</li>
+          <?php 
+            if(isset($_GET["city"])) {
+              $city = $_GET["city"];
+            }
+            if(isset($_GET["sort"])) {
+              $sort = $_GET["sort"];
+            }
+          ?>
+          <li><a href="products.php?type=<?php echo $rentOrSell; ?>">par défaut</a></li>
+          <!-- ******************** -->
+          <li><a href="products.php?sort=recent&type=<?php echo $rentOrSell . (isset($_GET["city"]) ? "&city=$city" : "") ?>">plus récent</a></li>
+          <!-- ******************** -->
+          <li><a href="products.php?sort=popular&type=<?php echo $rentOrSell . (isset($_GET["city"]) ? "&city=$city" : "") ?>">plus populaire</a></li>
+          <!-- ******************** -->
+          <li><a href="products.php?sort=priceDown&type=<?php echo $rentOrSell . (isset($_GET["city"]) ? "&city=$city" : "") ?>">Prix (bas)</a></li>
+
+          <!-- ******************** -->
+          <li><a href="products.php?sort=priceUp&type=<?php echo $rentOrSell . (isset($_GET["city"]) ? "&city=$city" : "") ?>">Prix (élevé)</a></li>
+          <!-- ******************** -->
+          
+          
         </ul>
       </div>
       <article class="posts-handler">
         <section class="section">
+          <!-- Template -->
+          <?php
+            switch(sizeof($_GET)) {
+              case 1: $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell'";
+                      if(isset($_POST["search"])) {
+                        $search = $_POST["search"];
+                        $query.=" AND (title LIKE '%$search%' OR locat LIKE '%$search%' OR city LIKE '%$search%' OR dscrption LIKE '%$search%')";
+                      }
+                      break;
+              case 2: 
+                  if(isset($_GET["city"])){
+                    $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city'";
+                  } else {
+                    $sort = $_GET["sort"];
+                    switch($sort) {
+                      case 'recent': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell'";
+                                      break;
+                      case 'popular': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' ORDER BY Nlikes";
+                                      break;
+                      case 'priceDown': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' ORDER BY price";
+                                      break;
+                      case 'priceUp': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' ORDER BY price DESC";
+                                      break;
+
+                    }
+                  }
+                  break;
+              case 3:
+                if(isset($_GET["city"])) {
+                  switch($sort) {
+                    case 'recent': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city'";
+                                    break;
+                    case 'popular': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city' ORDER BY Nlikes";
+                                    break;
+                    case 'priceDown': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city' ORDER BY price";
+                                    break;
+                    case 'priceUp': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city' ORDER BY price DESC";
+                                    break;
+  
+                  }
+                } else {
+                  $search = $_GET["search"];
+                  $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND (title LIKE '%$search%' OR locat LIKE '%$search%' OR city LIKE '%$search%' OR dscrption LIKE '%$search%')";
+                }
+                break;
+              case 4:
+                  $search = $_GET["search"];
+                  $typeProp = $_GET["propType"];
+                  // echo $typeProp;
+                  $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND cat_id = $typeProp AND (title LIKE '%$search%' OR locat LIKE '%$search%' OR city LIKE '%$search%' OR dscrption LIKE '%$search%')";
+                  break;
+            }
+                $result = $conn->query($query);
+                while($row = $result->fetch_assoc()){
+                  $post_id = $row["id"];
+                  $post_price = $row["price"];
+                  $post_title = $row["title"];
+                  $post_state = $row["stat"];
+                  $post_type = $row["cat_id"];
+                  $post_city = $row["city"];
+                  $post_loc = $row["locat"];
+                  $cat_query = "SELECT cat_name FROM categories WHERE id = $post_type";
+                  $cat_result = $conn->query($cat_query);
+                  // print_r($cat_result);
+                  // while($cat_row = $cat_result->fetch_assoc()) {
+                  //   $cat_name = $cat_row;
+                  // }
+                  $cat_name = $cat_result->fetch_assoc()["cat_name"];
+                  // echo "<pre>";
+                  // print_r($row);
+                  // echo "</pre>";
+                  ?>
+
           <div>
-            <a class="product-link" href="#"></a>
+            <a class="product-link" href="<?php echo "pages/appartement.php?id=$post_id"?>"></a>
             <div class="post">
               <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-                <div class="HeartAnimation"></div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
-          <div>
-            <a class="product-link" href="#"></a>
-            <div class="post">
-              <div class="img-handler">
-                <span>disponible</span>
-                <div class="img">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1676883752_63f33728b5a96.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655257_640e3f19ae707.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <div class="img invisible">
-                  <img
-                    src="https://cdn1.zoomproperty.com/properties/zppropm/1678655258_640e3f1a5a81d.jpg"
-                    alt="vente"
-                  />
-                </div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="content-handler">
-                <div class="head-info">
-                  <span class="product-property">Villas & Palais</span>
-                  <span class="product-price">1000000 DHS</span>
-                </div>
-                <div class="product-position">
-                  <i class="fas fa-location-dot"></i>
-                  <a href="#" class="position-link">Gelis, Marakkech ...</a>
-                </div>
-              </div>
-              <div class="HeartAnimation"></div>
-            </div>
-          </div>
+                <span><?php echo $post_state; ?></span>
+                <?php 
+                  $img_query = "SELECT * FROM post_imgs WHERE post_id = $post_id LIMIT 3";
+                  $img_result = $conn->query($img_query);
+                  $i = 0;
+                  while($img_row = $img_result->fetch_assoc()){
+                    $img_name = $img_row["img_name"];
+                    $img_url = "dashboard/uploads/$img_name";
+                    $class = ($i !== 0) ? 'invisible' : '';
+                    echo "
+                      <div class=\"img $class\">
+                        <img
+                          src=\"$img_url\"
+                          alt=\"$img_name\"
+                        />
+                      </div>
+                    ";
+                    $i++;
+                  }
+                  ?>
+                  <i class="fas fa-chevron-left"></i>
+                  <i class="fas fa-chevron-right"></i>
+                <?php 
+                    echo "
+                    </div>
+                    <div class=\"content-handler\">
+                    <div class=\"head-info\">
+                      <span class=\"product-property\">$cat_name</span>
+                      <span class=\"product-price\">$post_price DHS</span>
+                    </div>
+                    <div class=\"product-position\">
+                      <i class=\"fas fa-location-dot\"></i>
+                      <a href=\"#\" class=\"position-link\">$post_loc, $post_city</a>
+                    </div>
+                    <div class=\"HeartAnimation\"></div>
+                  </div>
+                  </div>
+                  </div>
+                    ";
+                  }
+                  ?>
+          
         </section>
 
         <aside class="product-search-handler">
-          <form class="search">
+          <form class="search" method="POST" action="products.php?type=<?php echo $rentOrSell ?>">
             <!-- <label for="search">Rechercher</label> -->
+            <!-- To Do: mysql logic for search bar -->
+            <label for="search">Moteur de Recherche</label>
             <input
               type="text"
+              name="search"
               class="search-bar"
               id="search"
               placeholder="Recherche une ville, propriété ..."
@@ -517,21 +192,17 @@
             <div class="head">
               <h3>Villes</h3>
             </div>
-            <a href="#">Marrakech</a>
-            <a href="#">Agadir</a>
-            <a href="#">Safi</a>
-            <a href="#">Marrakech</a>
-            <a href="#">Agadir</a>
-            <a href="#">Safi</a>
-            <a href="#">Marrakech</a>
-            <a href="#">Agadir</a>
-            <a href="#">Safi</a>
-            <a href="#">Marrakech</a>
-            <a href="#">Agadir</a>
-            <a href="#">Safi</a>
-            <a href="#">Marrakech</a>
-            <a href="#">Agadir</a>
-            <a href="#">Safi</a>
+            <?php 
+              $city_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell='$rentOrSell'";
+              $city_result = $conn->query($city_query); 
+              while($city_row = $city_result->fetch_assoc()) {
+                if(isset($_GET["sort"])){
+                  echo "<a href=\"products.php?type=" . urlencode($rentOrSell) ."&sort=$sort" ."&city=" . urlencode($city_row["city"]) ."\">". $city_row["city"] ."</a>";
+                } else {
+                  echo "<a href=\"products.php?type=" . urlencode($rentOrSell) . "&city=" . urlencode($city_row["city"]) . "\">". $city_row["city"] ."</a>";
+                }
+              }
+            ?>
           </div>
         </aside>
       </article>
