@@ -378,6 +378,10 @@ body {
   font-size: 1rem;
 }
 
+.popular-product-heading {
+  margin-bottom: .3rem;
+}
+
 .popular-product .popular-products li {
   display: flex;
   align-items: center;
@@ -387,8 +391,12 @@ body {
   font-size: 0.8rem;
   white-space: nowrap;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.4);
-  margin-bottom: 0.7rem;
+  margin-bottom: 1.4rem;
   border-radius: 0.8rem;
+}
+
+.popular-product .popular-products li:last-child {
+  margin-bottom: 0;
 }
 
 .popular-product .popular-products li div {

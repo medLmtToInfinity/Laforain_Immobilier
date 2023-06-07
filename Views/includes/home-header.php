@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="css/home-footer.css" />
     <script src="js/lamarti.js" defer></script>
     <script src="js/homeSearch.js" defer></script>
+    <!-- <script src="dashboard/js/lamarti.js" defer></script> -->
     <link
       rel="stylesheet"
       href="https://kit.fontawesome.com/d09f9a669c.css"
@@ -102,13 +103,35 @@
               <li><a href="../Views/samad-files/credit.php">CREDIT</a></li>
               <li><a href="contact-us.php">NOUS CONTACTER</a></li>
               <li><a href="#">A PROPOS</a></li>
-            <li><a href="#">SIGN IN</a></li>
+            <?php if(!isset($_GET["id"])){ ?>
+            <li><a href="login/login-user.php">SIGN IN</a></li>
+            
             <!-- <li><a href="#">SIGN UP</a></li> -->
             </ul>
+            <?php
+             }else {
+
+            ?>
+            <div class="admin">
+            <img
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixdivb=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+            alt="admin-pic"
+          />
+          <div class="admin-info">
+            <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+            <a href="#account-settings"
+              ><i class="fas fa-gear"></i> paramtres du compte</a
+            >
+            <a href="login/logout-user.php"
+              ><i class="fas fa-right-from-bracket"></i>Se déconnecter</a
+            >
+          </div>
+            </div> 
+            <?php } ?>
           </nav>
         </div>
         <div class="search-bar">
-          <form action="#" method="" class="form" id="form">
+          <form action="" method="" class="form" id="form">
             <label for="search"
               >Trouvez des propriétés à louer ou à vendre aux MAROC sur LAFORAIN
               immobilier</label

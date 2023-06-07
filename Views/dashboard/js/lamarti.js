@@ -8,6 +8,10 @@ const icons = [
   { element: "Se déconnecter", icon: "right-from-bracket" },
 ];
 
+const getStatistic = () => {
+
+};
+
 const resizeWin = () => {
   // console.log(window.innerWidth);
   if (window.innerWidth < 1035) {
@@ -123,3 +127,4 @@ profile.addEventListener("click", () => {
 
 window.addEventListener("resize", resizeWin);
 resizeWin();
+getStatistic();

@@ -399,7 +399,7 @@ body {
   }
 
   .content-handler .product-property {
-    font-size: 1.5rem;
+    font-size: .9rem;
     font-weight: bold;
   }
 
@@ -456,7 +456,7 @@ body {
   .img-handler {
     display: block;
     width: 100%;
-    /* height: 100%; */
+    height: 10rem;
   }
 
   .HeartAnimation {
