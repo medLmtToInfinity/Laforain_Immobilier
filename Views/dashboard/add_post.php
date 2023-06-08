@@ -18,16 +18,20 @@
         $area       = $_POST['area'];
         $bedrooms       = $_POST['bedrooms'];
         $bathrooms       = $_POST['bathrooms'];
-        $city = $_POST['city'];
+        $city_id = $_POST['city'];
         $state       = $_POST['state'];
         $sell_rent       = $_POST['s_r'];
-        $stmt       = $dbConnection->prepare("INSERT INTO posts (cat_id, Price, title, locat, bathrooms, bedrooms, area, city, dscrption, stat, rentOrSell) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$type, $price, $title, $locat,$bathrooms, $bedrooms, $area, $city, $dscrcption, $state, $sell_rent]);
+
+        $stmt       = $dbConnection->prepare("INSERT INTO posts (cat_id, city_id, Price, title, locat, dscrption, stat, rentOrSell) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$type, $city_id, $price, $title, $locat, $dscrcption, $state, $sell_rent]);
 
         //get the ID of the element we just added to use it in post_imgs table
-        $stmt1      = $dbConnection->query("SELECT id FROM posts");
+        $stmt1      = $dbConnection->query("SELECT id FROM posts ORDER BY id");
         $data       = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+        // print_r($data);
         $postId    = end($data)['id'];
+        //echo "<h1 style='color: red; font-size:40px'>".$postId . "</h1>";
+
         foreach ($_FILES['photos']['name'] as $i => $name) {
             // check if the file is uploaded successfully
 
@@ -39,6 +43,14 @@
                 move_uploaded_file($_FILES["photos"]["tmp_name"][$i], $targetFilePath);
                 $stmt = $dbConnection->prepare("INSERT INTO post_imgs (post_id, img_name) VALUES (?, ?)");
                 $stmt->execute([$postId, $name]);
+            
+
+
+                //BLOB
+                // $imageData = file_get_contents($_FILES["photos"]["tmp_name"]);
+                // echo $imageData;
+                // $stmt = $dbConnection->prepare("INSERT INTO post_imgs (post_id, img_data) VALUES (?, ?)");
+                // $stmt->execute([$postId, $imageData]);
             }
         }
     }
@@ -91,7 +103,18 @@
             <input type="text" id="title" name="title" value="" >
 
             <label for="city">Ville:</label>
-            <input type="text" id="city" name="city" value="" >
+            <select class="select-cat" name="city">
+            <?php
+                $query = "SELECT * FROM cities";
+                $result = $dbConnection->query($query);
+                
+                if ($result !== false){
+                    $data = $result->fetchAll(PDO::FETCH_ASSOC);
+                    foreach($data as $city)
+                        echo "<option value='". $city['id']."'>" . $city['city_name'] .  "</option>";
+                }
+            ?>
+            </select>
 
             <label for="state">State:</label>
             <input type="text" id="state" name="state" value="" >

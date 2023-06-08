@@ -73,7 +73,7 @@ $tables = [
         admn INT,
         code INT,
         status VARCHAR(255)
-    );", "CREATE TABLE IF NOT EXISTS liked_posts (
+    );", "CREATE TABLE IF NOT EXISTS liked_post (
         id INT AUTO_INCREMENT PRIMARY KEY,
         post_id INT,
         user_id INT,
@@ -89,7 +89,7 @@ foreach ($tables as $table){
 
 
 // Fermer la connexion
-$conn->close();
+// $conn->close();
 
 
 //Create database connection 
@@ -248,7 +248,7 @@ $imgsData = [
     ['13', 'riad-a-louer-chaoun.jpg']
     ];
 
-$insertionImgsQuery = "INSERT INTO post_imgs (post_id, img_name) VALUES (?, ?)";
+$insertionImgsQuery = "INSERT INTO post_imgs (post_id, img_name) VALUES ( ?, ?)";
 
 $stmt = $dbConnection->prepare($insertionImgsQuery);
 
@@ -264,7 +264,7 @@ foreach($imgsData as $row){
 // $getImagesQuery = "SELECT img_name FROM post_imgs";
 // $images = $dbConnection->query($getImagesQuery);
 // foreach($images->fetchAll() as $image){
-//     echo "<img src='../images/". $image['img_name'] ."' width='100px'/>";
+//     echo "<img src='../". $image['img_name'] ."' width='100px'/>";
 // }
 
 }
