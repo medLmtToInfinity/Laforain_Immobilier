@@ -74,10 +74,10 @@
                 <ul class="places">
 
                   <?php 
-                    $city_sell_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell = 'sell'";
+                    $city_sell_query = "SELECT DISTINCT p.city_id, c.city_name FROM posts p JOIN cities c ON p.city_id = c.id WHERE p.rentOrSell = 'sell'";
                     $city_result = $conn->query($city_sell_query);
                     while($city_row = $city_result->fetch_assoc()) {
-                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city"] . "\">". $city_row["city"] ."</a></li>";
+                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city_name"] . "\">". $city_row["city"] ."</a></li>";
                     }
                   ?>
                   <!-- <li><a href="#">Marakkech</a></li>
@@ -96,7 +96,7 @@
                 <a href="products.php?type=rent">LOCATION</a>
                 <ul class="places">
                 <?php 
-                    $city_sell_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell = 'rent'";
+                    $city_sell_query = "SELECT DISTINCT p.city_id, c.city_name FROM posts p JOIN cities c ON p.city_id = c.id WHERE p.rentOrSell = 'rent'";
                     $city_result = $conn->query($city_sell_query);
                     while($city_row = $city_result->fetch_assoc()) {
                       echo "<li><a href=\"products.php?type=rent" . "&city=" . $city_row["city"] . "\">".$city_row["city"]."</a></li>";

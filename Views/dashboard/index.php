@@ -1,5 +1,5 @@
 <?php include "dashboard-header-aside.php"; ?>
-<?php include "database.php"; ?>
+
         <section class="section" style="color: #333">
           <h2 class="dashboard-title">Dashboard</h2>
           <div class="dashboard-content">
@@ -18,7 +18,13 @@
                         Clients
                       </h4>
                       <strong class="customer-count statistic-count"
-                        >1028</strong
+                        >
+                        <?php 
+                          $user_query = "SELECT * FROM users";
+                          $user_res = $conn->query($user_query);
+                          echo  mysqli_num_rows($user_res);
+                        ?>
+                        </strong
                       >
                     </div>
                   </div>
@@ -32,12 +38,19 @@
                       <i class="fas fa-chart-line"></i>
                     </div>
                     <div>
-                      <h4 class="visit-heading statistic-heading">Visite</h4>
-                      <strong class="visit-count statistic-count">400</strong>
+                      <h4 class="visit-heading statistic-heading">Post</h4>
+                      <strong class="visit-count statistic-count">
+                      <?php 
+                          $posts_query = "SELECT * FROM posts";
+                          $posts_res = $conn->query($posts_query);
+                          echo  mysqli_num_rows($posts_res);
+                        ?>
+                      </strong>
                     </div>
                   </div>
                 </div>
               </div>
+              <!-- TO DO : COMPLETE USERS & STATISTIC -->
               <div class="customers-handler">
                 <a href="#user" class="customer-profile">
                   <div class="profile-picture hover-effect">
@@ -76,6 +89,25 @@
               <div class="product-view">
                 <canvas class="product-canvas"></canvas>
               </div>
+              <script>
+                // Output the chart data as a JavaScript variable
+                let chartData = <?php echo $chartDataJSON; ?>;
+                console.log(chartData);
+                // Create a Chart.js object and render the chart
+                new Chart(document.querySelector(".product-canvas"), {
+                    type: "bar",
+                    data: {
+                        labels: chartData.map(function(e) { return e.date; }),
+                        datasets: [
+                            {
+                                label: "Vues Du Produit",
+                                data: chartData.map(function(e) { return e.count; }),
+                                backgroundColor: chartData.map(function(e) { return "rgba(255, 50, 80, .9)"; })
+                            }
+                        ]
+                    }
+                });
+              </script>
             </div>
             <div class="popular-product">
               <h3 class="popular-product-heading">Immobilier Populaire</h3>

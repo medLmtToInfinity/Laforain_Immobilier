@@ -6,6 +6,8 @@ const bergerMenu = document.querySelector(".check");
 const header = document.querySelector(".header");
 const arrowsDown = document.querySelectorAll(".caret");
 const searchBtn = document.querySelector(".search-btn");
+const profile = document.querySelector(".admin img");
+
 console.log(label);
 const setSearch = () => {
   if (!searchBtn) return;
@@ -148,4 +150,11 @@ postLinkHandler.forEach((link) => {
   link.addEventListener("mouseout", (e) =>
     setHoverEffect(e.currentTarget.parentElement.querySelector(".post"))
   );
+});
+
+profile.addEventListener("click", () => {
+  document
+    .querySelector(".header .admin .admin-info")
+    .classList.toggle("visible");
+  condition = false;
 });

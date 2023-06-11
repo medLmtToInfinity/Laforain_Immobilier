@@ -1,4 +1,38 @@
 <?php include "dashboard/database.php"; ?>
+<?php
+  
+  // Get today's date
+  $today = date('Y-m-d');
+  
+  // Check if a record exists for today
+  $stmt = $conn->prepare("SELECT * FROM visits WHERE date = ?");
+  $stmt->bind_param("s", $today);
+  $stmt->execute();
+  
+  // Retrieve the record
+  $result = $stmt->get_result();
+  $record = $result->fetch_assoc();
+  
+  if ($record) {
+      // If record exists, increment the visit count
+      $count = $record['count'] + 1;
+  
+      // Update the existing record
+      $updateStmt = $conn->prepare("UPDATE visits SET count = ? WHERE date = ?");
+      $updateStmt->bind_param("is", $count, $today);
+      $updateStmt->execute();
+  } else {
+      // If no record exists, create a new record with count = 1
+      $count = 1;
+  
+      // Insert a new record
+      $insertStmt = $conn->prepare("INSERT INTO visits (date, count) VALUES (?, ?)");
+      $insertStmt->bind_param("si", $today, $count);
+      $insertStmt->execute();
+  }
+
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,11 +109,11 @@
                 <ul class="places">
 
                   <?php 
-                  $var = "sell";
-                    $city_sell_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell = 'sell'";
+                  // $var = "sell";
+                    $city_sell_query = "SELECT DISTINCT p.city_id, c.city_name FROM posts p JOIN cities c ON p.city_id = c.id WHERE p.rentOrSell = 'sell'";
                     $city_result = $conn->query($city_sell_query);
                     while($city_row = $city_result->fetch_assoc()) {
-                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city"] . "\">". $city_row["city"] ."</a></li>";
+                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city_name"] . "\">". $city_row["city"] ."</a></li>";
                     }
                   ?>
                   <!-- <li><a href="#">Marakkech</a></li>
@@ -91,10 +125,10 @@
                 <a href="products.php?type=rent">LOCATION</a>
                 <ul class="places">
                 <?php 
-                    $city_sell_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell = 'rent'";
+                    $city_sell_query = "SELECT DISTINCT p.city_id, c.city_name FROM posts p JOIN cities c ON p.city_id = c.id WHERE p.rentOrSell = 'rent'";
                     $city_result = $conn->query($city_sell_query);
                     while($city_row = $city_result->fetch_assoc()) {
-                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city"] . "\">".$city_row["city"]."</a></li>";
+                      echo "<li><a href=\"products.php?type=rent" . "&city=" . $city_row["city"] . "\">".$city_row["city"]."</a></li>";
                     }
                   ?>
                 </ul>
@@ -107,27 +141,23 @@
             <li><a href="login/login-user.php">SIGN IN</a></li>
             
             <!-- <li><a href="#">SIGN UP</a></li> -->
+            <?php } ?>
             </ul>
             <?php
-             }else {
-
+             if(isset($_GET["id"])){
             ?>
             <div class="admin">
             <img
             src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixdivb=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
             alt="admin-pic"
           />
-          <div class="admin-info">
-            <a href="#profile"><i class="fas fa-user"></i> Profile</a>
-            <a href="#account-settings"
-              ><i class="fas fa-gear"></i> paramtres du compte</a
-            >
-            <a href="login/logout-user.php"
-              ><i class="fas fa-right-from-bracket"></i>Se déconnecter</a
-            >
-          </div>
-            </div> 
+            <div class="admin-info">
+              <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+              <a href="#account-settings"><i class="fas fa-gear"></i> paramtres du compte</a>
+              <a href="login/logout-user.php"><i class="fas fa-right-from-bracket"></i>Se déconnecter</a>
+            </div>
             <?php } ?>
+          <!-- </div>  -->
           </nav>
         </div>
         <div class="search-bar">

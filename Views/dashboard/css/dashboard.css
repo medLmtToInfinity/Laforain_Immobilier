@@ -65,7 +65,7 @@ body {
   justify-content: center;
   justify-content: space-between;
   padding: 0.8rem 1.5rem;
-  background-color: #333;
+  background-color: #000;
 }
 
 .header .logo {
@@ -96,8 +96,9 @@ body {
   color: #333;
 }
 
-.header .create-post button {
-  padding: 0.8rem 1.8rem;
+.header .create-post {
+  position: relative;
+  padding: 1rem 2rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
@@ -106,9 +107,64 @@ body {
   background-color: #ff3232;
   color: #fff;
   transition: background-color 0.3s ease;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  /* width: 100%; */
 }
 
-.header .create-post button:hover {
+.header .create-post .cat-post {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  color: #000;
+  border-radius: .5rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  display: none;
+  transition: all .3s ease;
+  width: 100%;
+  z-index: 100;
+}
+
+.header .create-post.visible > .cat-post {
+  display: block;
+  opacity: 1;
+}
+
+.header .create-post .cat-post input {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: .8rem 1.3rem;
+  outline: 0;
+  border-radius: 5px;
+}
+
+.header .create-post .cat-post > div {
+  margin-bottom: 1rem;
+}
+
+.header .create-post .cat-post > div label {
+  font-weight: bold;
+  margin-bottom: .7rem;
+  display: inline-block;
+}
+
+.header .create-post .cat-post button {
+  background-color: #ff3232;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+}
+
+.header .create-post .cat-post button:hover {
   background-color: #dd1010;
 }
 
@@ -204,11 +260,13 @@ body {
   color: #333;
   display: block;
   padding: 1rem 2rem;
+  white-space: nowrap;
 }
 
 .article .aside-bar > a {
   opacity: 0.6;
   transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
 
 .article .aside-bar > a:hover {
@@ -512,8 +570,13 @@ body {
     width: 100%;
   }
 
-  .create-post {
+  .search-bar {
     display: none;
+  }
+
+  .header .create-post {
+    font-size: .8rem;
+    /* white-space: nowrap; */
   }
 
   .search-bar {

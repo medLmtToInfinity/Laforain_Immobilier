@@ -58,22 +58,61 @@
               case 1: $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell'";
                       if(isset($_POST["search"])) {
                         $search = $_POST["search"];
-                        $query.=" AND (title LIKE '%$search%' OR locat LIKE '%$search%' OR city LIKE '%$search%' OR dscrption LIKE '%$search%')";
+                        $query.=" AND (title LIKE '%$search%' OR locat LIKE '%$search%' OR dscrption LIKE '%$search%')";
                       }
                       break;
               case 2: 
                   if(isset($_GET["city"])){
-                    $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city'";
+                    $query = "SELECT p.*, c.city_name FROM posts p JOIN cities c ON p.city_id=c.id WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$city'";
                   } else {
                     $sort = $_GET["sort"];
                     switch($sort) {
-                      case 'recent': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell'";
+                      case 'recent': $query = "
+                      SELECT p.*, c.city_name
+                      FROM posts p
+                      JOIN cities c ON p.city_id = c.id
+                      WHERE p.rentOrSell = '$rentOrSell'
+                      ORDER BY p.id DESC
+                      ";
                                       break;
-                      case 'popular': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' ORDER BY Nlikes";
+                      case 'popular': $query = "
+                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name
+                      FROM posts p
+                      LEFT JOIN (
+                          SELECT post_id, COUNT(*) AS total_likes
+                          FROM liked_posts
+                          GROUP BY post_id
+                      ) l ON p.id = l.post_id
+                      JOIN cities c ON p.city_id = c.id
+                      WHERE p.rentOrSell='$rentOrSell'
+                      ORDER BY l.total_likes DESC
+                      ";
                                       break;
-                      case 'priceDown': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' ORDER BY price";
+                      case 'priceDown': $query = "
+                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name
+                      FROM posts p
+                      LEFT JOIN (
+                          SELECT post_id, COUNT(*) AS total_likes
+                          FROM liked_post
+                          GROUP BY post_id
+                      ) l ON p.id = l.post_id
+                      JOIN cities c ON p.city_id = c.id
+                      WHERE p.rentOrSell = '$rentOrSell'
+                      ORDER BY p.price
+                      ";
                                       break;
-                      case 'priceUp': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' ORDER BY price DESC";
+                      case 'priceUp': $query = "
+                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name
+                      FROM posts p
+                      LEFT JOIN (
+                          SELECT post_id, COUNT(*) AS total_likes
+                          FROM liked_post
+                          GROUP BY post_id
+                      ) l ON p.id = l.post_id
+                      JOIN cities c ON p.city_id = c.id
+                      WHERE p.rentOrSell = '$rentOrSell'
+                      ORDER BY p.price DESC
+                      ";
                                       break;
 
                     }
@@ -81,27 +120,77 @@
                   break;
               case 3:
                 if(isset($_GET["city"])) {
+                  $giv_city = $_GET["city"];
                   switch($sort) {
-                    case 'recent': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city'";
+                    case 'recent': $query = "
+                    SELECT p.*, c.city_name
+                    FROM posts p
+                    JOIN cities c ON p.city_id = c.id
+                    WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$giv_city'
+                    ORDER BY p.id DESC
+          ";
                                     break;
-                    case 'popular': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city' ORDER BY Nlikes";
+                    case 'popular': $query = "
+                    SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name
+                    FROM posts p
+                    LEFT JOIN (
+                        SELECT post_id, COUNT(*) AS total_likes
+                        FROM liked_post
+                        GROUP BY post_id
+                    ) l ON p.id = l.post_id
+                    JOIN cities c ON p.city_id = c.id
+                    WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$giv_city'
+                    ORDER BY total_likes DESC
+                                            ";
                                     break;
-                    case 'priceDown': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city' ORDER BY price";
+                    case 'priceDown': $query = "
+                    SELECT p.*, c.city_name
+                    FROM posts p
+                    JOIN cities c ON p.city_id = c.id
+                    WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$giv_city'
+                    ORDER BY p.price
+                    ";
                                     break;
-                    case 'priceUp': $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND city = '$city' ORDER BY price DESC";
+                    case 'priceUp': $query = "
+                    SELECT p.*, c.city_name
+                    FROM posts p
+                    JOIN cities c ON p.city_id = c.id
+                    WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$giv_city'
+                    ORDER BY p.price DESC
+                    ";
                                     break;
   
                   }
                 } else {
                   $search = $_GET["search"];
-                  $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND (title LIKE '%$search%' OR locat LIKE '%$search%' OR city LIKE '%$search%' OR dscrption LIKE '%$search%')";
+                  $query = "
+                              SELECT p.*, c.city_name
+                              FROM posts p
+                              JOIN cities c ON p.city_id = c.id
+                              WHERE p.rentOrSell = '$rentOrSell'
+                              AND (c.city_name LIKE '%$search%'
+                              OR p.title LIKE '%$search%'
+                              OR p.dscrption LIKE '%$search%'
+                              OR p.locat LIKE '%$search%')
+                            ";
                 }
                 break;
               case 4:
                   $search = $_GET["search"];
                   $typeProp = $_GET["propType"];
                   // echo $typeProp;
-                  $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell' AND cat_id = $typeProp AND (title LIKE '%$search%' OR locat LIKE '%$search%' OR city LIKE '%$search%' OR dscrption LIKE '%$search%')";
+                  $query = "
+                  SELECT p.*, c.city_name, cat.cat_name
+                  FROM posts p
+                  JOIN cities c ON p.city_id = c.id
+                  JOIN categories cat ON p.cat_id = cat.id
+                  WHERE p.rentOrSell = '$rentOrSell'
+                  AND p.cat_id = $typeProp
+                  AND (c.city_name LIKE '%$search%'
+                  OR p.title LIKE '%$search%'
+                  OR p.dscrption LIKE '%$search%'
+                  OR p.locat LIKE '%$search%')
+                  ";
                   break;
             }
                 $result = $conn->query($query);
@@ -110,19 +199,11 @@
                   $post_price = $row["price"];
                   $post_title = $row["title"];
                   $post_state = $row["stat"];
-                  $post_type = $row["cat_id"];
-                  $post_city = $row["city"];
+                  $post_city = $row["city_name"];
                   $post_loc = $row["locat"];
-                  $cat_query = "SELECT cat_name FROM categories WHERE id = $post_type";
-                  $cat_result = $conn->query($cat_query);
-                  // print_r($cat_result);
-                  // while($cat_row = $cat_result->fetch_assoc()) {
-                  //   $cat_name = $cat_row;
-                  // }
-                  $cat_name = $cat_result->fetch_assoc()["cat_name"];
-                  // echo "<pre>";
-                  // print_r($row);
-                  // echo "</pre>";
+                  $post_loc_url = $row["locat_url"];
+                  $cat_name = $row["cat_name"];
+
                   ?>
 
           <div>
@@ -156,12 +237,13 @@
                     </div>
                     <div class=\"content-handler\">
                     <div class=\"head-info\">
+                      <h3>$post_title</h3>
                       <span class=\"product-property\">$cat_name</span>
                       <span class=\"product-price\">$post_price DHS</span>
                     </div>
                     <div class=\"product-position\">
                       <i class=\"fas fa-location-dot\"></i>
-                      <a href=\"#\" class=\"position-link\">$post_loc, $post_city</a>
+                      <a href=\"$post_loc_url\" class=\"position-link\">$post_loc, $post_city</a>
                     </div>
                     <div class=\"HeartAnimation\"></div>
                   </div>
@@ -193,13 +275,13 @@
               <h3>Villes</h3>
             </div>
             <?php 
-              $city_query = "SELECT DISTINCT city FROM posts WHERE rentOrSell='$rentOrSell'";
+              $city_query = "SELECT DISTINCT p.city_id, c.city_name FROM posts JOIN cities ON p.city_id = c.id WHERE p.rentOrSell='$rentOrSell'";
               $city_result = $conn->query($city_query); 
               while($city_row = $city_result->fetch_assoc()) {
                 if(isset($_GET["sort"])){
-                  echo "<a href=\"products.php?type=" . urlencode($rentOrSell) ."&sort=$sort" ."&city=" . urlencode($city_row["city"]) ."\">". $city_row["city"] ."</a>";
+                  echo "<a href=\"products.php?type=" . urlencode($rentOrSell) ."&sort=$sort" ."&city=" . urlencode($city_row["city_name"]) ."\">". $city_row["city_name"] ."</a>";
                 } else {
-                  echo "<a href=\"products.php?type=" . urlencode($rentOrSell) . "&city=" . urlencode($city_row["city"]) . "\">". $city_row["city"] ."</a>";
+                  echo "<a href=\"products.php?type=" . urlencode($rentOrSell) . "&city=" . urlencode($city_row["city_name"]) . "\">". $city_row["city_name"] ."</a>";
                 }
               }
             ?>

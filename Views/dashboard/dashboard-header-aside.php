@@ -1,3 +1,17 @@
+<?php
+  include "database.php";
+// Prepare data for the chart
+  $sql = "SELECT date, count FROM visits WHERE date >= DATE_SUB(CURDATE(), INTERVAL 10 DAY) ORDER BY date ASC";
+  $result = $conn->query($sql);
+  
+  $data = array();
+  while ($row = $result->fetch_assoc()) {
+      $data[] = $row;
+  }
+  
+  // Convert the data to JSON format
+  $chartDataJSON = json_encode($data);
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -13,7 +27,7 @@
     />
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/add-post.css" />
-    <script src="./js/chartjs.min.js" defer></script>
+    <script src="./js/chartjs.min.js"></script>
     <script src="./js/lamarti.js" type="module" defer></script>
     <title>Dashboard</title>
   </head>
@@ -33,7 +47,18 @@
           />
         </form>
         <div class="create-post">
-          <button type="submit"><i class="fas fa-plus"></i> Create</button>
+          <i class="fas fa-plus"></i>Ajouter une catégorie/ville
+          <form action="add-cat.php" method="POST" class="cat-post">
+            <div>
+              <label for="categorie">Catégorie</label>
+              <input type="text" name="categorie" id="categorie" placeholder="Ajouter une catégorie">
+            </div>
+            <div>
+              <label for="ville">Ville</label>
+              <input type="text" name="ville" id="ville" placeholder="Ajouter une ville">
+            </div>
+            <button type="submit">Ajouter</button>
+          </form>
         </div>
         <div class="admin">
           <img
@@ -46,14 +71,14 @@
               ><i class="fas fa-gear"></i> paramtres du compte</a
             >
             <a href="#logout"
-              ><i class="fas fa-right-from-bracket"></i>Se d�connecter</a
+              ><i class="fas fa-right-from-bracket"></i>Se déconnecter</a
             >
           </div>
         </div>
       </header>
       <article class="article">
         <aside class="aside-bar">
-          <a href="#home" class="icon-hover">
+          <a href="index.php" class="icon-hover">
             <i class="fas fa-home"></i> Accueil</a
           >
           <div class="posts">
@@ -70,8 +95,8 @@
               <a href="#view-all-post.php">Voir tous les posts</a>
             </div>
           </div>
-          <a href="samad -files/users.html"><i class="fas fa-user"></i> Clients</a>
-          <a href="#logout"
+          <a href="samad -files/users.html" class="icon-hover"><i class="fas fa-user"></i> Clients</a>
+          <a href="#logout"  class="icon-hover"
             ><i class="fas fa-right-from-bracket"></i> Se déconnecter</a
           >
         </aside>
