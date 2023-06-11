@@ -1,3 +1,8 @@
+<?php  include '../dashboard/database.php';
+       session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +40,7 @@
     <link rel="stylesheet" href="../css/home-header.css" />
     <link rel="stylesheet" href="../css/home-footer.css" />
     <link rel="stylesheet" href="../css/black-header.css" />
-    <link rel="stylesheet" href="guide.css" />
+    <link rel="stylesheet" href="forget.css" />
     <script src="../js/lamarti.js" defer></script>
     <link
       rel="stylesheet"
@@ -62,7 +67,7 @@
           </div>
           <nav class="navbar">
             <ul class="menu">
-              <li class="current"><a href="../index.html">Accueil</a></li>
+              <li ><a href="../index.html">Accueil</a></li>
               <li>
                 <a href="products.html">VENTE</a>
                 <i class="fas fa-caret-down caret"></i>
@@ -88,89 +93,32 @@
                 </ul>
               </li>
               <li><a href="#">LOCATION SAISONIERE</a></li>
-              <li><a href="../samad-files/credit.php">CREDIT</a></li>
+              <li><a href="#">CREDIT</a></li>
               <li><a href="contact-us.html">NOUS CONTACTER</a></li>
+              <li class="current"><a href="#">SIGN IN</a></li>
+
             </ul>
           </nav>
         </div>
       </header>
     </div>
+   
 
-
-
-
-
-
-
-
-    <div class="layer-container">
-      <h1>Guide de recherche immobilière à Marrakech</h1>
-      <h2>Le choix et le type</h2>
-      <p>Évaluez vos besoins et définissez vos critères de recherche. Définissez si vous désirez acheter un bien immobilier à Marrakech tel que, appartement, villa, terrain, ferme, pour le louer ou pour l’habiter, il faut définir la superficie, l’emplacement, si vous voulez l’acheter meublé ou vide. Vous pouvez également vous tourner vers le choix d’un appartement à retaper, un riad à rénover ou simplement acheter ce que l’on appelle du programme neuf qui vous laissera le temps de préparer votre déménagement, de mettre en place les financements, mais aussi de choisir convenablement le meilleur emplacement de Marrakech avec un large choix de propositions. D'ailleurs, afin de vous rassurer sur le sujet des programmes neufs, en droit Marocain, la “VEFA” (Vente en l’Etat Futur d’Achèvement) est réglementée par un dispositif qui n’aura plus de secret pour vous ici :</p>
-      <button><a href="http://www.mhpv.gov.ma/5020-2/">Loi VEFA</a></button>
-      <h2>Bon à Savoir</h2>
-      <p>Pour faire face à cette demande de plus en plus croissante le marché de l’immobilier à Marrakech se dirige vers une catégorie de personnes intéressées par l’achat de biens sur plan. Cela leur permet de négocier à des tarifs plus attractifs qu’une maison achevée par exemple, ce qui permet au promoteur de pouvoir achever la construction de son projet.
-        La loi exige qu'un contrat écrit et signé soit établi devant un professionnel qui figure sur la liste nominative fixée annuellement par le Ministère de la Justice. Citons entre autres les notaires et les avocats agréés auprès de la Cour de cassation. Le contrat écrit doit comprendre l’identité de l’acquéreur et du vendeur, leur domiciliations, le numéro du titre mère de la propriété, un descriptif de la propriété et son adresse, la date et le numéro du permis de construire, le prix de vente du bien et les modalités du paiement, le délai de livraison, l’assurance et les références de la caution de récupération de l’acompte dans le cas où les clauses du contrat ne sont pas respectées.
-      </p>
-      <h2>Respecter les plans :</h2>
-      <p>Le promoteur doit également présenter les plans de la propriété avec la mention « Ne varietur », qui signifie sans possibilité de changement, des plans de béton armé, une copie du cahier des charges et une copie de la garantie bancaire ou de l’assurance.La nouvelle réforme de loi n° 12-107 prévoit également la mise en place d’un contrat de réservation qui est établi après l’obtention du permis de construire. Ce contrat n’est pas renouvelable et ne doit pas excéder un délai de 6 mois. Il doit également conduire à la signature du contrat préliminaire de vente.Il faut savoir qu'un acheteur a le droit de se rétracter au contrat de réservation dans un délai ne dépassant pas un mois après la date de signature du contrat. Le promoteur doit alors lui remettre l’acompte dans sa totalité dans les sept jours suivants la rétraction.
-        Le promoteur est dans l’obligation de respecter les plans de l’architecte, du délai de de construction à la livraison, il doit respecter toutes les clauses qui figurent sur le cahier de charges. Cette loi VEFA lui permet toutefois de profiter d’un délai supplémentaire ne dépassant pas 6 mois afin de mener à terme les travaux. Dans ce cas, le vendeur doit en aviser l’acheteur au minimum un mois avant la fin du délai. La loi encadre autant l’achat que la vente sur plan, l’acquéreur doit verser au vendeur les montants pendant des différentes phases précises de la construction :</p>
-      <ul class="rent-percetage">
-        <li>5% à la signature du contrat de réservation et 5% à la signature du contrat préliminaire ou 10% en cas d’absence du contrat de réservation</li>
-        <li>10% au début de la construction</li>
-        <li>60% répartis en trois phases</li>
-        <li>20% à la remise des clés</li>
-      </ul>
-      <h4><i class="fa-solid fa-plus"></i> Read more</h4>
-      <ul class="read-more">
-        <li>
-          <a href="guide.html" target="_blank"
-            >Guide Immobilier Marrakech</a>
-        </li>
-        <li>
-          <a
-            href="premier-visit.html"
-            target="_blank"
-            >Votre première visite</a>
-        </li>
-      </ul>
+  <div class="foget-global">
+  <div class="forget-container">
+    <div class="forget-text">Forgot Password</div>
+    <form action="forget-password-process.php" method="post">
+    <div class="forget-input">
+      <input type="email" name="email" placeholder="Enter your email"><br>
+    </div>
     
-     </div>
-     
-    
+      <div class="forget-btn"><button type="submit" class="subbmit-btn">Submit</button></div>
+      </form>
+  </div>
+  </div>
+  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-<!--           footer links              -->
+<<!--           footer links              -->
 
 
 <footer class="footer-links">
@@ -228,17 +176,11 @@
     </p>
   </div>
 </footer>
-<script src="logement.js"></script>
+<script src="credit.js"></script>
 <script src="../js/script.js"></script>
 <script src="../js/boubker1.js"></script>
 </body>
 </html>
-
-
-
-
-
-
 
 
 

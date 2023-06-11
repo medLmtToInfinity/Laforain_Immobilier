@@ -337,243 +337,104 @@
             <li><a href="">Properties for rent in Marrakech</a></li>
             <li><a href="">Properties for rent in Marrakech</a></li>
             <li><a href="">Properties for sale in AGADIR</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
+            <!-- <li><a href="">Properties for rent in Marrakech</a></li>
             <li><a href="">Properties for sale in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
+            <li><a href="">Properties for rent in Marrakech</a></li> -->
           </ul>
         </div>
         <div class="links-container">
           <h3>informations</h3>
           <ul>
-            <li><a href="samad-files/logement.html">Types De Logements</a></li>
+            <li><a href="./Links/type_logement/logement.html">Types De Logements</a></li>
             <li>
-              <a href="samad-files/guide.html">Guide Immobilier Marrakech</a>
+              <a href="./Links/guides/guide.php">Guide Immobilier Marrakech</a>
             </li>
             <li>
-              <a href="samad-files/premier-visit.html">Votre première visite</a>
+              <a href="Links/premier_visit/premier-visit.html">Votre première visite</a>
             </li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
+            <!-- <li><a href="">Properties for rent in Marrakech</a></li>
             <li><a href="">Properties for sale in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
+            <li><a href="">Properties for rent in Marrakech</a></li> -->
           </ul>
         </div>
         <div class="links-container">
           <h3>Trending Areas for Sale</h3>
           <ul>
-            <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for sale in AGADIR</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
+            <li><a href="">Marrakech</a></li>
+            <li><a href="">Essaouira</a></li>
+            <li><a href="">AGADIR</a></li>
+            <!-- <li><a href="">Properties for rent in Marrakech</a></li>
             <li><a href="">Properties for sale in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
+            <li><a href="">Properties for rent in Marrakech</a></li> -->
           </ul>
         </div>
         <div class="links-container">
           <h3>Q & A</h3>
           <ul>
-            <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for sale in AGADIR</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
+            <li><a href="credit-files/credit.php">Achat sans apport</a></li>
+            <li><a href="credit-files/credit.php">Délai de rétractation</a></li>
+            <li><a href="credit-files/credit.php">La garantie de retransfert</a></li>
+            <!-- <li><a href="">Properties for rent in AGADIR</a></li>
             <li><a href="">Properties for sale in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
+            <li><a href="">Properties for rent in Marrakech</a></li> -->
           </ul>
         </div>
       </div>
 
-      <!--                   SEASONAL RENTALS                       -->
+   
 
-      <div class="Projects">
+  <!--                   SEASONAL RENTALS                       -->
+
+  <div class="Projects">
         <i class="fa-solid fa-chevron-right righter"></i>
         <i class="fa-solid fa-chevron-left lefter"></i>
         <h2>Properties in cities</h2>
         <div class="projects-container">
-          <div class="project">
-            <div class="imgs-container">
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-19.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-8.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-piscine.png"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-            </div>
-            <button class="img-changer-right">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <button class="img-changer-left">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <div class="i-text">
-              <h3>ESSAOUIRA</h3>
-              <p>statrting from</p>
-              <h4>10 000 DH</h4>
-            </div>
-          </div>
+         
+        <?php 
 
-          <div class="project">
-            <div class="imgs-container">
-              <div class="i-container">
-                <img
-                  src="images/villa-piscine.png"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-8.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-19.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-            </div>
-            <button class="img-changer-right">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <button class="img-changer-left">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <div class="i-text">
-              <h3>ESSAOUIRA</h3>
-              <p>statrting from</p>
-              <h4>10 000 DH</h4>
-            </div>
-          </div>
+            
 
-          <div class="project">
-            <div class="imgs-container">
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-19.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-8.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-piscine.png"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-            </div>
-            <button class="img-changer-right">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <button class="img-changer-left">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <div class="i-text">
-              <h3>ESSAOUIRA</h3>
-              <p>statrting from</p>
-              <h4>10 000 DH</h4>
-            </div>
-          </div>
+            // Connexion à la base de données
+     
+           include 'dashboard/database.php';
 
+            $query = "SELECT * FROM posts ORDER BY Nlikes DESC LIMIT 5";
+            $result = $dbConnection->query($query);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                  
+                  $post_id = $row['id'];
+                  $post_ville = $row['city'];
+                  $post_price = $row['price'];
+                  $select_imgs = $dbConnection->prepare("SELECT img_name FROM post_imgs WHERE post_id = $post_id"); 
+                  $select_imgs->execute();  
+                 
+                  ?>
           <div class="project">
-            <div class="imgs-container">
-              <div class="i-container">
-                <img
-                  src="images/villa-piscine.png"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-8.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-19.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-            </div>
-            <button class="img-changer-right">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <button class="img-changer-left">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <div class="i-text">
-              <h3>ESSAOUIRA</h3>
-              <p>statrting from</p>
-              <h4>10 000 DH</h4>
-            </div>
-          </div>
+          <div class="imgs-container">
+          <p class="new-text">New</p>
 
-          <div class="project">
-            <div class="imgs-container">
+          <?php
+          $imagePaths = array();
+         while($imgs = $select_imgs->fetch(PDO::FETCH_ASSOC)){
+           $imagePaths[] = 'images/' . $imgs['img_name'];
+         }
+
+         
+         
+         for($i=0 ;$i<3 ;$i++){
+          echo ' 
               <div class="i-container">
                 <img
-                  src="images/villa-a-louer-8.jpg"
+                  // src="'. $imagePaths[$i] .'"
                   alt=""
                   width="340px"
                   height="100%"
                 />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-a-louer-19.jpg"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
-              <div class="i-container">
-                <img
-                  src="images/villa-piscine.png"
-                  alt=""
-                  width="340px"
-                  height="100%"
-                />
-              </div>
+                </div>';
+         }
+        echo '
+              
               <div class="dots"></div>
             </div>
             <button class="img-changer-right">
@@ -583,14 +444,17 @@
               <i class="fa-solid fa-chevron-left"></i>
             </button>
             <div class="i-text">
-              <h3>ESSAOUIRA</h3>
+              <h3>' . $post_ville .  '</h3>
               <p>statrting from</p>
-              <h4>10 000 DH</h4>
+              <h4>' . $post_price . ' DH</h4>
             </div>
-          </div>
+          </div>';
+
+        } ?>
         </div>
       </div>
 
+    
       <!--                       Email us for news              -->
 
       <div class="newsletter">
@@ -613,11 +477,18 @@
       </div>
       <hr />
 
-      <!--             Featured real estate agencies                -->
+     <!--             Featured real estate agencies                -->
 
-      <div class="collab-container">
-        <h2>FEATURED REAL ESTATE AGENCIES</h2>
+     <div class="collab-container">
+        <h2>COLLABORATION NETWORK</h2>
         <ul class="companies">
+          <li>
+            <a href="https://www.gralon.net/" target="_blank"
+            ><img src="https://www.bioaxio.fr/image/logo-bioaxio.jpg" alt=""
+              width="166px"
+                height="50px"
+            /></a>
+          </li>
           <li>
             <a href="https://www.gralon.net/" target="_blank"
               ><img src="https://www.gralon.net/img/logo-gralon.png" alt=""
@@ -632,14 +503,8 @@
                 height="50px"
             /></a>
           </li>
-          <li>
-            <a href="https://www.gralon.net/" target="_blank"
-              ><img src="https://www.gralon.net/img/logo-gralon.png" alt=""
-            /></a>
-          </li>
         </ul>
       </div>
-
       <!--                    footer                                 -->
 
       <?php include "includes/footer.php" ;?>

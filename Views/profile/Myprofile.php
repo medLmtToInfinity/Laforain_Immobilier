@@ -1,3 +1,8 @@
+<?php  include '../dashboard/database.php';
+       session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +40,7 @@
     <link rel="stylesheet" href="../css/home-header.css" />
     <link rel="stylesheet" href="../css/home-footer.css" />
     <link rel="stylesheet" href="../css/black-header.css" />
-    <link rel="stylesheet" href="premier-visit.css" />
+    <link rel="stylesheet" href="Myprofile.css" />
     <script src="../js/lamarti.js" defer></script>
     <link
       rel="stylesheet"
@@ -62,7 +67,7 @@
           </div>
           <nav class="navbar">
             <ul class="menu">
-              <li class="current"><a href="../index.html">Accueil</a></li>
+              <li ><a href="../index.html">Accueil</a></li>
               <li>
                 <a href="products.html">VENTE</a>
                 <i class="fas fa-caret-down caret"></i>
@@ -90,47 +95,65 @@
               <li><a href="#">LOCATION SAISONIERE</a></li>
               <li><a href="#">CREDIT</a></li>
               <li><a href="contact-us.html">NOUS CONTACTER</a></li>
-              <!-- <li><a href="#">A PROPOS</a></li>
-            <li><a href="#">SIGN IN</a></li>
-            <li><a href="#">SIGN UP</a></li> -->
+              <li class="current"><a href="Myprofile" ><i class="fa-solid fa-user fa-xl"></i></a></li>
             </ul>
           </nav>
         </div>
       </header>
     </div>
 
+     <div class="profile-container">
+         <h1>User Profile</h1>
+          <div class="personal-infos">
+            <div class="img-container" align="center">
+              <div>
+                <img src="../images/user2.png" >
+                <h2>ABDESSAMAD AITHAMOU</h2>
+            </div>
+            </div>
+            <form action="">
+              <div class="container-1">
+                <div>
+                    <label for="update-img">Update image</label>
+                    <button type="submit" name="delete">Delete</button>
+                    <input type="file" name="update-img" id="update-img">
+                </div>
+                <div>
+                    <label for="fullname">Full Name :</label>
+                    <input type="text" id="fullname" placeholder="" value="Abdessamad AITHAMOU"><br>
+                </div>
+              </div>
+              <div class="container-2">
+                  <div>
+                    <label for="Email">Email :</label>
+                    <input type="email" id="Email" placeholder value="abdessamadaithamou@gmail.com">
+                  </div>
+                  <div>
+                    <label for="tele">Tele number :</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value="+212684730074"><br>
+                  </div>
+              </div>
+                <div class="container-3">
+                  <div>
+                      <label for="password">New passsword :</label>
+                      <input type="password" class="new-password" value="abdessamad0272">
+                  </div>
+                  <div>
+                      <label for="c-password">Confirme password :</label>
+                      <input type="password" value="abdessamad0272">
+                  </div>
+              </div>
+              <button type="submit" class="save-changes">Save Changes</button>
+            </form>
+             
+          </div>
+     </div>
 
 
 
-    <div class="p-visit">
-      <h1>Procedure de Agence</h1>
-      <h2>Rendez-Vous :</h2>
-      <p>La première étape est de prendre rendez-vous avec votre agent immobilier laforain immobilier de Marrakech. Pendant votre visite, assurez vous bien, que tous les critères que vous avez demandés soient présents. Accordez de l’importance aussi au quartier, renseignez vous sur les distances pour aller sur votre lieu de travail, où sont les écoles, quels sont les commerces de proximité. Faites bien attention à ce qu’un commerce bruyant ne soit pas juste à côté. Si vous n’êtes pas sûr, prenez le temps de revenir visiter une deuxième fois. Devenir propriétaire d’un logement, n’est pas chose simple, il est impératif d’explorer votre future habitation dans le moindre détail. Pas de panique, pour vous y aider, nous avons listé pour vous les informations à obtenir, les questions à poser et les points à définir. Nous nous répétons, mais il vaut mieux bien prendre le temps de visiter votre logement ce qui vous donnera l’envie de trouver la perle rare.</p>
-      <div class="visit-center">
-        <img class="office-img" src="../images/consoltaions.jpg" alt="office-img">
-        <p>Posez vous les bonnes questions, comment est la façade de l’immeuble, la maison est elle en bon état, si ce n’est pas un projet neuf, à quand remonte le dernier ravalement de la façade. Toutes ces questions doivent vous traverser l’esprit. Quel est l’état de la toiture, à quand remontent les derniers travaux, examinez la charpente, les fondations, le hall d’entrée, les escaliers, l’ascenseur, le parking, la cave, les espaces extérieurs.</p>
-      </div>
-      <h2>Etre proche de nous :</h2>
-      <p>Tout doit y passer ! De la superficie à l’exposition, du nombre de pièces à leur disposition, en étoile, en enfilade, la qualité des fermetures, des fenêtres, voir même de la description faites dans les annonces du site laforain-immobilier.com. Et les murs porteurs vous y avez pensé ? Les murs, les plafonds, les cloisons, si vous avez besoin d’un devis pour effectuer des travaux, n’hésitez pas à nous contacter. Il faut regarder la cuisine, la salle de bain, les traces de fuites, dans quels états sont les lavabos, les baignoires, regarder la configuration de votre cuisine, si elle est en L en U ou en I, comment sont les conduites et les robinetteries, si les joints ont été changés et quand ? Si vos arrivées électriques sont entretenues par un passage régulier d’un électricien. A combien s’élèvent les factures d’eau et d’électricité ? Renseignez vous aussi sur l’isolation, du double vitrage à l’isolation des murs, les revêtements phoniques et thermiques, le système de chauffage utilisé. Tout ce qui peut vous permettre de vous poser les bonnes questions est écrit dans ce guide de l’immobilier que laforain immobilier vous présente.</p>
-      <a href="../index.html" >Acceuil <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    
-    
-    
-    
 
 
-
-
-
-
-
-
-
-
-    
-
-<!--           footer links              -->
+<<!--           footer links              -->
 
 
 <footer class="footer-links">
@@ -188,19 +211,11 @@
     </p>
   </div>
 </footer>
-<script src="logement.js"></script>
+
 <script src="../js/script.js"></script>
 <script src="../js/boubker1.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
