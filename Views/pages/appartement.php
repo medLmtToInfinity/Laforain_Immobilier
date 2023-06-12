@@ -106,7 +106,7 @@
         </div>
         <nav class="navbar">
           <ul class="menu">
-            <li><a href="../index.html">Accueil</a></li>
+            <li class="current"><a href="../index.html">Accueil</a></li>
             <li>
               <a href="../products.html">VENTE</a>
               <i class="fas fa-caret-down caret"></i>
@@ -130,8 +130,10 @@
             <li><a href="../products.html">LOCATION SAISONIERE</a></li>
             <li><a href="#">CREDIT</a></li>
             <li><a href="contact-us.html">NOUS CONTACTER</a></li>
-            <!-- <li><a href="#">A PROPOS</a></li>
-                    <li><a href="#">SIGN IN</a></li>
+            <li><a href="#">A PROPOS</a></li>
+            <li><a href="#">SIGN IN</a></li>
+            <!-- 
+                    
                     <li><a href="#">SIGN UP</a></li> -->
           </ul>
         </nav>
@@ -157,15 +159,18 @@
       </div>
       <div class="contact-card">
         <h3>'. $result['price'] . ' MAD</h3>
-        <div class="btns">
-          <button class="btn"><i class="fa-solid fa-phone"></i> call</button>
-          <button class="btn">
-            <i class="fa-solid fa-envelope"></i> email
+        <div class="btns">'; ?>
+          <button class="slider-btn" onclick="startCall('+212648780353')">
+            <i class="fa-solid fa-phone"></i> call
           </button>
-          <button class="btn">
-            <i class="fa-brands fa-whatsapp"></i> whatsapp
+          <button class="slider-btn" onclick="sendEmail('mohammed.lammarti@gmail.com')">
+            <i class="fa-solid fa-envelope"></i>email
           </button>
-        </div>
+          <button class="slider-btn" onclick="openWhatsApp('+212648780353')">
+            <i class="fa-brands fa-whatsapp"></i>whatsapp
+          </button>
+      <?php
+      echo '</div>
       </div>
       <div class="appart-text">
         <div class="description">

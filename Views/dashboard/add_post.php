@@ -20,7 +20,8 @@
         $bathrooms       = $_POST['bathrooms'];
         $city_id = $_POST['city'];
         $state       = $_POST['state'];
-        $sell_rent       = $_POST['s_r'];
+        $sell_rent       = $_POST['select_type'];
+
 
         $stmt       = $dbConnection->prepare("INSERT INTO posts (cat_id, city_id, Price, title, locat, dscrption, stat, rentOrSell) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([$type, $city_id, $price, $title, $locat, $dscrcption, $state, $sell_rent]);
@@ -54,6 +55,7 @@
             }
         }
     }
+
 ?>
 
 
@@ -67,7 +69,7 @@
         <div class="add-post-flex">
         <div class="add-post-left">
             <label for="type">Type :</label>
-            <select class="select-cat" name="select">
+            <select class="select-cat" name="select" required>
             <?php
                 $query = "SELECT * FROM categories";
                 $result = $dbConnection->query($query);
@@ -82,11 +84,11 @@
             </select>
 
             <!-- <input type="text" id="type" name="type" > -->
-            <label for="price">Prix :</label>
-            <input type="number" id="price" name="price" value="" >
+            <label for="price">Prix :<span class="red-star">*</span></label>
+            <input type="number" id="price" name="price" value="" required>
             
-            <label for="location">Emplacement :</label>
-            <input type="text" id="location" name="location" value="" >
+            <label for="location">Emplacement :<span class="red-star">*</span></label>
+            <input type="text" id="location" name="location" value="" required>
             
             <label for="description">Description :</label>
             <input type="text" id="description" name="description" rows="1" value="" ></textarea>
@@ -99,11 +101,11 @@
         </div>
         <div class="add-post-right">
 
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value="" >
+            <label for="title">Title:<span class="red-star">*</span></label>
+            <input type="text" id="title" name="title" value="" required>
 
-            <label for="city">Ville:</label>
-            <select class="select-cat" name="city">
+            <label for="city">Ville:<span class="red-star">*</span></label>
+            <select class="select-cat" name="city" required>
             <?php
                 $query = "SELECT * FROM cities";
                 $result = $dbConnection->query($query);
@@ -116,16 +118,23 @@
             ?>
             </select>
 
-            <label for="state">State:</label>
-            <input type="text" id="state" name="state" value="" >
+            <label for="state">State:<span class="red-star">*</span></label>
+            <select class="select-cat" name="state" required>
+                <option value='available'>Disponible</option>;
+                <option value='unavailable'>Non disponible</option>;
+            </select>
 
-            <label for="s_r">Is this property fo sell or rent:</label>
-            <input type="text" id="s_r" name="s_r" value="" >
+            <label for="s_r">Is this property fo sell or rent:<span class="red-star">*</span></label>
+            <select class="select-cat" name="select_type" required>
+                <option value='Rent'>Rent</option>;
+                <option value='Sell'>Sell</option>;
+                <option value='RentSais'>Location saisonière</option>;
+            </select>
 
             <label for="area">Superficie :</label>
             <input type="number" id="area" name="area" value="" >
             
-            <label for="photos">Photos :</label>
+            <label for="photos">Photos :<span class="red-star">*</span></label>
             <input type="file" id="photos" name="photos[]" accept="image/*" value="" multiple required>
         </div>
         </div>
