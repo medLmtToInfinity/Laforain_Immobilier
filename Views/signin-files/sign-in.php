@@ -1,3 +1,7 @@
+<?php  include '../dashboard/database.php';
+       session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
   <link rel="stylesheet" href="../css/home-header.css" />
   <link rel="stylesheet" href="../css/home-footer.css" />
   <link rel="stylesheet" href="../css/black-header.css" />
-  <link rel="stylesheet" href="sign-up.css">
+  <link rel="stylesheet" href="sign-in.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>sign in</title>
 </head>
@@ -22,13 +26,13 @@
         <!-- <div class="overlay"></div> -->
         <div class="navigation">
           <div class="header-logo">
-            <a href="index.html">
+            <a href="../index.php">
               <img width="150" src="../images/LOGO WHITE.png" alt="logo" />
             </a>
           </div>
           <nav class="navbar">
             <ul class="menu">
-              <li class="current"><a href="../index.php">Accueil</a></li>
+              <li ><a href="../index.php">Accueil</a></li>
               <li>
                 <a href="products.html">VENTE</a>
                 <i class="fas fa-caret-down caret"></i>
@@ -54,30 +58,34 @@
                 </ul>
               </li>
               <li><a href="#">LOCATION SAISONIERE</a></li>
-              <li><a href="../samad-files/credit.php">CREDIT</a></li>
-              <li><a href="contact-us.html">NOUS CONTACTER</a></li>
-              <!-- <li><a href="#">A PROPOS</a></li> -->
-            <!-- <li><a href="#">SIGN IN</a></li>
-            <li><a href="#">SIGN UP</a></li>  -->
+              <li><a href="../credit-files/credit.php">CREDIT</a></li>
+              <li><a href="../contact-us.html">NOUS CONTACTER</a></li>
+               <!-- <li><a href="#">A PROPOS</a></li> --> 
+            <li class="current"><a href="#">SIGN IN</a></li>
+            <!-- <li ><a href="#">SIGN UP</a></li>  -->
             </ul>
           </nav>
         </div>
       </header>
     </div>
 
-
-
-    <div class="signup-container hello">
+   <div class="signin-container">
      <section class="left-side">
        <img src="../images/laforain_logo.png" alt="logo">
-       <h1>Create An Account</h1>
-       <p class="welcom">Welcome to Laforain-Immobilier</p>
-       <form action="">
-        <div class="div-name">
-            <label for="name">Full Name</label><br>
-            <input type="text" name="name" id="name" placeholder="Enter your Full Name" required><br>
-            <i class="fa-solid fa-user"></i>
-        </div>
+       <h2>Login to Your Account</h2>
+       <p class="alert">
+         <?=isset($_SESSION['error']) ?
+          $_SESSION['error'] : '';
+            ?>
+   </p>
+   <?php  if(isset($_SESSION['error']))
+       {
+        
+        unset($_SESSION['error']);
+        
+      } ?>
+       <p class="welcom">We are really happy to see you again!</p>
+       <form action="signin-process.php" method="post" novalidate>
         <div class="div-email">
             <label for="email">Email</label><br>
             <input type="text" name="email" id="email" placeholder="Enter your email" required><br>
@@ -85,34 +93,28 @@
         </div>
         <div class="div-password">
             <label for="password">Password</label><br>
-            <input type="password" class="password" name="password" id="password" placeholder="Enter your password" maxlength="16" required><br>
-        </div>
-        <div class="div-c-password">
-            <label for="c-password">Confirm Password</label><br>
-            <input type="password" class="password" name="c-password" id="c-password" placeholder="Enter Confirm password" maxlength="16" required><br>
+            <input type="password" class="password" name="password" id="password" placeholder="Enter your password" required><br>
             <div class="eye"><i class="fa-solid fa-eye-slash"></i></div>
             <div class="hidden-eye"><i class="fa-solid fa-eye"></i></div>
         </div>
-        <div class="separator">
-          <span>Or</span>
+        <div class="for-check">
+            <label for=""> <input type="checkbox"> Remember me</label>
+            <a href="../Account/forget-password.php">Forgot Password</a>
         </div>
-        
         <button type="submit" id="sign-in">Sign in</button><br>
         <button type="submit" id="google-sign-in"><i class="fa-brands fa-google"></i> Sign in with Google</button>
-       
+        <p class="sign-up">Don't have an Account? <a href="../signup-files/sign-up.php">Sign Up</a></p>
       </form>
     </section>
     <section class="right-side hidden">
       <img src="../images/villa1.jpeg" alt="left-img">
     </section>
-   </div> 
-
-   
-
-<!--           footer links              -->
+   </div>
 
 
-<footer class="footer-links">
+
+   <!--           footer links              -->
+ <footer class="footer-links">
       <div class="footer-container">
         <a href="#container"
           ><img
@@ -127,7 +129,7 @@
             <li><a href="#">Services</a></li>
             <li><a href="#">Terms and Conditions</a></li>
             <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li><a href="../contact-us.html">Contact us</a></li>
           </ul>
           <p class="copyright1">
             &copy;<span class="date">2020-2023</span> Laforain Immobilier
@@ -168,6 +170,6 @@
       </div>
     </footer>
    <script src="../js/lamarti.js" defer></script>
-   <script src="sign-up.js"></script>
+   <script src="sign-in.js"></script>
 </body>
 </html>

@@ -1,0 +1,96 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.profile-container{
+  min-width: 630px;
+  width: 90%;
+  height: 100vh;
+  padding: 1rem;
+  color: black;
+  margin: 0 auto;
+}
+
+.profile-container h1{
+  text-align: center;
+}
+
+
+
+.img-container{
+ 
+  margin: 2rem;
+}
+.img-container img{
+  border-radius: 50%;
+  width: 100px;
+}
+.img-container h2{
+  text-align: center;
+}
+.container-1,
+.container-2,
+.container-3{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-2 div,
+.container-3 div,
+.container-1 div{
+  width: 45%;
+  margin:1rem 2rem;
+}
+.container-1 button{
+  background-color:#ff3232;
+  color: white;
+  border: none;
+  padding: 4px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.container-2 label,
+.container-3 label,
+.container-1 label{
+font-size: 1rempx;
+font-weight: 500;
+color: black;
+}
+
+
+#fullname,
+.container-3 input,
+.container-2 input{
+   outline:none;
+   border: 1px solid #ff3232;
+   width: 16rem;
+   height: 1.4rem;
+   border-radius: 10px;
+   padding: .8rem;
+}
+
+#fullname:hover,
+.container-3 input:hover,
+.container-2 input:hover{
+   outline:#ff3232;
+   border: 1.5px solid #ff3232;
+
+}
+
+
+.save-changes{
+  background-color: #ff3232;
+  color: white;
+  width: 8rem;
+  border: none;
+  padding: 6px;
+  border-radius: 10px;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}

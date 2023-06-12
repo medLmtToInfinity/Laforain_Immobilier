@@ -67,12 +67,14 @@ $tables = [
         username VARCHAR(255),
         passwd VARCHAR(255),
         email VARCHAR(255),
-        tel VARCHAR(20),
-        whatsapp VARCHAR(20),
-        profile_pic VARCHAR(255),
-        admn INT,
-        code INT,
-        status VARCHAR(255)
+        tel VARCHAR(30),
+        whatsapp VARCHAR(30),
+        liked_post INT DEFAULT 0,
+        profile_pic VARCHAR(255) DEFAULT 'user-d.jpg'
+
+    );", "CREATE TABLE IF NOT EXISTS news_email (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        email VARCHAR(255)
     );", "CREATE TABLE IF NOT EXISTS liked_post (
         id INT AUTO_INCREMENT PRIMARY KEY,
         post_id INT,
@@ -257,7 +259,28 @@ foreach($imgsData as $row){
 }
 
 
+$users=[
+    ['1','boubker Aouabe',password_hash('boubker', PASSWORD_DEFAULT),'boubkeraouabe@gmail.com', '+212683746402','+212683746402','user1.png'],
+    ['2','Abdessamad Aithamou',password_hash('samad1234', PASSWORD_DEFAULT),'abdessamadaithamou@gmail.com', '+212683746402','+212656840032','user2.png'],
+    ['3','sara majid',password_hash('sara456', PASSWORD_DEFAULT),'saramajid@gmail.com', '+212683746400','+212683746400','user3.png'],
+    ['4','hamza hrimel',password_hash('hamza123', PASSWORD_DEFAULT),'hrimel.hamza@gmail.com', '+212689046409','+212689046409','user4.png'],
+    ['5','matrab mohamed',password_hash('matrab123', PASSWORD_DEFAULT),'lamarti_mohamed@gmail.com', '+212683446402','+212683740802','user-d.jpg'],
+    ['6','Lamarti Mohamed',password_hash('lamartimoha', PASSWORD_DEFAULT),'lamarti_mohamed@gmail.com', '+212683746402','+212683746402','user1.png'],
+    ['7','Locas mario',password_hash('mario345', PASSWORD_DEFAULT),'locas_mario@gmail.com', '+212453746402','+212293746402','user-d.jpg']
+    
+   
+];
 
+
+$insertionUsersQuery = "INSERT INTO users (id,username, passwd, email, tel, whatsapp, profile_pic)
+VALUES
+    (?, ?, ? , ?, ? ,? ,?);";
+
+$stmt = $dbConnection->prepare($insertionUsersQuery);
+
+foreach($users as $row){
+    $stmt->execute($row);
+}
 
 //display images:
 

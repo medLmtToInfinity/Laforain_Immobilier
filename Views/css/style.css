@@ -736,7 +736,20 @@ box-shadow: 4px 3px  10px rgba(0, 0, 0, 0.4);
  transition: all .3s ease;
  
 }
+.imgs-container .new-text {
+  color: rgb(255, 255, 255);
+  background-color: #ff3232;  /*  #e90d7a */
+  display: block;
+  width: 5rem;
+  text-align: center;
+  border-bottom-right-radius : 15%;
+  position: absolute;
+  z-index: 10;
+  left: 0rem;
+  top: 0rem;
+  
 
+}
 .project button:hover {
   background: rgba(0, 0, 0, .7);
   transform: scale(1.05);
