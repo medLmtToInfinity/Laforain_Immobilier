@@ -30,11 +30,11 @@ const resizeWin = () => {
       <i class="fas fa-chevron-down arrow" style="display: none;"></i>
     </div>
     <div class="post-data">
-      <a href="add-post.php" class="icon-hover">
+      <a href="add_post.php" class="icon-hover">
       <i class="fas fa-plus"></i>
       <div class="icon-title">Ajouter un post</div>
       </a>
-      <a href="#view-all-post" class="icon-hover">
+      <a href="view_posts.php" class="icon-hover">
       <i class="fas fa-eye"></i>
       <div class="icon-title">Voir Tout Les Posts</div>
       </a>
@@ -56,8 +56,8 @@ const resizeWin = () => {
       <i class="fas fa-chevron-down arrow"></i>
     </div>
     <div class="post-data">
-      <a href="add-post.php">Ajouter Un post</a>
-      <a href="#view-all-post">Voir tous les posts</a>
+      <a href="add_post.php">Ajouter Un post</a>
+      <a href="view_posts.php">Voir tous les posts</a>
     </div>
 `;
     document.querySelector(".see-all").innerHTML = "Voir Tout";

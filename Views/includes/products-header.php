@@ -33,6 +33,7 @@
     />
     <link rel="stylesheet" href="css/home-header.css" />
     <link rel="stylesheet" href="css/black-header.css" />
+    <link rel="stylesheet" href="../css/black-header.css" />
     <link rel="stylesheet" href="css/products.css" />
     <link rel="stylesheet" href="css/home-footer.css" />
     <script src="js/lamarti.js" defer></script>
@@ -77,7 +78,7 @@
                     $city_sell_query = "SELECT DISTINCT p.city_id, c.city_name FROM posts p JOIN cities c ON p.city_id = c.id WHERE p.rentOrSell = 'sell'";
                     $city_result = $conn->query($city_sell_query);
                     while($city_row = $city_result->fetch_assoc()) {
-                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city_name"] . "\">". $city_row["city"] ."</a></li>";
+                      echo "<li><a href=\"products.php?type=sell" . "&city=" . $city_row["city_name"] . "\">". $city_row["city_name"] ."</a></li>";
                     }
                   ?>
                   <!-- <li><a href="#">Marakkech</a></li>
@@ -99,7 +100,7 @@
                     $city_sell_query = "SELECT DISTINCT p.city_id, c.city_name FROM posts p JOIN cities c ON p.city_id = c.id WHERE p.rentOrSell = 'rent'";
                     $city_result = $conn->query($city_sell_query);
                     while($city_row = $city_result->fetch_assoc()) {
-                      echo "<li><a href=\"products.php?type=rent" . "&city=" . $city_row["city"] . "\">".$city_row["city"]."</a></li>";
+                      echo "<li><a href=\"products.php?type=rent" . "&city=" . $city_row["city_name"] . "\">".$city_row["city_name"]."</a></li>";
                     }
                   ?>
                 </ul>
@@ -112,8 +113,8 @@
               ?>
               >
               <a href="products.php?type=rentSais">LOCATION SAISONIERE</a></li>
-              <li><a href="../samad-files/credit.php">CREDIT</a></li>
-              <li><a href="contact-us.php">NOUS CONTACTER</a></li>
+              <li><a href="samad-files/credit.php">CREDIT</a></li>
+              <li><a href="samad-files/contact-us.html">NOUS CONTACTER</a></li>
               <li><a href="#">A PROPOS</a></li>
             <li><a href="#">SIGN IN</a></li>
             <!-- <li><a href="#">SIGN UP</a></li> -->

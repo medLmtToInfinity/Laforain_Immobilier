@@ -55,41 +55,49 @@
           <!-- Template -->
           <?php
             switch(sizeof($_GET)) {
-              case 1: $query = "SELECT * FROM posts WHERE rentOrSell = '$rentOrSell'";
+              case 1: $query = "
+              SELECT p.*, c.city_name, cat.cat_name
+              FROM posts p
+              JOIN cities c ON p.city_id = c.id
+              JOIN categories cat ON p.cat_id = cat.id
+              WHERE p.rentOrSell = '$rentOrSell'
+              ";
                       if(isset($_POST["search"])) {
                         $search = $_POST["search"];
-                        $query.=" AND (title LIKE '%$search%' OR locat LIKE '%$search%' OR dscrption LIKE '%$search%')";
+                        $query.=" AND (cat.cat_name LIKE '%$search%' OR p.title LIKE '%$search%' OR p.locat LIKE '%$search%' OR p.dscrption LIKE '%$search%' OR c.city_name LIKE '%$search%')";
                       }
                       break;
               case 2: 
                   if(isset($_GET["city"])){
-                    $query = "SELECT p.*, c.city_name FROM posts p JOIN cities c ON p.city_id=c.id WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$city'";
+                    $query = "SELECT p.*, c.city_name, cat.cat_name FROM posts p JOIN cities c ON p.city_id=c.id JOIN categories cat ON p.cat_id = cat.id WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$city'";
                   } else {
                     $sort = $_GET["sort"];
                     switch($sort) {
                       case 'recent': $query = "
-                      SELECT p.*, c.city_name
+                      SELECT p.*, c.city_name, cat.cat_name
                       FROM posts p
                       JOIN cities c ON p.city_id = c.id
+                      JOIN categories cat ON p.cat_id = cat.id
                       WHERE p.rentOrSell = '$rentOrSell'
                       ORDER BY p.id DESC
                       ";
                                       break;
                       case 'popular': $query = "
-                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name
+                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name, cat.cat_name
                       FROM posts p
                       LEFT JOIN (
                           SELECT post_id, COUNT(*) AS total_likes
-                          FROM liked_posts
+                          FROM liked_post
                           GROUP BY post_id
                       ) l ON p.id = l.post_id
                       JOIN cities c ON p.city_id = c.id
+                      JOIN categories cat ON p.cat_id = cat.id
                       WHERE p.rentOrSell='$rentOrSell'
                       ORDER BY l.total_likes DESC
                       ";
                                       break;
                       case 'priceDown': $query = "
-                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name
+                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name, cat.cat_name
                       FROM posts p
                       LEFT JOIN (
                           SELECT post_id, COUNT(*) AS total_likes
@@ -97,12 +105,13 @@
                           GROUP BY post_id
                       ) l ON p.id = l.post_id
                       JOIN cities c ON p.city_id = c.id
+                      JOIN categories cat ON p.cat_id = cat.id
                       WHERE p.rentOrSell = '$rentOrSell'
                       ORDER BY p.price
                       ";
                                       break;
                       case 'priceUp': $query = "
-                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name
+                      SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name, cat_name
                       FROM posts p
                       LEFT JOIN (
                           SELECT post_id, COUNT(*) AS total_likes
@@ -110,6 +119,7 @@
                           GROUP BY post_id
                       ) l ON p.id = l.post_id
                       JOIN cities c ON p.city_id = c.id
+                      JOIN categories cat ON p.cat_id = cat.id
                       WHERE p.rentOrSell = '$rentOrSell'
                       ORDER BY p.price DESC
                       ";
@@ -123,15 +133,16 @@
                   $giv_city = $_GET["city"];
                   switch($sort) {
                     case 'recent': $query = "
-                    SELECT p.*, c.city_name
+                    SELECT p.*, c.city_name, cat.cat_name
                     FROM posts p
                     JOIN cities c ON p.city_id = c.id
+                    JOIN categories cat ON p.cat_id = cat.id
                     WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$giv_city'
                     ORDER BY p.id DESC
           ";
                                     break;
                     case 'popular': $query = "
-                    SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name
+                    SELECT p.*, IFNULL(l.total_likes, 0) AS total_likes, c.city_name, cat.cat_name
                     FROM posts p
                     LEFT JOIN (
                         SELECT post_id, COUNT(*) AS total_likes
@@ -139,22 +150,25 @@
                         GROUP BY post_id
                     ) l ON p.id = l.post_id
                     JOIN cities c ON p.city_id = c.id
+                    JOIN categories cat ON p.cat_id = cat.id
                     WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$giv_city'
                     ORDER BY total_likes DESC
                                             ";
                                     break;
                     case 'priceDown': $query = "
-                    SELECT p.*, c.city_name
+                    SELECT p.*, c.city_name, cat.cat_name
                     FROM posts p
                     JOIN cities c ON p.city_id = c.id
+                    JOIN categories cat ON p.cat_id = cat.id
                     WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$giv_city'
                     ORDER BY p.price
                     ";
                                     break;
                     case 'priceUp': $query = "
-                    SELECT p.*, c.city_name
+                    SELECT p.*, c.city_name, cat.cat_name
                     FROM posts p
                     JOIN cities c ON p.city_id = c.id
+                    JOIN categories cat ON p.cat_id = cat.id
                     WHERE p.rentOrSell = '$rentOrSell' AND c.city_name = '$giv_city'
                     ORDER BY p.price DESC
                     ";
@@ -164,12 +178,13 @@
                 } else {
                   $search = $_GET["search"];
                   $query = "
-                              SELECT p.*, c.city_name
+                              SELECT p.*, c.city_name, cat.cat_name
                               FROM posts p
                               JOIN cities c ON p.city_id = c.id
+                              JOIN categories cat ON p.cat_id = cat.id
                               WHERE p.rentOrSell = '$rentOrSell'
                               AND (c.city_name LIKE '%$search%'
-                              OR p.title LIKE '%$search%'
+                              OR cat.cat_name LIKE '%$search%' OR p.title LIKE '%$search%'
                               OR p.dscrption LIKE '%$search%'
                               OR p.locat LIKE '%$search%')
                             ";
@@ -187,13 +202,15 @@
                   WHERE p.rentOrSell = '$rentOrSell'
                   AND p.cat_id = $typeProp
                   AND (c.city_name LIKE '%$search%'
-                  OR p.title LIKE '%$search%'
+                  OR cat.cat_name LIKE '%$search%' OR p.title LIKE '%$search%'
                   OR p.dscrption LIKE '%$search%'
                   OR p.locat LIKE '%$search%')
                   ";
                   break;
             }
                 $result = $conn->query($query);
+                // echo $query;
+                if($result->num_rows){
                 while($row = $result->fetch_assoc()){
                   $post_id = $row["id"];
                   $post_price = $row["price"];
@@ -243,7 +260,7 @@
                     </div>
                     <div class=\"product-position\">
                       <i class=\"fas fa-location-dot\"></i>
-                      <a href=\"$post_loc_url\" class=\"position-link\">$post_loc, $post_city</a>
+                      <a href=\"pages/appartement.php?id=$post_id\" class=\"position-link\">$post_loc, $post_city</a>
                     </div>
                     <div class=\"HeartAnimation\"></div>
                   </div>
@@ -251,6 +268,14 @@
                   </div>
                     ";
                   }
+                }else {
+                  echo "
+                  <div style='background-color: #f2f2f2; padding: 10px; text-align: center; width: 70%; margin: 0 auto; border-radius: 5px;'>
+                  <h3 style='color: #ff3232;'>Resultat introuvable</h3>
+                  <p style='color: #000;'>Aucun résultat n'a été trouvé.</p>
+                </div>
+                  ";
+                }
                   ?>
           
         </section>
@@ -275,7 +300,12 @@
               <h3>Villes</h3>
             </div>
             <?php 
-              $city_query = "SELECT DISTINCT p.city_id, c.city_name FROM posts JOIN cities ON p.city_id = c.id WHERE p.rentOrSell='$rentOrSell'";
+              $city_query = "
+              SELECT DISTINCT p.city_id, p.rentOrSell, c.city_name
+              FROM posts p
+              JOIN cities c ON p.city_id = c.id
+              WHERE p.rentOrSell = '$rentOrSell'
+              ";
               $city_result = $conn->query($city_query); 
               while($city_row = $city_result->fetch_assoc()) {
                 if(isset($_GET["sort"])){

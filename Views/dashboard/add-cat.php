@@ -8,7 +8,7 @@
         $conn->query($cat_query);
     }
     if($post_city !== "") {
-        $city_query = "INSERT INTO city(city_name) VALUES ('$post_city');";
+        $city_query = "INSERT INTO cities(city_name) VALUES ('$post_city');";
         $conn->query($city_query);
     }
     header("Location: index.php");

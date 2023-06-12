@@ -27,26 +27,41 @@ $tables = [
     "CREATE TABLE IF NOT EXISTS categories (
         id INT AUTO_INCREMENT PRIMARY KEY,
         cat_name VARCHAR(255)
+    );", "CREATE TABLE IF NOT EXISTS fiche_technique (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        area DECIMAL(10, 2),
+        nbr_chmbr INT,
+        bnr_patio INT,
+        bedrooms INT,
+        bathrooms INT,
+        piscine VARCHAR(255),
+        cheminee VARCHAR(255),
+        hammam VARCHAR(255),
+        sauna VARCHAR(255),
+        etage INT
+    );", "CREATE TABLE IF NOT EXISTS cities (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        city_name VARCHAR(255)
     );", "CREATE TABLE IF NOT EXISTS posts (
         id INT AUTO_INCREMENT PRIMARY KEY,
         cat_id INT,
+        info_id INT DEFAULT NULL,
+        city_id INT,
         price DECIMAL(10, 2),
         title VARCHAR(255),
         locat VARCHAR(255),
-        bathrooms INT,
-        bedrooms INT,
-        area DECIMAL(10, 2),
-        city VARCHAR(255),
+        locat_url VARCHAR(255),
         dscrption TEXT,
         stat VARCHAR(255),
-        Nlikes INT DEFAULT 0,
         rentOrSell VARCHAR(10),
-        FOREIGN KEY (cat_id) REFERENCES categories(id)
+        FOREIGN KEY (cat_id) REFERENCES categories(id),
+        FOREIGN KEY (info_id) REFERENCES fiche_technique(id),
+        FOREIGN KEY (city_id) REFERENCES cities(id)
     );", "CREATE TABLE IF NOT EXISTS post_imgs (
         id INT AUTO_INCREMENT PRIMARY KEY,
         post_id INT,
         img_name VARCHAR(255),
-        FOREIGN KEY (post_id) REFERENCES posts(id)
+        FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
     );", "CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(255),
@@ -54,9 +69,19 @@ $tables = [
         email VARCHAR(255),
         tel VARCHAR(20),
         whatsapp VARCHAR(20),
-        liked_post INT DEFAULT 0,
         profile_pic VARCHAR(255),
-        FOREIGN KEY (liked_post) REFERENCES posts(id)
+        admin INT,
+        code INT
+    );", "CREATE TABLE IF NOT EXISTS liked_post (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        post_id INT,
+        user_id INT,
+        FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );", "CREATE TABLE IF NOT EXISTS visits (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        count INT,
+        date DATE
     );"];
 
 foreach ($tables as $table){
@@ -67,7 +92,7 @@ foreach ($tables as $table){
 
 
 // Fermer la connexion
-//$conn->close();
+// $conn->close();
 
 
 //Create database connection 
@@ -81,37 +106,115 @@ try {
 
 //see if tables are already fill of values so we do not repeat inserting same data:
 $rows = $dbConnection->prepare("SELECT id FROM posts");
-
 $rows->execute();
+
 if($rows->rowCount() == 0){
-    $cat_query = "INSERT INTO categories (cat_name) VALUES (?)";
+
     $cat_data = [
-        ["RIAD & MAISONS D'HÔTES"],['VILLAS & PALAIS'],['APPARTEMENTS & DUPLEX'],['TERRAINS & FERMES'],['PROGRAMMES NEUFS'],['LOCAL COMMERCIAL']
+        ["RIAD & MAISONS D'HÔTES"],
+        ['VILLAS & PALAIS'],
+        ['APPARTEMENTS & DUPLEX'],
+        ['TERRAINS & FERMES'],
+        ['PROGRAMMES NEUFS'],
+        ['LOCAL COMMERCIAL']
     ];
+
+    $cat_query = "INSERT INTO categories (cat_name) VALUES (?)";
     $result = $dbConnection->prepare($cat_query);
     
     foreach($cat_data as $row){
         $result->execute($row);
     }
 
+    $infosData = [
+        [120, 3, 1, 4, 2, 1, 0, 0, 1, 2],
+        [80, 2, 0, 2, 1, 0, 1, 0, 0, 3],
+        [150, 4, 0, 5, 3, 1, 1, 1, 1, 1],
+        [200, 5, 1, 6, 4, 1, 1, 1, 1, 4],
+        [90, 2, 0, 2, 1, 0, 0, 0, 0, 5],
+        [110, 3, 0, 3, 2, 1, 1, 0, 0, 2],
+        [160, 4, 1, 4, 3, 1, 0, 1, 0, 6],
+        [75, 2, 0, 2, 1, 0, 1, 0, 0, 3],
+        [130, 3, 1, 3, 2, 1, 1, 0, 1, 4],
+        [100, 2, 0, 2, 1, 0, 0, 0, 0, 2],
+        [180, 5, 1, 5, 3, 1, 1, 1, 1, 5],
+        [95, 2, 0, 2, 1, 0, 0, 0, 0, 1],
+        [140, 3, 1, 4, 2, 1, 0, 1, 0, 3]
+    ];
+    
+    $insertionInfosQuery = "INSERT INTO fiche_technique (area, nbr_chmbr, bnr_patio, bedrooms, bathrooms,  piscine,  cheminee, hammam, sauna, etage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    $stmt = $dbConnection->prepare($insertionInfosQuery);
+    
+    foreach($infosData as $row){
+        $stmt->execute($row);
+    }
 
-$postsData = [
-    [1, '250000', 'Beautiful Home', '123 Main St', '3', '4', '2000', 'New York', 'Spacious house with a backyard', 'available', 'Sell'],
-    [2, '300000', 'Beautiful riad', '212 Main St', '3', '4', '2000', 'New York', 'Spacious riad with a backyard', 'not available', 'Sell'],
-    [4, '240000', 'Beautiful Villa', 'Sidi Baba', '3', '4', '2000', 'Meknes', 'Spacious house with a backyard', 'available', 'RentSais'],
-    [2, '20000', 'Beautiful riad', '212 Main St', '3', '4', '2000', 'New York', 'Spacious riad with a backyard', 'not available', 'Sell'],
-    [3, '1500', 'Cozy Apartment', '456 Elm St', '1', '2', '800', 'Los Angeles', 'Well-maintained apartment in a great location', 'not available', 'Rent'],
-    [2, '200000', 'Luxury Condo', '789 Pine St', '2', '3', '1200', 'Chicago', 'Modern condo with great amenities', 'available', 'Sell'],
-    [1, '350000', 'Spacious Family Home', '555 Oak St', '4', '5', '3000', 'Dallas', 'Perfect home for a growing family', 'available', 'Sell'],
-    [3, '1200', 'Cozy Studio', '321 Maple St', '1', '1', '500', 'San Francisco', 'Charming studio in the heart of the city', 'not available', 'Rent'],
-    [1, '500000', 'Stunning Waterfront Property', '888 Beach Rd', '3', '4', '2500', 'Miami', 'Magnificent house with ocean views', 'not available', 'Sell'],
-    [3, '1800', 'Modern Loft', '222 Walnut St', '2', '1', '900', 'Seattle', 'Contemporary loft in a trendy neighborhood', 'available', 'Rent'],
-    [2, '280000', 'Charming Townhouse', '444 Cherry St', '2', '3', '1500', 'Boston', 'Quaint townhouse with historical charm', 'not available', 'Sell'],
-    [1, '450000', 'Elegant Colonial Home', '777 Cedar St', '3', '4', '2800', 'Philadelphia', 'Classic colonial-style home with a large yard', 'available', 'Sell'],
-    [3, '1500', 'Convenient City Living', '999 Elm St', '1', '2', '700', 'New Orleans', 'Comfortable apartment in a vibrant neighborhood', 'not available', 'Rent']
+    $visitData = [
+        [5391, '2023-06-01'],
+        [8391, '2023-06-02'],
+        [12391, '2023-06-03'],
+        [3391, '2023-06-04'],
+        [6391, '2023-06-05'],
+        [9391, '2023-06-06'],
+        [15391, '2023-06-07'],
+        [7391, '2023-06-08'],
+        [10391, '2023-06-09'],
+        [4391, '2023-06-10'],
+        [3125, '2023-06-11'],
+        [2090, '2023-06-12']
     ];
 
-$insertionPostsQuery = "INSERT INTO posts (cat_id, Price, title, locat, bathrooms, bedrooms, area, city, dscrption, stat, rentOrSell) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $insertionVisitsQuery = "INSERT INTO visits (count, date) VALUES (?, ?)";
+    
+    $stmt = $dbConnection->prepare($insertionVisitsQuery);
+    
+    foreach($visitData as $row){
+        $stmt->execute($row);
+    }
+
+    
+
+
+    $citiesData = [
+        ['New York'],
+        ['Meknes'],
+        ['Los Angeles'],
+        ['Chicago'],
+        ['Dallas'],
+        ['San Francisco'],
+        ['Miami'],
+        ['Seattle'],
+        ['Boston'],
+        ['Philadelphia'],
+        ['New Orleans']
+    ];
+    
+    $insertionCitiesQuery = "INSERT INTO cities (city_name) VALUES (?)";
+    
+    $stmt = $dbConnection->prepare($insertionCitiesQuery);
+    
+    foreach($citiesData as $row){
+        $stmt->execute($row);
+    }
+    
+
+$postsData = [
+    [1, 1, '250000', 'Beautiful Home', '123 Main St', 1, 'Spacious house with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Sell'],
+    [2, 2, '300000', 'Beautiful riad', '212 Main St', 1, 'Spacious riad with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Sell'],
+    [4, 3, '240000', 'Beautiful Villa', 'Sidi Baba', 2, 'Spacious house with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'RentSais'],
+    [2, 4, '20000', 'Beautiful riad', '212 Main St', 1, 'Spacious riad with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Sell'],
+    [3, 5, '1500', 'Cozy Apartment', '456 Elm St', 3, 'Well-maintained apartment in a great location','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Rent'],
+    [2, 6, '200000', 'Luxury Condo', '789 Pine St', 4, 'Modern condo with great amenities','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Sell'],
+    [1, 7, '350000', 'Spacious Family Home', '555 Oak St', 5, 'Perfect home for a growing family','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Sell'],
+    [3, 8, '1200', 'Cozy Studio', '321 Maple St', 1, 'Charming studio in the heart of the city','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Rent'],
+    [1, 9, '500000', 'Stunning Waterfront Property', '888 Beach Rd', 6, 'Magnificent house with ocean views','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Sell'],
+    [3, 10, '1800', 'Modern Loft', '222 Walnut St', 7, 'Contemporary loft in a trendy neighborhood','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Rent'],
+    [2, 11, '280000', 'Charming Townhouse', '444 Cherry St', 8, 'Quaint townhouse with historical charm','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Sell'],
+    [1, 12, '450000', 'Elegant Colonial Home', '777 Cedar St', 9, 'Classic colonial-style home with a large yard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Sell'],
+    [3, 13, '1500', 'Convenient City Living', '999 Elm St', 10, 'Comfortable apartment in a vibrant neighborhood','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Rent']
+    ];
+$insertionPostsQuery = "INSERT INTO posts (cat_id, info_id, price, title, locat, city_id, dscrption, locat_url , stat, rentOrSell) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 $stmt = $dbConnection->prepare($insertionPostsQuery);
 
 foreach($postsData as $row){
@@ -158,12 +261,22 @@ $imgsData = [
     ['10', 'MarrakechVilla5.jpg'],
     ['10', 'marakkechByNight.jpg'],
     ['10', 'office.jpg'],
-    ['10', 'MarrakechVilla4.jpg']
-];
+    ['10', 'MarrakechVilla4.jpg'],
+    ['11', 'duplex.jpg'],
+    ['11', 'dropArrow.png'],
+    ['11', 'consoltaions.jpg'],
+    ['11', '41.jpg'],
+    ['12', 'ensemble_350.jpg'],
+    ['12', 'essai.jpg'],
+    ['12', 'header.jpg'],
+    ['12', 'ensemble_350.jpg'],
+    ['13', 'MarrakechVilla4.jpg'],
+    ['13', 'Jmaalefna-background.jpg'],
+    ['13', 'ensemble_350.jpg'],
+    ['13', 'riad-a-louer-chaoun.jpg']
+    ];
 
-$insertionImgsQuery = "INSERT INTO post_imgs (post_id, img_name)
-VALUES
-    (?, ?);";
+$insertionImgsQuery = "INSERT INTO post_imgs (post_id, img_name) VALUES ( ?, ?)";
 
 $stmt = $dbConnection->prepare($insertionImgsQuery);
 
@@ -171,30 +284,35 @@ foreach($imgsData as $row){
     $stmt->execute($row);
 }
 
+/*
+user data
+*/
 
+$likeData = [
+    [1, 1],
+    [1, 2],
+    [1, 3],
+    [1, 4],
+    [3, 5],
+    [2, 1],
+    [2, 2],
+    [2, 3],
+    [2, 4],
+    [2, 5],
+    [1, 5],
+    [4, 5],
+    [3, 1]
+];
 
-//display images:
+$insertionLikesQuery = "INSERT INTO visits (post_id, user_id) VALUES (?, ?)";
 
-// $getImagesQuery = "SELECT img_name FROM post_imgs";
-// $images = $dbConnection->query($getImagesQuery);
-// foreach($images->fetchAll() as $image){
-//     echo "<img src='../images/". $image['img_name'] ."' width='100px'/>";
-// }
+$stmt = $dbConnection->prepare($insertionLikesQuery);
 
+foreach($likeData as $row){
+    $stmt->execute($row);
 }
 
-// foreach ($_FILES['photos']['name'] as $i => $name) {
-//     // check if the file is uploaded successfully
 
-//     if ($_FILES['photos']['error'][$i] == 0) {
-//         $targetDir = "uploads/"; 
-//         $fileName = basename($_FILES['photos']['name'][$i]);
-//         $targetFilePath = $targetDir . $fileName;
-//         // insert the file information into the database
-//         move_uploaded_file($_FILES["photos"]["tmp_name"][$i], $targetFilePath);
-//         $stmt = $dbConnection->prepare("INSERT INTO post_imgs (post_id, img_name) VALUES (?, ?)");
-//         $stmt->execute([$postId, $name]);
-//     }
-// }
-
+}
 ?>
+

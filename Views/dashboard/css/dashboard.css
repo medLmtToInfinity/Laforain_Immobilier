@@ -536,6 +536,7 @@ body {
 .icon-handler span {
   font-weight: bold;
   color: #000;
+  white-space: nowrap;
 }
 
 .hover-effect:hover {
