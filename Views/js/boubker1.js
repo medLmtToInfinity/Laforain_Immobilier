@@ -106,3 +106,18 @@ btnReadMore.addEventListener("click", () => {
     btnReadMore.textContent = "lire plus";
   }
 });
+
+//appel button:
+function startCall(phoneNumber) {
+  window.location.href = 'tel:' + phoneNumber;
+}
+
+//email button:
+function sendEmail(emailAddress) {
+  window.location.href = 'mailto:' + emailAddress;
+}
+
+//whatsap button:
+function openWhatsApp(phoneNumber) {
+  window.open('https://wa.me/' + phoneNumber, '_blank');
+}

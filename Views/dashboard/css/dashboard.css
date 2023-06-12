@@ -65,7 +65,7 @@ body {
   justify-content: center;
   justify-content: space-between;
   padding: 0.8rem 1.5rem;
-  background-color: #333;
+  background-color: #000000;
 }
 
 .header .logo {
@@ -204,6 +204,7 @@ body {
   color: #333;
   display: block;
   padding: 1rem 2rem;
+  white-space: nowrap;
 }
 
 .article .aside-bar > a {
@@ -482,6 +483,10 @@ body {
 
 .hover-effect:hover {
   border: 2px solid #ff3232;
+}
+
+.select-cat{
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 1035px) { 

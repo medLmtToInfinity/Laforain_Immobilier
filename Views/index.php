@@ -66,7 +66,8 @@
         <?php
         //get posts from DB:
         
-        $query = "SELECT * FROM posts ORDER BY Nlikes DESC LIMIT 4";
+        // $query = "SELECT post_id FROM liked_post ORDER BY  LIMIT 4";
+        $query = "SELECT * FROM posts LIMIT 4";
         $result = $dbConnection->query($query);
         
         if ($result !== false)
@@ -130,13 +131,13 @@
               ?>
 
               <div class="slider-btns">
-                <button class="slider-btn">
+                <button class="slider-btn" onclick="startCall('+212648780353')">
                   <i class="fa-solid fa-phone"></i> call
                 </button>
-                <button class="slider-btn">
+                <button class="slider-btn" onclick="sendEmail('mohammed.lammarti@gmail.com')">
                   <i class="fa-solid fa-envelope"></i>email
                 </button>
-                <button class="slider-btn">
+                <button class="slider-btn" onclick="openWhatsApp('+212648780353')">
                   <i class="fa-brands fa-whatsapp"></i>whatsapp
                 </button>
               </div>

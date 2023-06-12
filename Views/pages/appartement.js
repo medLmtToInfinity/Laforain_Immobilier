@@ -64,3 +64,19 @@ seeAll.addEventListener('click', ()=>{
     document.body.style.position = "fixed";
     // document.body.style = "overflow-y: hidden; height: 100vh";
 });
+
+
+//appel button:
+function startCall(phoneNumber) {
+  window.location.href = 'tel:' + phoneNumber;
+}
+
+//email button:
+function sendEmail(emailAddress) {
+  window.location.href = 'mailto:' + emailAddress;
+}
+
+//whatsap button:
+function openWhatsApp(phoneNumber) {
+  window.open('https://wa.me/' + phoneNumber, '_blank');
+}

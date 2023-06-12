@@ -67,7 +67,7 @@
         $bathrooms       = $_POST['bathrooms'];
         $city = $_POST['city'];
         $state       = $_POST['state'];
-        $sell_rent       = $_POST['s_r'];
+        $sell_rent       = $_POST['select_type'];
         $stmt       = $dbConnection->prepare("UPDATE posts SET cat_id = ?, city_id = ?, Price = ?, title = ?, locat = ?, dscrption = ?, stat = ?, rentOrSell = ? WHERE id = $postId");
         $stmt->execute([$type, $city, $price, $title, $locat, $dscrcption, $state, $sell_rent]);
 
@@ -88,6 +88,7 @@
                 $stmt->execute([$postId, $name]);
             }
         }
+        sleep(10);
         header("Location: view_posts.php");
     }
 ?>
@@ -102,8 +103,8 @@
         
         <div class="add-post-flex">
         <div class="add-post-left">
-            <label for="type">Type :</label>
-            <select class="select-cat" name="select-type">
+            <label for="type">Type :<span class="red-star">*</span></label>
+            <select class="select-cat" name="select-type" required>
             <?php
                 //echo "<option value='". $catId ."'>" . $type .  "</option>";
                 $query = "SELECT * FROM categories";
@@ -119,11 +120,11 @@
             </select>
 
             <!-- <input type="text" id="type" name="type" > -->
-            <label for="price">Prix :</label>
-            <input type="number" id="price" name="price" value="<?php echo $price;?>" >
+            <label for="price">Prix :<span class="red-star">*</span></label>
+            <input type="number" id="price" name="price" value="<?php echo $price;?>"  required>
             
-            <label for="location">Emplacement :</label>
-            <input type="text" id="location" name="location" value="<?php echo $locat;?>" >
+            <label for="location">Emplacement :<span class="red-star">*</span></label>
+            <input type="text" id="location" name="location" value="<?php echo $locat;?>"  required>
             
             <label for="description">Description :</label>
             <input type="text" id="description" name="description" rows="1" value="<?php echo $dscrption;?>" ></textarea>
@@ -136,11 +137,11 @@
         </div>
         <div class="add-post-right">
 
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value="<?php echo $title;?>" >
+            <label for="title">Title:<span class="red-star">*</span></label>
+            <input type="text" id="title" name="title" value="<?php echo $title;?>"  required>
 
-            <label for="city">Ville:</label>
-            <select class="select-cat" name="select-city">
+            <label for="city">Ville:<span class="red-star">*</span></label>
+            <select class="select-cat" name="select-city" required>
             <?php
                 //echo "<option value='". $catId ."'>" . $type .  "</option>";
                 $query = "SELECT * FROM cities";
@@ -155,16 +156,22 @@
 
             </select>
 
-            <label for="state">State:</label>
-            <input type="text" id="state" name="state" value="<?php echo $state;?>" >
+            <label for="state">State:<span class="red-star">*</span></label>
+            <select class="select-cat" name="state" required>
+                <option value='available'>Disponible</option>;
+                <option value='unavailable'>Non disponible</option>;
+            </select>
 
-            <label for="s_r">Is this property fo sell or rent:</label>
-            <input type="text" id="s_r" name="s_r" value="<?php echo $sell_rent;?>" >
-
+            <label for="s_r">Is this property fo sell or rent:<span class="red-star">*</span></label>
+            <select class="select-cat" name="select_type" required>
+                <option value='Rent'>Rent</option>;
+                <option value='Sell'>Sell</option>;
+                <option value='RentSais'>Location saisonière</option>;
+            </select>
             <label for="area">Superficie :</label>
             <input type="number" id="area" name="area" value="<?php echo $area;?>" >
             
-            <label for="photos">Photos :</label>
+            <label for="photos">Photos :<span class="red-star">*</span></label>
             <input type="file" id="photos" name="photos[]" accept="image/*" value="" multiple required>
         </div>
         </div>
