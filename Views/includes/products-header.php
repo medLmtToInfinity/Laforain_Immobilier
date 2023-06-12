@@ -34,7 +34,12 @@
     <link rel="stylesheet" href="css/home-header.css" />
     <link rel="stylesheet" href="css/black-header.css" />
     <link rel="stylesheet" href="css/products.css" />
+    <link rel="stylesheet" href="css/credit.css" />
+    <link rel="stylesheet" href="css/sign-up.css" />
+    <link rel="stylesheet" href="css/forget.css" />
+    <link rel="stylesheet" href="css/Myprofile.css" />
     <link rel="stylesheet" href="css/home-footer.css" />
+    <link rel="stylesheet" href="css/sign-in.css" />
     <script src="js/lamarti.js" defer></script>
     <link
       rel="stylesheet"
@@ -112,8 +117,8 @@
               ?>
               >
               <a href="products.php?type=rentSais">LOCATION SAISONIERE</a></li>
-              <li><a href="../samad-files/credit.php">CREDIT</a></li>
-              <li><a href="contact-us.php">NOUS CONTACTER</a></li>
+              <li><a href="credit.php">CREDIT</a></li>
+              <li><a href="contact-us.html">NOUS CONTACTER</a></li>
               <li><a href="#">A PROPOS</a></li>
             <li><a href="#">SIGN IN</a></li>
             <!-- <li><a href="#">SIGN UP</a></li> -->

@@ -100,11 +100,11 @@
                 </ul>
               </li>
               <li><a href="products.php?type=rentSais">LOCATION SAISONIERE</a></li>
-              <li><a href="credit-files/credit.php">CREDIT</a></li>
+              <li><a href="credit.php">CREDIT</a></li>
               <li><a href="contact-us.html">NOUS CONTACTER</a></li>
               <li><a href="#">A PROPOS</a></li>
             <?php if(!isset($_GET["id"])){ ?>
-            <li><a href="signin-files/sign-in.php">SIGN IN</a></li>
+            <li><a href="sign-in.php">SIGN IN</a></li>
             
             <!-- <li><a href="#">SIGN UP</a></li> -->
             </ul>

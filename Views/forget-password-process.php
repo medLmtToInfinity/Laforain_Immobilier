@@ -1,5 +1,5 @@
 <?php
-  include "../dashboard/database.php";
+  include "dashboard/database.php";
   
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
