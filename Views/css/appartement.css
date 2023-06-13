@@ -7,7 +7,7 @@ li {
 
 /* Body */
 
-/* Container */
+/* Containers */
 body {
   background-color: #fff;
   position: relative;
@@ -50,7 +50,7 @@ body {
 
 /*-----------------------------------------*/
 
-.container {
+.containers {
   width: 90%;
   margin: 0 auto;
   margin-bottom: 3rem;
@@ -252,7 +252,7 @@ button {
     text-decoration: underline;
 }
 
-.container i {
+.containers i {
     margin-right: 5px;
 }
 
@@ -310,4 +310,18 @@ button {
     border-radius: 5px;
   }
   
+}
+
+.header li a{
+  padding: 0;
+} 
+
+.slider-btn {
+  padding: 5px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.616);
+  border-radius: 5px;
+  background-color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: .5rem;
 }

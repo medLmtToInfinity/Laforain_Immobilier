@@ -47,6 +47,9 @@
           case "about.php": echo '<link rel="stylesheet" href="css/about.css">';
               break;
           case "sign-in.php": echo '<link rel="stylesheet" href="css/sign-in.css">';
+              break;
+          case "appartement.php": echo '<link rel="stylesheet" href="css/appartement.css">';
+              break;
         }
       ?>
       
@@ -59,6 +62,7 @@
     <link rel="stylesheet" href="css/home-footer.css" />
     <link rel="stylesheet" href="css/sign-in.css" />
     <script src="js/lamarti.js" defer></script>
+    <script src="js/appartement.js" defer></script>
     <link
       rel="stylesheet"
       href="https://kit.fontawesome.com/d09f9a669c.css"

@@ -119,7 +119,7 @@
               </button>
               <div class="dots"></div>
             </div>
-            <a href=<?php echo "pages/appartement.php?postId=".$postId ?> ></a>
+            <a href=<?php echo "appartement.php?postId=".$postId ?> ></a>
 
             <div class="slider-in-text">
               <?php echo "
@@ -173,7 +173,7 @@
               </button>
               <div class="dots"></div>
             </div>
-            <a href="pages/appartement.html"></a>
+            <a href="appartement.html"></a>
             <div class="slider-in-text">
               <span>Apartement</span>
               <h3>2,546,763 MAD</h3>
@@ -218,7 +218,7 @@
               </button>
               <div class="dots"></div>
             </div>
-            <a href="pages/appartement.html"></a>
+            <a href="appartement.html"></a>
             <div class="slider-in-text">
               <span>Apartement</span>
               <h3>2,546,763 MAD</h3>
@@ -263,7 +263,7 @@
               </button>
               <div class="dots"></div>
             </div>
-            <a href="pages/appartement.html"></a>
+            <a href="appartement.html"></a>
             <div class="slider-in-text">
               <span>Apartement</span>
               <h3>2,546,763 MAD</h3>
@@ -308,7 +308,7 @@
               </button>
               <div class="dots"></div>
             </div>
-            <a href="pages/appartement.html"></a>
+            <a href="appartement.html"></a>
             <div class="slider-in-text">
               <span>Villa-Piscine</span>
               <h3>2,546,763 MAD</h3>
