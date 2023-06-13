@@ -52,34 +52,33 @@
               </div>
               <!-- TO DO : COMPLETE USERS & STATISTIC -->
               <div class="customers-handler">
-                <a href="#user" class="customer-profile">
+                <?php
+                  $users_query = "SELECT * FROM users";
+                  $users_res = $conn->query($users_query);
+                  $i = 3;
+                  while($user = mysqli_fetch_assoc($user_res)) {
+                    if(!$i--) {
+                      break;
+                    }
+                      $user_name = $user["username"];
+                      $user_img = $user["profile_pic"];
+                    ?>
+                  <a href="users.php" class="customer-profile">
                   <div class="profile-picture hover-effect">
                     <img
-                      src="https://ui8-core.herokuapp.com/img/content/avatar.jpg"
-                      alt=""
+                      src="img/<?php echo $user_img ?>"
+                      alt="user"
                     />
                   </div>
-                  <span>Albert</span>
+                  <span><?php echo explode(' ',$user_name)[0]; ?></span>
                 </a>
-                <a href="#user" class="customer-profile">
-                  <div class="profile-picture hover-effect">
-                    <img
-                      src="https://ui8-core.herokuapp.com/img/content/avatar-1.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <span>Mohammed</span>
-                </a>
-                <a href="#user" class="customer-profile">
-                  <div class="profile-picture hover-effect">
-                    <img
-                      src="https://ui8-core.herokuapp.com/img/content/avatar-2.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <span>Lamarti</span>
-                </a>
-                <a href="#customers" class="icon-handler">
+                <?php
+                }
+
+
+                ?>
+                
+                <a href="users.php" class="icon-handler">
                   <div class="profile-icon hover-effect">
                     <i class="fas fa-arrow-right"></i>
                   </div>

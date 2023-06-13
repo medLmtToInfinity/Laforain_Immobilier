@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/add_post.css" />
     <link rel="stylesheet" href="css/view_posts.css" />
+    <link rel="stylesheet" href="css/users.css" />
     <script src="./js/chartjs.min.js"></script>
     <script src="./js/lamarti.js" type="module" defer></script>
     <title>Dashboard</title>
@@ -95,8 +96,8 @@
               <a href="view_post.php">Voir tous les posts</a>
             </div>
           </div>
-          <a href="users/users.php" class="icon-hover"><i class="fas fa-user"></i> Clients</a>
-          <a href="#logout" class="icon-hover"
+          <a href="users.php" class="icon-hover"><i class="fas fa-user"></i> Clients</a>
+          <a href="#logout"
             ><i class="fas fa-right-from-bracket"></i> Se déconnecter</a
           >
         </aside>

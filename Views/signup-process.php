@@ -3,7 +3,7 @@
 session_start();
 
 
- $Mysqli = require "../dashboard/database.php";
+ $Mysqli = require "dashboard/database.php";
 // define variables and set to empty values
 $username = $email = $password = $c_password = "";
 
@@ -11,9 +11,9 @@ print_r($_POST);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $username = validate($_POST["name"]);
-  $name_parts= explode(" ", $username); //split name by space
-  $first_name = $name_parts[0]; 
-  $last_name = $name_parts[1];
+  // $name_parts= explode(" ", $username); //split name by space
+  // $first_name = $name_parts[0]; 
+  // $last_name = $name_parts[1];
   $email = validate($_POST["email"]);
   $password = validate($_POST["password"]);
   $c_password = validate($_POST["c_password"]);
@@ -75,7 +75,7 @@ else{
 
 
 
-      $sql = "INSERT INTO users (first_name, last_name , email , passwd ) VALUES (? ,?, ?, ?) ";
+      $sql = "INSERT INTO users (username , email , passwd ) VALUES (?, ?, ?) ";
 
       // Check if there is any data in the users table
       $check_empty = "SELECT COUNT(*) FROM users";
@@ -90,7 +90,7 @@ else{
 
       $stmt = $dbConnection->prepare($sql);
 
-      if($stmt->execute([$first_name, $last_name, $email, $password_hash])){
+      if($stmt->execute([$username, $email, $password_hash])){
         header("Location: sign-in.php");
       }
 }

@@ -405,7 +405,7 @@
             // Connexion à la base de données
      
            include 'dashboard/database.php';
-
+           
             $query = "SELECT * FROM posts ORDER BY Nlikes DESC LIMIT 5";
             $result = $dbConnection->query($query);
             while($row = $result->fetch(PDO::FETCH_ASSOC)){

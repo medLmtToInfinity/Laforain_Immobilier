@@ -3,7 +3,7 @@
 session_start();
 
 
- $Mysqli = require "../dashboard/database.php";
+ $Mysqli = require "dashboard/database.php";
 // define variables and set to empty values
 $email = $password = "";
 
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      
     //  check if admin sign-in
     if($email == 'administrateur@gmail.com' && $password == 'admin123'){
-      header("Location: ../dashboard/index.php");
+      header("Location: dashboard/index.php");
       exit();
    }
 
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $_SESSION["user_id"] = $row["id"];
           $_SESSION["email"] = $row["email"];
           // Redirect to the home page
-          header("Location: ../index.php");
+          header("Location: index.php?id=".$row["id"]);
           exit();
       } else {
           $_SESSION['error'] = '*Incorrect password';

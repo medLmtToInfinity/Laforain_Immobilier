@@ -52,7 +52,12 @@
       
     <!-- <link rel="stylesheet" href="../css/black-header.css" /> -->
     <link rel="stylesheet" href="css/products.css" />
+    <link rel="stylesheet" href="css/credit.css" />
+    <link rel="stylesheet" href="css/sign-up.css" />
+    <link rel="stylesheet" href="css/forget.css" />
+    <link rel="stylesheet" href="css/Myprofile.css" />
     <link rel="stylesheet" href="css/home-footer.css" />
+    <link rel="stylesheet" href="css/sign-in.css" />
     <script src="js/lamarti.js" defer></script>
     <link
       rel="stylesheet"
@@ -143,7 +148,7 @@
                 echo " class='current'";
               }
               ?>
-              ><a href="credit-files/credit.php"
+              ><a href="credit.php"
               >CREDIT</a></li>
               <li
               <?php  
@@ -159,7 +164,7 @@
                 echo " class='current'";
               }
               ?>
-            ><a href="signin-files/sign-in.php">SIGN IN</a></li>
+            ><a href="sign-in.php">SIGN IN</a></li>
             <!-- <li><a href="#">SIGN UP</a></li> -->
             </ul>
           </nav>
