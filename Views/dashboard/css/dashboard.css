@@ -543,6 +543,10 @@ body {
   border: 2px solid #ff3232;
 }
 
+.select-cat{
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1035px) { 
   .article {
     grid-template-columns: 0.25fr 4fr;

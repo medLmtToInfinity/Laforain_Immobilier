@@ -37,9 +37,13 @@ body {
   visibility: hidden;
 } */
 
+.red-star{
+  color:rgb(158, 6, 6);
+}
+
 
 .add-post-form {
-  background-color: #707070a6;
+  background-color: #bdb8b8;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 100%;

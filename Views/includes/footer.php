@@ -9,11 +9,11 @@
           /></a>
           <div class="footer-center">
             <ul class="links">
-              <li><a href="#">My account</a></li>
+              <li><a href="profile/Myprofile.php">My account</a></li>
               <li><a href="#">Services</a></li>
               <li><a href="#">Terms and Conditions</a></li>
               <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Contact us</a></li>
+              <li><a href="../contact-us.html">Contact us</a></li>
             </ul>
             <p class="copyright1">
               &copy;<span class="date">2020-2023</span> Laforain Immobilier
