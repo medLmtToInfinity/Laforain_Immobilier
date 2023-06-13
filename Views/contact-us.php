@@ -1,100 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Agence immobilière à Marrakech, vente et location villa, appartement, propriété de prestige, Riad, terrain."
-    />
-    <meta
-      name="keywords"
-      content="vente et location villa, immobilier Marrakech, Riad, palmeraie, agence immobilière, vente villa, immobilier de luxe, investissement immobilier, Agence Immobilière Marrakech, A vendre Marrakech, Appartement à vendreappartement à vendre villa marrakech"
-    />
-    <meta name="author" content="Ortega Jean Marie" />
-    <meta
-      property="og:description"
-      content="Laforain immobilier, agence immobilière à marrakech, achat location vente de biens immobiliers au maroc, riad, villa, terrain, maison, bureaux, appartement, ainsi qu'un service de construction et de rénovation."
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="https://laforain-immobilier.com/img/favicon.ico?1619012160"
-    />
-
-    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/32c5dcb0c1.css" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="css/home-header.css" />
-    <link rel="stylesheet" href="css/home-footer.css" />
-    <link rel="stylesheet" href="css/black-header.css" />
-    <link rel="stylesheet" href="css/contact-us.css" />
-    <script src="js/lamarti.js" defer></script>
-    <link
-      rel="stylesheet"
-      href="https://kit.fontawesome.com/d09f9a669c.css"
-      crossorigin="anonymous"
-    />
-    <title>Agence Immobilière Marrakech pour des biens de luxe</title>
-  </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <div class="berger-handler">
-          <input type="checkbox" name="check" class="check" />
-          <div class="berger-menu"></div>
-        </div>
-        <div class="navigation">
-          <div class="header-logo">
-            <a href="index.php">
-              <img width="150" src="images/LOGO WHITE.png" alt="logo" />
-            </a>
-          </div>
-          <nav class="navbar">
-            <ul class="menu">
-              <li><a href="index.php">Accueil</a></li>
-              <li>
-                <a href="products.php">VENTE</a>
-                <i class="fas fa-caret-down caret"></i>
-                <ul class="places">
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                </ul>
-              </li>
-              <li>
-                <i class="fas fa-caret-down caret"></i>
-                <a href="products.php">LOCATION</a>
-                <ul class="places">
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                  <li><a href="#">Marakkech</a></li>
-                  <li><a href="#">Agadir</a></li>
-                </ul>
-              </li>
-              <li><a href="products.php">LOCATION SAISONIERE</a></li>
-              <li><a href="Views/samad-files/credit.html" target="_blank">CREDIT</a></li>
-              <li class="current">
-                <a href="contact-us.php">NOUS CONTACTER</a>
-              </li>
-            <li><a href="#">A PROPOS</a></li>
-            <li><a href="samad-files/sign-in.html" target="_blank">SIGN IN</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+<?php include "includes/products-header.php"; ?>
 
        <div class="container-form">
 
@@ -124,7 +28,7 @@
         <div class="screen-body-item">
           <div class="app-form">
             <div class="app-form-group">
-            <form action="" method="POST" class="">
+            <form action="message.php" method="POST" class="">
               <div class="input-box">
                 <input class="app-form-control"
                   type="text"
@@ -158,13 +62,14 @@
                   id="message"
                   cols="30"
                   rows="5"
+                  style="resize: vertical"
                   placeholder="Ecrire votre message .."
                   required
                 ></textarea>
               </div>
             <div class="app-form-group buttons">
-              <button class="app-form-button">CANCEL</button>
-              <button class="app-form-button">SEND</button>
+              <button class="app-form-button" type="reset">RESET</button>
+              <button class="app-form-button" type="submit">SEND</button>
             </div>
             </form>
           </div>

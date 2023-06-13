@@ -67,7 +67,12 @@
         //get posts from DB:
         
         // $query = "SELECT post_id FROM liked_post ORDER BY  LIMIT 4";
-        $query = "SELECT * FROM posts LIMIT 4";
+        // $query = "SELECT post_id FROM liked_post ORDER BY number of likes LIMIT 4";
+        $query = "SELECT post_id, count(post_id) AS likes FROM liked_post ORDER BY likes LIMIT 4";
+        $result = $dbConnection->query($query);
+        while ($likedPost = $result->fetch(PDO::FETCH_ASSOC)) {
+        $postID = $likedPost['post_id'];
+        $query = "SELECT * FROM posts where id = $postID";
         $result = $dbConnection->query($query);
         
         if ($result !== false)
@@ -145,6 +150,7 @@
           </div>
         <?php
         }
+      }
         ?>
         
           <!-- <div class="slider-in">

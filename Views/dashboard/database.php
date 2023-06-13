@@ -67,8 +67,8 @@ $tables = [
         username VARCHAR(255),
         passwd VARCHAR(255),
         email VARCHAR(255),
-        tel VARCHAR(20),
-        whatsapp VARCHAR(20),
+        tel VARCHAR(30),
+        whatsapp VARCHAR(30),
         profile_pic VARCHAR(255),
         admn INT,
         code INT,
@@ -202,18 +202,18 @@ if($rows->rowCount() == 0){
 
 $postsData = [
     [1, 1, '250000', 'Beautiful Home', '123 Main St', 1, 'Spacious house with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Sell'],
-    [2, 2, '300000', 'Beautiful riad', '212 Main St', 1, 'Spacious riad with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Sell'],
+    [2, 2, '300000', 'Beautiful riad', '212 Main St', 1, 'Spacious riad with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unavailable', 'Sell'],
     [4, 3, '240000', 'Beautiful Villa', 'Sidi Baba', 2, 'Spacious house with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'RentSais'],
-    [2, 4, '20000', 'Beautiful riad', '212 Main St', 1, 'Spacious riad with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Sell'],
-    [3, 5, '1500', 'Cozy Apartment', '456 Elm St', 3, 'Well-maintained apartment in a great location','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Rent'],
+    [2, 4, '20000', 'Beautiful riad', '212 Main St', 1, 'Spacious riad with a backyard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unavailable', 'Sell'],
+    [3, 5, '1500', 'Cozy Apartment', '456 Elm St', 3, 'Well-maintained apartment in a great location','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unavailable', 'Rent'],
     [2, 6, '200000', 'Luxury Condo', '789 Pine St', 4, 'Modern condo with great amenities','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Sell'],
     [1, 7, '350000', 'Spacious Family Home', '555 Oak St', 5, 'Perfect home for a growing family','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Sell'],
-    [3, 8, '1200', 'Cozy Studio', '321 Maple St', 1, 'Charming studio in the heart of the city','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Rent'],
-    [1, 9, '500000', 'Stunning Waterfront Property', '888 Beach Rd', 6, 'Magnificent house with ocean views','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Sell'],
+    [3, 8, '1200', 'Cozy Studio', '321 Maple St', 1, 'Charming studio in the heart of the city','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unavailable', 'Rent'],
+    [1, 9, '500000', 'Stunning Waterfront Property', '888 Beach Rd', 6, 'Magnificent house with ocean views','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unavailable', 'Sell'],
     [3, 10, '1800', 'Modern Loft', '222 Walnut St', 7, 'Contemporary loft in a trendy neighborhood','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Rent'],
-    [2, 11, '280000', 'Charming Townhouse', '444 Cherry St', 8, 'Quaint townhouse with historical charm','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Sell'],
+    [2, 11, '280000', 'Charming Townhouse', '444 Cherry St', 8, 'Quaint townhouse with historical charm','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unavailable', 'Sell'],
     [1, 12, '450000', 'Elegant Colonial Home', '777 Cedar St', 9, 'Classic colonial-style home with a large yard','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'available', 'Sell'],
-    [3, 13, '1500', 'Convenient City Living', '999 Elm St', 10, 'Comfortable apartment in a vibrant neighborhood','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unvailable', 'Rent']
+    [3, 13, '1500', 'Convenient City Living', '999 Elm St', 10, 'Comfortable apartment in a vibrant neighborhood','!1m18!1m12!1m3!1d4277.128779770547!2d-74.01802719195251!3d40.70950156119478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aeff3b043%3A0xadc8ff2e4a50d265!2sPumphouse%20Park!5e0!3m2!1sfr!2sma!4v1685881130244!5m2!1sfr!2sma', 'unavailable', 'Rent']
     ];
 $insertionPostsQuery = "INSERT INTO posts (cat_id, info_id, price, title, locat, city_id, dscrption, locat_url , stat, rentOrSell) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 $stmt = $dbConnection->prepare($insertionPostsQuery);
@@ -323,7 +323,7 @@ $likeData = [
     [3, 1]
 ];
 
-$insertionLikesQuery = "INSERT INTO visits (post_id, user_id) VALUES (?, ?)";
+$insertionLikesQuery = "INSERT INTO liked_post (post_id, user_id) VALUES (?, ?)";
 
 $stmt = $dbConnection->prepare($insertionLikesQuery);
 

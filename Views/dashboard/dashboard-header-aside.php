@@ -36,7 +36,7 @@
     <div class="container">
       <header class="header">
         <div class="logo">
-          <a href="index.php">
+          <a href="../index.php?id=1">
             <img src="../images/LOGO WHITE.png" alt="logo" width="150" />
           </a>
         </div>
@@ -95,7 +95,7 @@
               <a href="view_post.php">Voir tous les posts</a>
             </div>
           </div>
-          <a href="samad-files/users.html" class="icon-hover"><i class="fas fa-user"></i> Clients</a>
+          <a href="users/users.php" class="icon-hover"><i class="fas fa-user"></i> Clients</a>
           <a href="#logout" class="icon-hover"
             ><i class="fas fa-right-from-bracket"></i> Se déconnecter</a
           >

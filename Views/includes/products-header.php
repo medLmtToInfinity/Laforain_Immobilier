@@ -32,8 +32,25 @@
       href="https://laforain-immobilier.com/img/favicon.ico?1619012160"
     />
     <link rel="stylesheet" href="css/home-header.css" />
-    <link rel="stylesheet" href="css/black-header.css" />
-    <link rel="stylesheet" href="../css/black-header.css" />
+    <?php
+    $pageName = basename($_SERVER['PHP_SELF']);
+    // echo $pageName;
+    if($pageName != "index.php") {
+      ?>
+      <link rel="stylesheet" href="css/black-header.css" />
+      <?php } 
+        switch($pageName) {
+          case "contact-us.php": echo '<link rel="stylesheet" href="css/contact-us.css">';
+            break;
+          case "credit.php": echo '<link rel="stylesheet" href="credit-files/credit.css">';
+                  break;
+          case "about.php": echo '<link rel="stylesheet" href="css/about.css">';
+              break;
+          case "sign-in.php": echo '<link rel="stylesheet" href="signin-files/sign-in.css">';
+        }
+      ?>
+      
+    <!-- <link rel="stylesheet" href="../css/black-header.css" /> -->
     <link rel="stylesheet" href="css/products.css" />
     <link rel="stylesheet" href="css/home-footer.css" />
     <script src="js/lamarti.js" defer></script>
@@ -64,9 +81,12 @@
               <li><a href="index.php">Accueil</a></li>
               <li 
               <?php 
+              if(isset($_GET["type"])) {
+
                 if($rentOrSell == "sell") {
                   echo 'class="current"';
                 }
+              }
               
               ?>
               >
@@ -87,9 +107,11 @@
               </li>
               <li
               <?php 
+              if(isset($_GET["type"])) {
                 if($rentOrSell == "rent") {
                   echo 'class="current"';
                 }
+              }
               
               ?>
               >
@@ -107,16 +129,37 @@
               </li>
               <li
               <?php 
+              if(isset($_GET["type"])) {
                 if($rentOrSell == "rentSais") {
                   echo 'class="current"';
                 }
+              }
               ?>
               >
               <a href="products.php?type=rentSais">LOCATION SAISONIERE</a></li>
-              <li><a href="samad-files/credit.php">CREDIT</a></li>
-              <li><a href="samad-files/contact-us.html">NOUS CONTACTER</a></li>
+              <li
+              <?php  
+              if($pageName === "credit.php"){
+                echo " class='current'";
+              }
+              ?>
+              ><a href="credit-files/credit.php"
+              >CREDIT</a></li>
+              <li
+              <?php  
+              if($pageName === "contact-us.php"){
+                echo " class='current'";
+              }
+              ?>
+              ><a href="contact-us.php">NOUS CONTACTER</a></li>
               <li><a href="#">A PROPOS</a></li>
-            <li><a href="#">SIGN IN</a></li>
+            <li
+            <?php  
+              if($pageName === "sign-in.php"){
+                echo " class='current'";
+              }
+              ?>
+            ><a href="signin-files/sign-in.php">SIGN IN</a></li>
             <!-- <li><a href="#">SIGN UP</a></li> -->
             </ul>
           </nav>
