@@ -224,7 +224,7 @@
                   ?>
 
           <div>
-            <a class="product-link" href="<?php echo "pages/appartement.php?id=$post_id"?>"></a>
+            <a class="product-link" href="<?php echo "pages/appartement.php?postId=$post_id"?>"></a>
             <div class="post">
               <div class="img-handler">
                 <span><?php echo $post_state; ?></span>

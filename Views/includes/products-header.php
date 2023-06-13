@@ -42,11 +42,11 @@
         switch($pageName) {
           case "contact-us.php": echo '<link rel="stylesheet" href="css/contact-us.css">';
             break;
-          case "credit.php": echo '<link rel="stylesheet" href="credit-files/credit.css">';
+          case "credit.php": echo '<link rel="stylesheet" href="css/credit.css">';
                   break;
           case "about.php": echo '<link rel="stylesheet" href="css/about.css">';
               break;
-          case "sign-in.php": echo '<link rel="stylesheet" href="signin-files/sign-in.css">';
+          case "sign-in.php": echo '<link rel="stylesheet" href="css/sign-in.css">';
         }
       ?>
       
