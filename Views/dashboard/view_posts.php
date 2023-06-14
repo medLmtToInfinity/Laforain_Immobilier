@@ -1,7 +1,29 @@
 <?php
+    ob_start();
     include_once "database.php";
-
     include "dashboard-header-aside.php";
+
+    if (isset($_GET['deleteId'])) {
+        $postId = $_GET['deleteId'];
+        
+        echo '<div class="overlay">
+                <div class="overlay-content">
+                    <h4>Are you sure you want to delete this post?</h4>
+                    <div class="overlay-buttons">
+                        <button class="answer-button" id="btn-yes"><a class="btn-submit" href="view_posts.php?deleteId='.$postId.'&confirm=true.">Yes</a></button>
+                        <button class="answer-button" id="btn-no"><a href="view_posts.php">No</a></button>
+                    </div>
+                </div>
+            </div>';
+        if (isset($_GET['confirm'])) {
+            $stmt = $dbConnection->prepare("DELETE FROM posts WHERE id = :postId");
+            $stmt->bindValue(':postId', $postId);
+            $stmt->execute();
+            header("Location: view_posts.php");
+        }
+
+        // Redirect to the desired page after deletion
+    }
 ?>
     <table class="post-table">
         <thead>
@@ -13,32 +35,6 @@
         </thead>
         <tbody>
         <?php
-
-        if (isset($_GET['deleteId'])) {
-            $postId = $_GET['deleteId'];
-            
-            echo '<div class="overlay">
-                    <div class="overlay-content">
-                        <h4>Are you sure you want to delete this post?</h4>
-                        <div class="overlay-buttons">
-                            <button class="answer-button" id="btn-yes"><a class="btn-submit" href="view_posts.php?deleteId='.$postId.'&confirm=true.">Yes</a></button>
-                            <button class="answer-button" id="btn-no"><a href="view_posts.php">No</a></button>
-                        </div>
-                    </div>
-                </div>';
-            if (isset($_GET['confirm'])) {
-                $stmt = $dbConnection->prepare("DELETE FROM posts WHERE id = :postId");
-                $stmt->bindValue(':postId', $postId);
-                $stmt->execute();
-
-                echo '<div id="success-message" class="hidden">
-                        <p>Success! the post has been modified successfully.</p>
-                        </div>';
-                header("Location: view_posts.php");
-            }
-
-            // Redirect to the desired page after deletion
-        }
 
         //get posts from DB:
         
