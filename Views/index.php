@@ -153,187 +153,7 @@
       }
         ?>
         
-          <!-- <div class="slider-in">
-            <div class="img-container card-1">
-              <div class="slider-in-image">
-                <img src="images/villa-a-louer-19.jpg" alt="" />
-              </div>
-              <div class="slider-in-image">
-                <img src="images/Villa-Piscine.png" alt="" />
-              </div>
-              <div class="slider-in-image">
-                <img src="images/villa-a-louer-8.jpg" alt="" />
-              </div>
-              <button class="slider-btn-nav slider-btn-right">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-              <button class="slider-btn-nav slider-btn-left">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <div class="dots"></div>
-            </div>
-            <a href="pages/appartement.html"></a>
-            <div class="slider-in-text">
-              <span>Apartement</span>
-              <h3>2,546,763 MAD</h3>
-              <p>
-                STUNING BALCONY VEIW / SPACIOUS 2 BEDS / KITCHEN EQUIPPED /
-                GREAT
-              </p>
-              <ul>
-                <li>2 Bedrooms</li>
-                <li>3 Bathrooms</li>
-                <li>2000 m</li>
-              </ul>
-              <div class="slider-btns">
-                <button class="slider-btn">
-                  <i class="fa-solid fa-phone"></i> call
-                </button>
-                <button class="slider-btn">
-                  <i class="fa-solid fa-envelope"></i>email
-                </button>
-                <button class="slider-btn">
-                  <i class="fa-brands fa-whatsapp"></i>whatsapp
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="slider-in">
-            <div class="img-container card-2">
-              <div class="slider-in-image">
-                <img src="images/Villa-Piscine.png" alt="" />
-              </div>
-              <div class="slider-in-image">
-                <img src="images/villa-a-louer-8.jpg" alt="" />
-              </div>
-              <div class="slider-in-image">
-                <img src="images/villa-a-louer-19.jpg" alt="" />
-              </div>
-              <button class="slider-btn-nav slider-btn-right">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-              <button class="slider-btn-nav slider-btn-left">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <div class="dots"></div>
-            </div>
-            <a href="pages/appartement.html"></a>
-            <div class="slider-in-text">
-              <span>Apartement</span>
-              <h3>2,546,763 MAD</h3>
-              <p>
-                STUNING BALCONY VEIW / SPACIOUS 2 BEDS / KITCHEN EQUIPPED /
-                GREAT
-              </p>
-              <ul>
-                <li>2 Bedrooms</li>
-                <li>3 Bathrooms</li>
-                <li>2000 m</li>
-              </ul>
-              <div class="slider-btns">
-                <button class="slider-btn">
-                  <i class="fa-solid fa-phone"></i> call
-                </button>
-                <button class="slider-btn">
-                  <i class="fa-solid fa-envelope"></i>email
-                </button>
-                <button class="slider-btn">
-                  <i class="fa-brands fa-whatsapp"></i>whatsapp
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="slider-in">
-            <div class="img-container card-3">
-              <div class="slider-in-image">
-                <img src="images/villa-a-louer-19.jpg" alt="" />
-              </div>
-              <div class="slider-in-image">
-                <img src="images/Villa-Piscine.png" alt="" />
-              </div>
-              <div class="slider-in-image">
-                <img src="images/villa-a-louer-8.jpg" alt="" />
-              </div>
-              <button class="slider-btn-nav slider-btn-right">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-              <button class="slider-btn-nav slider-btn-left">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <div class="dots"></div>
-            </div>
-            <a href="pages/appartement.html"></a>
-            <div class="slider-in-text">
-              <span>Apartement</span>
-              <h3>2,546,763 MAD</h3>
-              <p>
-                STUNING BALCONY VEIW / SPACIOUS 2 BEDS / KITCHEN EQUIPPED /
-                GREAT
-              </p>
-              <ul>
-                <li>2 Bedrooms</li>
-                <li>3 Bathrooms</li>
-                <li>2000 m</li>
-              </ul>
-              <div class="slider-btns">
-                <button class="slider-btn">
-                  <i class="fa-solid fa-phone"></i> call
-                </button>
-                <button class="slider-btn">
-                  <i class="fa-solid fa-envelope"></i>email
-                </button>
-                <button class="slider-btn">
-                  <i class="fa-brands fa-whatsapp"></i>whatsapp
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="slider-in">
-            <div class="img-container card-4">
-              <div class="slider-in-image">
-                <img src="images/villa-a-louer-19.jpg" alt="" />
-              </div>
-              <div class="slider-in-image">
-                <img src="images/villa-a-louer-8.jpg" alt="" />
-              </div>
-              <div class="slider-in-image">
-                <img src="images/Villa-Piscine.png" alt="" />
-              </div>
-              <button class="slider-btn-nav slider-btn-right">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-              <button class="slider-btn-nav slider-btn-left">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <div class="dots"></div>
-            </div>
-            <a href="pages/appartement.html"></a>
-            <div class="slider-in-text">
-              <span>Villa-Piscine</span>
-              <h3>2,546,763 MAD</h3>
-              <p>
-                STUNING BALCONY VEIW / SPACIOUS 2 BEDS / KITCHEN EQUIPPED /
-                GREAT
-              </p>
-              <ul>
-                <li>2 Bedrooms</li>
-                <li>3 Bathrooms</li>
-                <li>2000 m</li>
-              </ul>
-              <div class="slider-btns">
-                <button class="slider-btn">
-                  <i class="fa-solid fa-phone"></i> call
-                </button>
-                <button class="slider-btn">
-                  <i class="fa-solid fa-envelope"></i>email
-                </button>
-                <button class="slider-btn">
-                  <i class="fa-brands fa-whatsapp"></i>whatsapp
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> -->
+        
       </section>
 
       <!--                   links for populaire                -->
@@ -341,12 +161,10 @@
         <div class="links-container">
           <h3>Popular Properties</h3>
           <ul>
-            <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for sale in AGADIR</a></li>
-            <!-- <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for sale in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li> -->
+            <li><a href="products.php?type=rent&city=New+York">Properties for rent in New York</a></li>
+            <li><a href="products.php?type=rent&city=Los+Angeles">Properties for rent in Los Angeles</a></li>
+            <li><a href="products.php?type=rent&city=Miami">Properties for sale in Miami</a></li>
+         
           </ul>
         </div>
         <div class="links-container">
@@ -357,22 +175,18 @@
               <a href="./Links/guides/guide.php">Guide Immobilier Marrakech</a>
             </li>
             <li>
-              <a href="Links/premier_visit/premier-visit.html">Votre première visite</a>
+              <a href="./Links/premier_visit/premier-visit.php">Votre première visite</a>
             </li>
-            <!-- <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for sale in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li> -->
+          
           </ul>
         </div>
         <div class="links-container">
           <h3>Trending Areas for Sale</h3>
           <ul>
-            <li><a href="">Marrakech</a></li>
-            <li><a href="">Essaouira</a></li>
-            <li><a href="">AGADIR</a></li>
-            <!-- <li><a href="">Properties for rent in Marrakech</a></li>
-            <li><a href="">Properties for sale in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li> -->
+            <li><a href="products.php?type=sell&city=Chicago">Chicago</a></li>
+            <li><a href="products.php?type=sell&city=San+Francisco">San Francisco</a></li>
+            <li><a href="products.php?type=sell&city=Boston">Boston</a></li>
+       
           </ul>
         </div>
         <div class="links-container">
@@ -381,9 +195,7 @@
             <li><a href="credit-files/credit.php">Achat sans apport</a></li>
             <li><a href="credit-files/credit.php">Délai de rétractation</a></li>
             <li><a href="credit-files/credit.php">La garantie de retransfert</a></li>
-            <!-- <li><a href="">Properties for rent in AGADIR</a></li>
-            <li><a href="">Properties for sale in Marrakech</a></li>
-            <li><a href="">Properties for rent in Marrakech</a></li> -->
+      
           </ul>
         </div>
       </div>
@@ -395,7 +207,7 @@
   <div class="Projects">
         <i class="fa-solid fa-chevron-right righter"></i>
         <i class="fa-solid fa-chevron-left lefter"></i>
-        <h2>Properties in cities</h2>
+        <h2>New Properties</h2>
         <div class="projects-container">
          
         <?php 
@@ -406,12 +218,12 @@
      
            include 'dashboard/database.php';
            
-            $query = "SELECT * FROM posts ORDER BY Nlikes DESC LIMIT 5";
+            $query = "SELECT * FROM posts  LIMIT 5";
             $result = $dbConnection->query($query);
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
                   
                   $post_id = $row['id'];
-                  $post_ville = $row['city'];
+                  $post_ville = $row['title'];
                   $post_price = $row['price'];
                   $select_imgs = $dbConnection->prepare("SELECT img_name FROM post_imgs WHERE post_id = $post_id"); 
                   $select_imgs->execute();  
@@ -453,7 +265,7 @@
             <div class="i-text">
               <h3>' . $post_ville .  '</h3>
               <p>statrting from</p>
-              <h4>' . $post_price . ' DH</h4>
+              <h4>' . $post_price . ' MAD</h4>
             </div>
           </div>';
 

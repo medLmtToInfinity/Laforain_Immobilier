@@ -136,7 +136,7 @@
               <li><a href="products.php?type=rentSais">LOCATION SAISONIERE</a></li>
               <li><a href="credit.php">CREDIT</a></li>
               <li><a href="contact-us.php">NOUS CONTACTER</a></li>
-              <li><a href="#">A PROPOS</a></li>
+              <li><a href="about-us.php">A PROPOS</a></li>
             <?php if(!isset($_GET["id"])){ ?>
             <li><a href="sign-in.php">SIGN IN</a></li>
             
@@ -152,7 +152,7 @@
             alt="admin-pic"
           />
             <div class="admin-info">
-              <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+              <a href="Myprofile.php"><i class="fas fa-user"></i> Profile</a>
               <a href="#account-settings"><i class="fas fa-gear"></i> paramtres du compte</a>
               <a href="login/logout-user.php"><i class="fas fa-right-from-bracket"></i>Se déconnecter</a>
             </div>

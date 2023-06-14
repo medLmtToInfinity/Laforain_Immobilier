@@ -1,4 +1,6 @@
-
+.header{
+  margin: 0;
+}
 .signin-container{
   width: 100%;
   height: 40rem;
@@ -27,10 +29,10 @@
 
 .signin-left-side img{
   position: absolute;
-  top: 2rem;
+  top: 3rem;
   left: 40%;
   height: 10%;
-  width: 8rem;
+  width: 10rem;
 }
 .signin-left-side h2{
   color: black;

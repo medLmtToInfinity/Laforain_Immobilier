@@ -41,23 +41,27 @@
       <?php } 
         switch($pageName) {
           case "contact-us.php": echo '<link rel="stylesheet" href="css/contact-us.css">';
-            break;
-          case "credit.php": echo '<link rel="stylesheet" href="credit-files/credit.css">';
-                  break;
-          case "about.php": echo '<link rel="stylesheet" href="css/about.css">';
               break;
-          case "sign-in.php": echo '<link rel="stylesheet" href="signin-files/sign-in.css">';
+          case "credit.php": echo '<link rel="stylesheet" href="css/credit.css">';
+              break;
+          case "about-us.php": echo '<link rel="stylesheet" href="css/about-us.css">';
+              break;
+          case "sign-in.php": echo '<link rel="stylesheet" href="css/sign-in.css">';
+              break;
+          case "sign-up.php": echo '<link rel="stylesheet" href="css/sign-up.css">';
+              break;
+          case "Myprofile.php": echo '<link rel="stylesheet" href="css/Myprofile.css">';
+              break;
+          case "forget.php": echo '<link rel="stylesheet" href="css/forget.css">';
+              break;
+             
         }
       ?>
       
     <!-- <link rel="stylesheet" href="../css/black-header.css" /> -->
     <link rel="stylesheet" href="css/products.css" />
-    <link rel="stylesheet" href="css/credit.css" />
-    <link rel="stylesheet" href="css/sign-up.css" />
-    <link rel="stylesheet" href="css/forget.css" />
-    <link rel="stylesheet" href="css/Myprofile.css" />
+
     <link rel="stylesheet" href="css/home-footer.css" />
-    <link rel="stylesheet" href="css/sign-in.css" />
     <script src="js/lamarti.js" defer></script>
     <link
       rel="stylesheet"
@@ -157,7 +161,7 @@
               }
               ?>
               ><a href="contact-us.php">NOUS CONTACTER</a></li>
-              <li><a href="#">A PROPOS</a></li>
+              <li><a href="about-us.php">A PROPOS</a></li>
             <li
             <?php  
               if($pageName === "sign-in.php"){

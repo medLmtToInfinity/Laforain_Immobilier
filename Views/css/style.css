@@ -497,7 +497,7 @@ section {
   /* position: relative; */
 }
 
-.slider-in a {
+.slider-in a, .i-container a{
   position: absolute;
   top: 0;
   bottom: 50%;

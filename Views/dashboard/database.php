@@ -70,9 +70,8 @@ $tables = [
         tel VARCHAR(30),
         whatsapp VARCHAR(30),
         profile_pic VARCHAR(255),
-        admn INT,
         code INT,
-        status VARCHAR(255)
+        status INT
     );", "CREATE TABLE IF NOT EXISTS liked_post (
         id INT AUTO_INCREMENT PRIMARY KEY,
         post_id INT,

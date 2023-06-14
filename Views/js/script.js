@@ -34,64 +34,6 @@ console.log (project)
 
 
 
-// const _slider = function (ph) {
-//   console.log(ph);
-//   const i_container = ph.querySelectorAll(".i-container");
-//   const lefter_ = ph.querySelector(".img-changer-left");
-//   const righter = ph.querySelector(".img-changer-right");
-//   console.log(i_container);
-//   console.log(lefter_);
-//   let curImage = 0;
-//   const maxImages = i_container.length;
-
-//   // Functions
-
-//   const goToImage = function (image) {
-//     i_container.forEach(
-//       (img, i) => (img.style.transform = `translateX(${100 * (i - image)}%)`)
-//     );
-//   };
-
-//   // Next slide
-//   const nextImg = function () {
-//     if (curImage === maxImages - 1) {
-//       curImage = 0;
-//     } else {
-//       curImage++;
-//     }
-
-//     goToImage(curImage);
-//     console.log(curImage);
-//   };
-
-//   const prevImage = function () {
-//     console.log(curImage);
-//     if (curImage === 0) {
-//       curImage = maxImages - 1;
-//     } else {
-//       curImage--;
-//     }
-//     // console.log('previous');
-//     goToImage(curImage);
-//     console.log(curImage);
-//   };
-
-//   const init = function () {
-//     goToImage(0);
-//   };
-
-//   init();
-
-//   // Event handlers
-//   righter.addEventListener("click", nextImg);
-//   lefter_.addEventListener("click", prevImage);
-
-// };
-// project.forEach((pr) => {
-//   _slider(pr);
-// });
-
-
 
   
 const imgs = document.querySelector('.imgs-container')
