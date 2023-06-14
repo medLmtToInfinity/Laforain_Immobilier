@@ -183,7 +183,7 @@ include "dashboard/database.php"; ?>
             alt="admin-pic"
           />
             <div class="admin-info">
-              <a href="Myporfile.php?id=<?php echo $user_id ?>"><i class="fas fa-user"></i> Profile</a>
+              <a href="Myprofile.php?id=<?php echo $user_id ?>"><i class="fas fa-user"></i> Profile</a>
               <!-- <a href="#account-settings"><i class="fas fa-gear"></i> paramtres du compte</a> -->
               <a href="logout.php"><i class="fas fa-right-from-bracket"></i>Se déconnecter</a>
             </div>

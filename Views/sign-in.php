@@ -8,6 +8,7 @@
      <section class="signin-left-side">
        <img src="images/laforain_logo.png" alt="logo">
        <h2>Login to Your Account</h2>
+       <p class="signin-welcom">We are really happy to see you again!</p>
        <p class="alert">
          <?=isset($_SESSION['error']) ?
           $_SESSION['error'] : '';
@@ -19,8 +20,7 @@
         unset($_SESSION['error']);
         
       } ?>
-       <p class="signin-welcom">We are really happy to see you again!</p>
-       <form action="signin-process.php" method="post" novalidate>
+       <form action="signin-process.php" method="post" >
         <div class="div-email">
             <label for="email">Email</label><br>
             <input type="text" name="email" id="email" placeholder="Enter your email" required><br>
@@ -37,7 +37,7 @@
             <a href="forget-password.php">Forgot Password</a>
         </div>
         <button type="submit" id="sign-in">Sign in</button><br>
-        <button type="submit" id="google-sign-in"><i class="fa-brands fa-google"></i> Sign in with Google</button>
+        <!-- <button type="submit" id="google-sign-in"><i class="fa-brands fa-google"></i> Sign in with Google</button> -->
         <p class="sign-up">Don't have an Account? <a href="sign-up.php">Sign Up</a></p>
       </form>
     </section>

@@ -26,7 +26,10 @@ function generateRandomPassword($length = 10) {
     for ($i = 0; $i < $length; $i++) {
         $password .= $characters[rand(0, $charactersLength - 1)];
     }
-    
+     
+    // $query = "INSERT INTO users (code) VALUES ('$password')';
+    // $dbConnection->query($query);
+
     return $password;
 }
 

@@ -1,12 +1,12 @@
 const successMessage = document.querySelector('#success-message');
 const btnAdd = document.querySelector('.btn-submit');
-btnAdd.addEventListener('click', ()=>{
+btnAdd.addEventListener('click', (e)=>{
+    e.preventDefault();
     successMessage.style.display = 'block';
-  
     setTimeout(function() {
       successMessage.style.display = 'none';
-      console.log("3 seconds passed");
-    }, 5000); // 5000 milliseconds = 5 seconds
+      window.location.href='add_post.php';
+    }, 3000); // 5000 milliseconds = 5 seconds
   })
   
   // Call the function to display the success message after a delay

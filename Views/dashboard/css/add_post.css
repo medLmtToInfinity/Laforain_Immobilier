@@ -47,6 +47,10 @@ body {
   width: 100%;
 }
 
+.add-post-form input, .add-post-form select {
+  outline: 0;
+}
+
 .add-post-flex {
   display: flex;
   align-items: start;

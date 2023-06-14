@@ -69,7 +69,7 @@
             alt="admin-pic"
           />
           <div class="admin-info">
-            <a href="Myprofile.php"><i class="fas fa-user"></i> Profile</a>
+            <a href="../Myprofile.php"><i class="fas fa-user"></i> Profile</a>
             <a href="../logout.php"
               ><i class="fas fa-right-from-bracket"></i>Se déconnecter</a
             >
@@ -95,7 +95,7 @@
             </div>
           </div>
           <a href="users.php" class="icon-hover"><i class="fas fa-user"></i> Clients</a>
-          <a href="#logout"
+          <a href="../logout.php"
             ><i class="fas fa-right-from-bracket"></i> Se déconnecter</a
           >
         </aside>

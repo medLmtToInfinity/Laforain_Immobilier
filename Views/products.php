@@ -252,7 +252,7 @@
                 <?php 
                 $class = "";
                 if(!isset($_SESSION["user_id"])) {
-                  $user_id = "";
+                  $user_id = 0;
                 } else {
                   $liked_query = "SELECT * FROM liked_post WHERE post_id = $post_id AND user_id = $user_id";
                   $res_liked = $conn->query($liked_query);

@@ -47,28 +47,33 @@
       <link rel="stylesheet" href="css/black-header.css" />
       <?php } 
         switch($pageName) {
+          case "appartement.php": echo '<link rel="stylesheet" href="css/appartement.css"><script src="js/appartement.js" defer></script>';
+              break;
           case "contact-us.php": echo '<link rel="stylesheet" href="css/contact-us.css">';
-            break;
+              break;
           case "credit.php": echo '<link rel="stylesheet" href="css/credit.css">';
-                  break;
-          case "about.php": echo '<link rel="stylesheet" href="css/about.css">';
+              break;
+          case "about-us.php": echo '<link rel="stylesheet" href="css/about-us.css">';
               break;
           case "sign-in.php": echo '<link rel="stylesheet" href="css/sign-in.css">';
               break;
-          case "appartement.php": echo '<link rel="stylesheet" href="css/appartement.css">';
-                                  echo '<script src="js/appartement.js" defer></script>';
+          case "sign-up.php": echo '<link rel="stylesheet" href="css/sign-up.css">';
+              break;
+          case "Myprofile.php": echo '<link rel="stylesheet" href="css/Myprofile.css">';
+              break;
+          case "forget-password.php": echo '<link rel="stylesheet" href="css/forget.css">';
+              break;
+          case "confirmation-password.php": echo '<link rel="stylesheet" href="css/forget.css">';
+              break;
+          case "reset-password.php": echo '<link rel="stylesheet" href="css/forget.css">';
               break;
         }
       ?>
       
     <!-- <link rel="stylesheet" href="../css/black-header.css" /> -->
     <link rel="stylesheet" href="css/products.css" />
-    <link rel="stylesheet" href="css/credit.css" />
-    <link rel="stylesheet" href="css/sign-up.css" />
-    <link rel="stylesheet" href="css/forget.css" />
-    <link rel="stylesheet" href="css/Myprofile.css" />
+
     <link rel="stylesheet" href="css/home-footer.css" />
-    <link rel="stylesheet" href="css/sign-in.css" />
     <script src="js/lamarti.js" defer></script>
     <link
       rel="stylesheet"
@@ -168,10 +173,11 @@
               }
               ?>
               ><a href="contact-us.php">NOUS CONTACTER</a></li>
-              <li><a href="#">A PROPOS</a></li>
+              <!-- <li><a href="#">A PROPOS</a></li> -->
 
+              <li><a href="about-us.php">A PROPOS</a></li>
               <?php if(!isset($_SESSION["user_id"])){ ?>
-            <li
+              <li
                 <?php
                   if($pageName === "sign-in.php"){
                     echo " class='current'";
@@ -198,7 +204,7 @@
             alt="admin-pic"
           />
             <div class="admin-info">
-              <a href="Myporfile.php?id=<?php echo $user_id ?>"><i class="fas fa-user"></i> Profile</a>
+              <a href="Myprofile.php?id=<?php echo $user_id ?>"><i class="fas fa-user"></i> Profile</a>
               <!-- <a href="#account-settings"><i class="fas fa-gear"></i> paramtres du compte</a> -->
               <a href="logout.php"><i class="fas fa-right-from-bracket"></i>Se déconnecter</a>
             </div>

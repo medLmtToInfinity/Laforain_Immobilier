@@ -1,4 +1,4 @@
-//******************************************Home************************************ */
+/******************************************Home************************************ */
 
 const label = document.querySelectorAll(".select-handler");
 const lists = document.querySelectorAll(".select");
@@ -10,7 +10,13 @@ const profile = document.querySelector(".admin img");
 
 // JavaScript code
 function likePost(userId, postId) {
-  if(!userId) return;
+  if(!userId) {
+    // heartAnimation.classList.remove("animate");
+    window.location.href = "sign-in.php";
+    // console.log("cc");
+    return
+  }
+  console.log("I am here!")
   // Send a POST request to the backend API endpoint
   fetch("addLikedPost.php", {
       method: "POST",
@@ -171,11 +177,10 @@ postLinkHandler.forEach((link) => {
   );
 });
 
-if(profile) {
+
   profile.addEventListener("click", () => {
     document
       .querySelector(".header .admin .admin-info")
       .classList.toggle("visible");
     condition = false;
   });
-}
