@@ -52,9 +52,12 @@
               break;
           case "Myprofile.php": echo '<link rel="stylesheet" href="css/Myprofile.css">';
               break;
-          case "forget.php": echo '<link rel="stylesheet" href="css/forget.css">';
+          case "forget-password.php": echo '<link rel="stylesheet" href="css/forget.css">';
               break;
-             
+          case "confirmation-password.php": echo '<link rel="stylesheet" href="css/forget.css">';
+              break;
+          case "reset-password.php": echo '<link rel="stylesheet" href="css/forget.css">';
+              break;
         }
       ?>
       
@@ -63,6 +66,7 @@
 
     <link rel="stylesheet" href="css/home-footer.css" />
     <script src="js/lamarti.js" defer></script>
+    <script src="js/appartement.js" defer></script>
     <link
       rel="stylesheet"
       href="https://kit.fontawesome.com/d09f9a669c.css"

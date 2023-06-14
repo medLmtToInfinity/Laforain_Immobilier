@@ -72,6 +72,8 @@
     <link rel="stylesheet" href="css/home-footer.css" />
     <script src="js/lamarti.js" defer></script>
     <script src="js/homeSearch.js" defer></script>
+    <script src="js/boubker1.js" defer></script>
+
     <!-- <script src="dashboard/js/lamarti.js" defer></script> -->
     <link
       rel="stylesheet"

@@ -68,15 +68,15 @@
         
         // $query = "SELECT post_id FROM liked_post ORDER BY  LIMIT 4";
         // $query = "SELECT post_id FROM liked_post ORDER BY number of likes LIMIT 4";
-        $query = "SELECT post_id, count(post_id) AS likes FROM liked_post ORDER BY likes LIMIT 4";
+        $query = "SELECT post_id, count(post_id) AS likes FROM liked_post GROUP BY post_id ORDER BY likes DESC LIMIT 4";
         $result = $dbConnection->query($query);
-        while ($likedPost = $result->fetch(PDO::FETCH_ASSOC)) {
+        foreach($result->fetchAll(PDO::FETCH_ASSOC) as $likedPost) {
         $postID = $likedPost['post_id'];
         $query = "SELECT * FROM posts where id = $postID";
         $result = $dbConnection->query($query);
         
-        if ($result !== false)
-          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        if ($result !== false){
+          foreach($result->fetchAll(PDO::FETCH_ASSOC) as $row) {
             $postId = $row['id'];
             $query = "SELECT img_name FROM post_imgs WHERE post_id = ?";
             $stmt = $dbConnection->prepare($query);
@@ -119,7 +119,7 @@
               </button>
               <div class="dots"></div>
             </div>
-            <a href=<?php echo "pages/appartement.php?postId=".$postId ?> ></a>
+            <a href=<?php echo "appartement.php?postId=".$postId ?> ></a>
 
             <div class="slider-in-text">
               <?php echo "
@@ -137,13 +137,13 @@
 
               <div class="slider-btns">
                 <button class="slider-btn" onclick="startCall('+212648780353')">
-                  <i class="fa-solid fa-phone"></i> call
+                  <i class="fa-solid fa-phone"></i> Call
                 </button>
                 <button class="slider-btn" onclick="sendEmail('mohammed.lammarti@gmail.com')">
-                  <i class="fa-solid fa-envelope"></i>email
+                  <i class="fa-solid fa-envelope"></i>Email
                 </button>
                 <button class="slider-btn" onclick="openWhatsApp('+212648780353')">
-                  <i class="fa-brands fa-whatsapp"></i>whatsapp
+                  <i class="fa-brands fa-whatsapp"></i>WhatsApp
                 </button>
               </div>
             </div>
@@ -151,6 +151,7 @@
         <?php
         }
       }
+    }
         ?>
         
         
@@ -329,6 +330,5 @@
       <?php include "includes/footer.php" ;?>
     </div>
     <script src="js/script.js"></script>
-    <script src="js/boubker1.js"></script>
   </body>
 </html>

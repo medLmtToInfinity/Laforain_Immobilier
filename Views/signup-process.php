@@ -11,9 +11,6 @@ print_r($_POST);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $username = validate($_POST["name"]);
-  // $name_parts= explode(" ", $username); //split name by space
-  // $first_name = $name_parts[0]; 
-  // $last_name = $name_parts[1];
   $email = validate($_POST["email"]);
   $password = validate($_POST["password"]);
   $c_password = validate($_POST["c_password"]);

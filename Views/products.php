@@ -224,7 +224,7 @@
                   ?>
 
           <div>
-            <a class="product-link" href="<?php echo "pages/appartement.php?id=$post_id"?>"></a>
+            <a class="product-link" href="<?php echo "appartement.php?postId=$post_id"?>"></a>
             <div class="post">
               <div class="img-handler">
                 <span><?php echo $post_state; ?></span>
@@ -260,7 +260,7 @@
                     </div>
                     <div class=\"product-position\">
                       <i class=\"fas fa-location-dot\"></i>
-                      <a href=\"pages/appartement.php?id=$post_id\" class=\"position-link\">$post_loc, $post_city</a>
+                      <a href=\"appartement.php?id=$post_id\" class=\"position-link\">$post_loc, $post_city</a>
                     </div>
                     <div class=\"HeartAnimation\"></div>
                   </div>

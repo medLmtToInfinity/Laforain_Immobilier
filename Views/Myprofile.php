@@ -1,17 +1,19 @@
 <?php  include 'dashboard/database.php';
        session_start();
-
+      include "includes/products-header.php"; 
      
-           $query = "SELECT * FROM users WHERE id = 2;";
-           $stm = $dbConnection->query($query);
-           while($row = $stm->fetch(\PDO::FETCH_ASSOC)){
-                $user_pic = $row['profile_pic'];
-                $username = $row['username'];  
-                $email = $row['email'];
-                $tel = $row['tel'];
-                $password = $row['passwd'];
-           }
+       $query = "SELECT * FROM users WHERE id = 2;";
+       $stm = $dbConnection->query($query);
 
+       while ($row = $stm->fetch(\PDO::FETCH_ASSOC)) {
+
+           $user_pic = $row['profile_pic'];
+           $username = $row['username'];  
+           $email = $row['email'];
+           $tel = $row['tel'];
+           $password = $row['passwd'];
+
+    }
 
      
 
@@ -19,7 +21,7 @@
 ?>
 
 
-<?php include "includes/products-header.php"; ?>
+
 
 
      <div class="profile-container">
@@ -59,11 +61,11 @@
                 <div class="container-3">
                   <div>
                       <label for="password">New passsword :</label><br>
-                      <input type="password" class="new-password" value="abdessamad0272">
+                      <input type="password" class="new-password">
                   </div>
                   <div>
                       <label for="c-password">Confirme password :</label><br>
-                      <input type="password" value="abdessamad0272">
+                      <input type="password">
                   </div>
               </div>
               <button type="submit" class="save-changes">Save Changes</button>
