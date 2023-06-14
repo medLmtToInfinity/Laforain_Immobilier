@@ -1,4 +1,11 @@
-<?php include "dashboard/database.php";?>
+<?php include "dashboard/database.php";
+  session_start();
+  if(isset($_GET["dest"])) {
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,6 +56,7 @@
           case "sign-in.php": echo '<link rel="stylesheet" href="css/sign-in.css">';
               break;
           case "appartement.php": echo '<link rel="stylesheet" href="css/appartement.css">';
+                                  echo '<script src="js/appartement.js" defer></script>';
               break;
         }
       ?>
@@ -62,7 +70,6 @@
     <link rel="stylesheet" href="css/home-footer.css" />
     <link rel="stylesheet" href="css/sign-in.css" />
     <script src="js/lamarti.js" defer></script>
-    <script src="js/appartement.js" defer></script>
     <link
       rel="stylesheet"
       href="https://kit.fontawesome.com/d09f9a669c.css"
@@ -162,15 +169,41 @@
               ?>
               ><a href="contact-us.php">NOUS CONTACTER</a></li>
               <li><a href="#">A PROPOS</a></li>
+
+              <?php if(!isset($_SESSION["user_id"])){ ?>
             <li
-            <?php  
-              if($pageName === "sign-in.php"){
-                echo " class='current'";
-              }
-              ?>
+                <?php
+                  if($pageName === "sign-in.php"){
+                    echo " class='current'";
+                  }
+                ?>
             ><a href="sign-in.php">SIGN IN</a></li>
+            
             <!-- <li><a href="#">SIGN UP</a></li> -->
+            <?php } ?>
             </ul>
+            <?php
+             if(isset($_SESSION["user_id"])){
+              $user_id = $_SESSION["user_id"];
+              // echo $user_id;
+              $user_query = "SELECT profile_pic FROM users WHERE id = $user_id";
+              $user_res = $conn->query($user_query);
+              $row = $user_res->fetch_assoc();
+              $user_img = $row["profile_pic"];
+              $user_img = $user_img == "" ?  "user-d.jpg" : $user_img
+            ?>
+            <div class="admin">
+            <img style="width: 80%; height: 80%"
+            src="dashboard/img/<?php echo $user_img ?>"
+            alt="admin-pic"
+          />
+            <div class="admin-info">
+              <a href="Myporfile.php?id=<?php echo $user_id ?>"><i class="fas fa-user"></i> Profile</a>
+              <!-- <a href="#account-settings"><i class="fas fa-gear"></i> paramtres du compte</a> -->
+              <a href="logout.php"><i class="fas fa-right-from-bracket"></i>Se déconnecter</a>
+            </div>
+            <?php } ?>
+          <!-- </div>  -->
           </nav>
         </div>
       </header>

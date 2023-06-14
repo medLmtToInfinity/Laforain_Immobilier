@@ -63,16 +63,14 @@
           </form>
         </div>
         <div class="admin">
+          
           <img
-            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+            src="img/admin.jpg"
             alt="admin-pic"
           />
           <div class="admin-info">
-            <a href="#profile"><i class="fas fa-user"></i> Profile</a>
-            <a href="#account-settings"
-              ><i class="fas fa-gear"></i> paramtres du compte</a
-            >
-            <a href="#logout"
+            <a href="Myprofile.php"><i class="fas fa-user"></i> Profile</a>
+            <a href="../logout.php"
               ><i class="fas fa-right-from-bracket"></i>Se déconnecter</a
             >
           </div>

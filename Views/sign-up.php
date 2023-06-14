@@ -1,6 +1,6 @@
 
 <?php  include 'dashboard/database.php';
-       session_start();
+      //  session_start();
 ?>
 
 <?php include "includes/products-header.php"?>

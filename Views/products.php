@@ -250,6 +250,16 @@
                   <i class="fas fa-chevron-left"></i>
                   <i class="fas fa-chevron-right"></i>
                 <?php 
+                $class = "";
+                if(!isset($_SESSION["user_id"])) {
+                  $user_id = "";
+                } else {
+                  $liked_query = "SELECT * FROM liked_post WHERE post_id = $post_id AND user_id = $user_id";
+                  $res_liked = $conn->query($liked_query);
+                  if($res_liked->num_rows) {
+                    $class = "animate";
+                  }
+                }
                     echo "
                     </div>
                     <div class=\"content-handler\">
@@ -262,7 +272,7 @@
                       <i class=\"fas fa-location-dot\"></i>
                       <a href=\"appartement.php?id=$post_id\" class=\"position-link\">$post_loc, $post_city</a>
                     </div>
-                    <div class=\"HeartAnimation\"></div>
+                    <div class=\"HeartAnimation $class\" onclick='likePost($user_id, $post_id)'></div>
                   </div>
                   </div>
                   </div>

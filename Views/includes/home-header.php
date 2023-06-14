@@ -1,4 +1,7 @@
-<?php include "dashboard/database.php"; ?>
+<?php 
+  // ob_start();
+  ob_start();
+include "dashboard/database.php"; ?>
 <?php
   
   // Get today's date
@@ -31,7 +34,7 @@
       $insertStmt->execute();
   }
 
-  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +86,17 @@
     <title>Agence Immobilière Marrakech pour des biens de luxe</title>
   </head>
   <body>
+    <?php 
+      session_start();
+      if(isset($_GET["dest"])) {
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
+        exit();
+      }
+      
+      // print_r($_SESSION);
+    ?>
     <div class="container">
       <div class="error-msg">
         <i class="fas fa-circle-exclamation"></i>
@@ -139,24 +153,39 @@
               <li><a href="credit.php">CREDIT</a></li>
               <li><a href="contact-us.php">NOUS CONTACTER</a></li>
               <li><a href="#">A PROPOS</a></li>
-            <?php if(!isset($_GET["id"])){ ?>
+            <?php if(!isset($_SESSION["user_id"])){ ?>
             <li><a href="sign-in.php">SIGN IN</a></li>
             
             <!-- <li><a href="#">SIGN UP</a></li> -->
             <?php } ?>
             </ul>
             <?php
-             if(isset($_GET["id"])){
+             if(isset($_SESSION["user_id"])){
+               $user_id = $_SESSION["user_id"];
+               $admin_query = "SELECT admn FROM users WHERE id = $user_id";
+               $admin_res = $conn->query($admin_query);
+               $admin_row = $admin_res->fetch_assoc()["admn"];
+              //  echo "adminrow".$admin_row;
+               if($admin_row == true) {
+                header("Location: dashboard/index.php");
+                exit();
+               }
+              // echo $user_id;
+              $user_query = "SELECT profile_pic FROM users WHERE id = $user_id";
+              $user_res = $conn->query($user_query);
+              $row = $user_res->fetch_assoc();
+              $user_img = $row["profile_pic"];
+              $user_img = $user_img == "" ?  "user-d.jpg" : $user_img
             ?>
             <div class="admin">
-            <img
-            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixdivb=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+            <img style="width: 80%; height: 80%;"
+            src="dashboard/img/<?php echo $user_img ?>"
             alt="admin-pic"
           />
             <div class="admin-info">
-              <a href="#profile"><i class="fas fa-user"></i> Profile</a>
-              <a href="#account-settings"><i class="fas fa-gear"></i> paramtres du compte</a>
-              <a href="login/logout-user.php"><i class="fas fa-right-from-bracket"></i>Se déconnecter</a>
+              <a href="Myporfile.php?id=<?php echo $user_id ?>"><i class="fas fa-user"></i> Profile</a>
+              <!-- <a href="#account-settings"><i class="fas fa-gear"></i> paramtres du compte</a> -->
+              <a href="logout.php"><i class="fas fa-right-from-bracket"></i>Se déconnecter</a>
             </div>
             <?php } ?>
           <!-- </div>  -->

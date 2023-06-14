@@ -8,7 +8,26 @@ const arrowsDown = document.querySelectorAll(".caret");
 const searchBtn = document.querySelector(".search-btn");
 const profile = document.querySelector(".admin img");
 
-console.log(label);
+// JavaScript code
+function likePost(userId, postId) {
+  if(!userId) return;
+  // Send a POST request to the backend API endpoint
+  fetch("addLikedPost.php", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: `userId=${userId}&postId=${postId}`
+  })
+  .then(response => response.text())
+  .then(result => {
+      console.log(result); // Display the result in the console
+  })
+  .catch(error => {
+      console.error("Error adding liked post:", error);
+  });
+}
+
 const setSearch = () => {
   if (!searchBtn) return;
   if (window.innerWidth <= 1028) {
@@ -152,9 +171,11 @@ postLinkHandler.forEach((link) => {
   );
 });
 
-profile.addEventListener("click", () => {
-  document
-    .querySelector(".header .admin .admin-info")
-    .classList.toggle("visible");
-  condition = false;
-});
+if(profile) {
+  profile.addEventListener("click", () => {
+    document
+      .querySelector(".header .admin .admin-info")
+      .classList.toggle("visible");
+    condition = false;
+  });
+}

@@ -41,6 +41,7 @@
                 $user_id = $row['id'];
                 $username = $row['username'];
                 $name_parts= explode(" ", $username); //split name by space
+                // echo $name_parts;
                 $first_name = $name_parts[0]; 
                 $last_name = $name_parts[1];
                 $user_email = $row['email'];
