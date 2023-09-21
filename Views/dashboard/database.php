@@ -71,7 +71,8 @@ $tables = [
         whatsapp VARCHAR(30),
         profile_pic VARCHAR(255),
         code INT,
-        status INT
+        status INT,
+        admn BOOLEAN
     );", "CREATE TABLE IF NOT EXISTS liked_post (
         id INT AUTO_INCREMENT PRIMARY KEY,
         post_id INT,
@@ -285,13 +286,13 @@ foreach($imgsData as $row){
 }
 
 $users=[
-    ['1','boubker Aouabe',password_hash('boubker', PASSWORD_DEFAULT),'boubkeraouabe@gmail.com', '+212683746402','+212683746402','user1.png'],
-    ['2','Abdessamad Aithamou',password_hash('samad1234', PASSWORD_DEFAULT),'abdessamadaithamou@gmail.com', '+212683746402','+212656840032','user2.png'],
-    ['3','sara majid',password_hash('sara456', PASSWORD_DEFAULT),'saramajid@gmail.com', '+212683746400','+212683746400','user3.png'],
-    ['4','hamza hrimel',password_hash('hamza123', PASSWORD_DEFAULT),'hrimel.hamza@gmail.com', '+212689046409','+212689046409','user4.png'],
-    ['5','matrab mohamed',password_hash('matrab123', PASSWORD_DEFAULT),'lamarti_mohamed@gmail.com', '+212683446402','+212683740802','user-d.jpg'],
-    ['6','Lamarti Mohamed',password_hash('lamartimoha', PASSWORD_DEFAULT),'lamarti_mohamed@gmail.com', '+212683746402','+212683746402','user1.png'],
-    ['7','Locas mario',password_hash('mario345', PASSWORD_DEFAULT),'locas_mario@gmail.com', '+212453746402','+212293746402','user-d.jpg']
+    ['1','boubker Aouabe',password_hash('boubker', PASSWORD_DEFAULT),'boubkeraouabe@gmail.com', '+212683746402','+212683746402','user1.png', false],
+    ['2','Abdessamad Aithamou',password_hash('samad1234', PASSWORD_DEFAULT),'abdessamadaithamou@gmail.com', '+212683746402','+212656840032','user2.png', false],
+    ['3','sara majid',password_hash('sara456', PASSWORD_DEFAULT),'saramajid@gmail.com', '+212683746400','+212683746400','user3.png', false],
+    ['4','hamza hrimel',password_hash('hamza123', PASSWORD_DEFAULT),'hrimel.hamza@gmail.com', '+212689046409','+212689046409','user4.png', false],
+    ['5','matrab mohamed',password_hash('matrab123', PASSWORD_DEFAULT),'lamarti_mohamed@gmail.com', '+212683446402','+212683740802','user-d.jpg', false],
+    ['6','Lamarti Mohamed',password_hash('ines', PASSWORD_DEFAULT),'ines@gmail.com', '+212666666666','+21266666666','user1.png', true],
+    ['7','Locas mario',password_hash('mario345', PASSWORD_DEFAULT),'locas_mario@gmail.com', '+212453746402','+212293746402','user-d.jpg', false]
     
    
 ];
@@ -342,4 +343,3 @@ foreach($likeData as $row){
 
 }
 ?>
-
